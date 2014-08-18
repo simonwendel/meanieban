@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name clientApp
+ * @name meanieBan
  * @description
- * # clientApp
+ * # meanieBan
  *
  * Main module of the application.
  */
 angular
-  .module('clientApp', [
+  .module('meanieBan', [
     'ngAnimate',
     'ngCookies',
     'ngResource',

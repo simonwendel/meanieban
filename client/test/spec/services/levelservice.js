@@ -3,7 +3,7 @@
 describe('Service: LevelService', function () {
 
   // load the service's module
-  beforeEach(module('clientApp'));
+  beforeEach(module('meanieBan'));
 
   // instantiate service
   var LevelService;

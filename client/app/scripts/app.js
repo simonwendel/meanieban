@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('meanieBan', [
+  .module('meanieBanApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',

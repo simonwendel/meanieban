@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the meanieBan
  */
-angular.module('meanieBan')
+angular.module('meanieBanApp')
   .controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',

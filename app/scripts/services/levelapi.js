@@ -8,7 +8,14 @@ angular.module('meanieBanApp')
         return {
             get: function (id) {
                 if (id) {
-                    return api.get({ id: id });
+                    var value;
+                    api
+                        .get({ id: id })
+                        .$promise
+                        .then(function (data) {
+                            value = data;
+                        });
+                    return value;
                 }
 
                 return api.query();

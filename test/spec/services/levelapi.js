@@ -37,5 +37,19 @@ describe('Service: LevelApi', function () {
 
             expect(result).toBeJsonEqual(expected);
         });
+
+        it('should return a specific level when an id is specified', function () {
+            var expected = { blah: '1' };
+
+            $httpBackend
+                .expectGET('/api/levels/2')
+                .respond(expected);
+
+            var result = LevelApi.get(2);
+
+            $httpBackend.flush();
+
+            expect(result).toBeJsonEqual(expected);
+        });
     });
 });

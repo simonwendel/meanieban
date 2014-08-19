@@ -21,7 +21,7 @@ describe('Service: LevelApi', function () {
     });
 
     describe('LevelApi.get', function () {
-        it('should return all levels from a server when an id is not specified', function () {
+        it('should return all levels when an id is not specified', function () {
             var expected = [
                 { blah: '1' },
                 { blah: '2' }

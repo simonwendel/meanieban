@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .factory('levelCollection', function () {
+    .factory('levelCollection', function LevelCollectionFactory() {
         var collection = [];
 
         // test level 1

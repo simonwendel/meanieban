@@ -15,17 +15,17 @@ describe('Factory: levelCollection', function () {
 
         it('should return all levels in the levelCollection', function () {
             var levels = levelCollection.all();
-            expect(levels.length).toEqual(2);
+            expect(levels.length).toBe(2);
 
-            expect(levels[0].id).toEqual(-1);
-            expect(levels[0].name).toEqual('test level 1');
-            expect(levels[0].height).toEqual(13);
-            expect(levels[0].width).toEqual(27);
+            expect(levels[0].id).toBe(-1);
+            expect(levels[0].name).toBe('test level 1');
+            expect(levels[0].height).toBe(13);
+            expect(levels[0].width).toBe(27);
 
-            expect(levels[1].id).toEqual(-2);
-            expect(levels[1].name).toEqual('test level 2');
-            expect(levels[1].height).toEqual(9);
-            expect(levels[1].width).toEqual(9);
+            expect(levels[1].id).toBe(-2);
+            expect(levels[1].name).toBe('test level 2');
+            expect(levels[1].height).toBe(9);
+            expect(levels[1].width).toBe(9);
         });
 
     });
@@ -34,16 +34,16 @@ describe('Factory: levelCollection', function () {
 
         it('should return all level names from the levelCollection', function () {
             var names = levelCollection.names();
-            expect(names.length).toEqual(2);
-            expect(names[0].name).toEqual('test level 1');
-            expect(names[1].name).toEqual('test level 2');
+            expect(names.length).toBe(2);
+            expect(names[0].name).toBe('test level 1');
+            expect(names[1].name).toBe('test level 2');
         });
 
         it('should return all level ids from the levelCollection', function () {
             var names = levelCollection.names();
-            expect(names.length).toEqual(2);
-            expect(names[0].id).toEqual(-1);
-            expect(names[1].id).toEqual(-2);
+            expect(names.length).toBe(2);
+            expect(names[0].id).toBe(-1);
+            expect(names[1].id).toBe(-2);
         });
 
     });

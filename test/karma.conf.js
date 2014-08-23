@@ -30,7 +30,8 @@ module.exports = function (config) {
             'test/matchers/toBeJsonEqual.js',
             'app/scripts/**/*.js',
             'test/mock/**/*.js',
-            'test/**/spec/**/*.js' // we use /**/ before spec so test utilities also get their tests run
+            'test/**/spec/**/*.js', // we use /**/ before spec so test utilities also get their tests run
+            'app/views/**/*.html' // for templates in directives
         ],
 
         // list of files / patterns to exclude
@@ -55,7 +56,8 @@ module.exports = function (config) {
         plugins: [
             'karma-phantomjs-launcher',
             'karma-jasmine',
-            'karma-coverage'
+            'karma-coverage',
+            'karma-ng-html2js-preprocessor'
         ],
 
         preprocessors: {
@@ -63,7 +65,13 @@ module.exports = function (config) {
             // do not include tests or libraries
             // (these files will be instrumented by Istanbul)
             'app/scripts/**/*.js': ['coverage'],
-            'test/matchers/*.js': ['coverage']
+            'test/matchers/*.js': ['coverage'],
+            'app/views/**/*.html': ['ng-html2js']
+        },
+
+        ngHtml2JsPreprocessor: {
+            // strip this from the file path
+            stripPrefix: 'app/'
         },
 
         // Continuous Integration mode

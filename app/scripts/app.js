@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name meanieBan
- * @description
- * # meanieBan
- *
- * Main module of the application.
- */
 angular
   .module('meanieBanApp', [
     'ngAnimate',

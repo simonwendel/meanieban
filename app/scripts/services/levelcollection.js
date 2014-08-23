@@ -44,6 +44,11 @@ angular.module('meanieBanApp')
                 return collection.map(function (level) {
                     return { id: level.id, name: level.name };
                 });
+            },
+            get: function (id) {
+                return collection.filter(function (level) {
+                    return level.id == id;
+                })[0];
             }
         };
     });

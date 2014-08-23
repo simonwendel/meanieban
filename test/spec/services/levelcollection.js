@@ -2,18 +2,18 @@
 
 describe('Factory: levelCollection', function () {
 
-    // load the service's module
     beforeEach(module('meanieBanApp'));
 
-    // instantiate service
     var levelCollection;
     beforeEach(inject(function (_levelCollection_) {
+
         levelCollection = _levelCollection_;
+
     }));
 
-    describe('levelCollection.all()', function() {
+    describe('levelCollection.all()', function () {
 
-        it('should return all levels in the levelCollection', function () {
+        it('should return all levels in the levelCollection.', function () {
             var levels = levelCollection.all();
             expect(levels.length).toBe(2);
 
@@ -30,20 +30,31 @@ describe('Factory: levelCollection', function () {
 
     });
 
-    describe('levelCollection.names()', function() {
+    describe('levelCollection.names()', function () {
 
-        it('should return all level names from the levelCollection', function () {
+        it('should return all level names from the levelCollection.', function () {
             var names = levelCollection.names();
             expect(names.length).toBe(2);
             expect(names[0].name).toBe('test level 1');
             expect(names[1].name).toBe('test level 2');
         });
 
-        it('should return all level ids from the levelCollection', function () {
+        it('should return all level ids from the levelCollection.', function () {
             var names = levelCollection.names();
             expect(names.length).toBe(2);
             expect(names[0].id).toBe(-1);
             expect(names[1].id).toBe(-2);
+        });
+
+    });
+
+    describe('levelCollection.get()', function () {
+
+        it('should return a level by id.', function () {
+            var level = levelCollection.get(-2);
+            expect(level).toBeDefined();
+            expect(level.id).toBe(-2);
+            expect(level.name).toBe('test level 2');
         });
 
     });

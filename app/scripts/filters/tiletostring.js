@@ -9,15 +9,15 @@ angular.module('meanieBanApp')
                 case 1:
                     return 'floor';
                 case 2:
-                    return 'goal';
+                    return 'dock';
                 case 3:
-                    return 'box-on-goal';
+                    return 'box-docked';
                 case 4:
                     return 'box';
                 case 5:
-                    return 'player-on-goal';
+                    return 'worker-docked';
                 case 6:
-                    return 'player';
+                    return 'worker';
                 case 7:
                     return 'wall';
             }

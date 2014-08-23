@@ -38,14 +38,14 @@ describe('Filter: tileToString', function () {
         expect(tileToString(tile)).toBe('floor');
     });
 
-    it('should return "goal" when given "2".', function () {
+    it('should return "dock" when given "2".', function () {
         var tile = 2;
-        expect(tileToString(tile)).toBe('goal');
+        expect(tileToString(tile)).toBe('dock');
     });
 
-    it('should return "box-on-goal" when given "3".', function () {
+    it('should return "box-docked" when given "3".', function () {
         var tile = 3;
-        expect(tileToString(tile)).toBe('box-on-goal');
+        expect(tileToString(tile)).toBe('box-docked');
     });
 
     it('should return "box" when given "4".', function () {
@@ -53,14 +53,14 @@ describe('Filter: tileToString', function () {
         expect(tileToString(tile)).toBe('box');
     });
 
-    it('should return "player-on-goal" when given "5".', function () {
+    it('should return "worker-docked" when given "5".', function () {
         var tile = 5;
-        expect(tileToString(tile)).toBe('player-on-goal');
+        expect(tileToString(tile)).toBe('worker-docked');
     });
 
-    it('should return "player" when given "6".', function () {
+    it('should return "worker" when given "6".', function () {
         var tile = 6;
-        expect(tileToString(tile)).toBe('player');
+        expect(tileToString(tile)).toBe('worker');
     });
 
     it('should return "wall" when given "7".', function () {

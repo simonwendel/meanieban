@@ -18,8 +18,8 @@ describe('Directive: sokobanGrid', function () {
         scope = element.isolateScope();
     }));
 
-    it('should make hidden element visible', inject(function ($compile) {
+    it('should get some settings from the grid attribute.', function () {
         expect(scope.grid).toBe('hello, grid!');
         expect(element.text()).toBe('Grid: hello, grid!');
-    }));
+    });
 });

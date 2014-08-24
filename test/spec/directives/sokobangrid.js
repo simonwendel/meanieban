@@ -20,6 +20,6 @@ describe('Directive: sokobanGrid', function () {
 
     it('should get some settings from the grid attribute.', function () {
         expect(scope.grid).toBe('hello, grid!');
-        expect(element.text()).toBe('Grid: hello, grid!');
+        expect(element.html()).toBe('<div class="ng-binding">Grid: hello, grid!</div>');
     });
 });

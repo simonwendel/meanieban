@@ -7,7 +7,7 @@ angular.module('meanieBanApp')
             restrict: 'AE',
             replace: false,
             scope: {
-                grid: '@'
+                grid: '='
             }
         };
     });

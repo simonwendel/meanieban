@@ -6,12 +6,19 @@ describe('Directive: sokobanGrid', function () {
     beforeEach(module('views/sokoban-grid-template.html'));
 
     var element,
-        scope;
+        scope,
+        level;
 
     beforeEach(inject(function ($rootScope, $compile) {
         scope = $rootScope.$new();
 
-        element = angular.element('<sokoban-grid grid="hello, grid!"></sokoban-grid>');
+        level = {id: 6, width: 8, height: 1, name: 'test level 1', rows: [
+            [0, 1, 2],
+            [3, 4, 5]
+        ]};
+        scope.level = level;
+
+        element = angular.element('<sokoban-grid grid="level.rows"></sokoban-grid>');
         element = $compile(element)(scope);
 
         scope.$digest();
@@ -19,7 +26,7 @@ describe('Directive: sokobanGrid', function () {
     }));
 
     it('should get some settings from the grid attribute.', function () {
-        expect(scope.grid).toBe('hello, grid!');
-        expect(element.html()).toBe('<div class="ng-binding">Grid: hello, grid!</div>');
+        expect(scope.grid).toBe(level.rows);
+        expect(element.html()).not.toBe('');
     });
 });

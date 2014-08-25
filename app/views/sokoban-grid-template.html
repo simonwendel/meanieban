@@ -1,1 +1,7 @@
-<div>Grid: {{grid}}</div>
+<table>
+    <tr ng-repeat="row in grid">
+        <td ng-repeat="cell in row track by $index">
+            {{cell | tileToString}}
+        </td>
+    </tr>
+</table>

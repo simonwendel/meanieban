@@ -19,10 +19,10 @@ module.exports.getLevels = function (data) {
         }
     }
 
-    return levels;
+    return levels.map(parse);
 };
 
-module.exports.parse = function (level, id) {
+function parse(level, id) {
     return {
         id: id,
         collection: level.collectionName,

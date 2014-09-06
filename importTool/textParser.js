@@ -21,11 +21,9 @@ function loadLevelTemplate() {
 }
 
 function parseLevels(data, template) {
-    var levels = levelParser.getLevels(data);
-
+    var parsedLevels = levelParser.getLevels(data);
     var finishedLevels = [];
-    levels.forEach(function (level, index) {
-        var parsed = levelParser.parse(level, index);
+    parsedLevels.forEach(function (parsed, index) {
         var constructedLevel = template({
             first: index == 0,
             id: parsed.id,

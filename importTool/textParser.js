@@ -1,8 +1,6 @@
 /**
  * Created by cpp on 2014-08-25.
- * If this isn't a dirty hack, I don't know what is! - cpp
  */
-
 var fs = require('fs');
 var _ = require('underscore');
 var levelParser = require('./levelParser');

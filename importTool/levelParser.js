@@ -84,6 +84,5 @@ function jsFormatLine(row, index, array) {
     row = row.split('').join(',');
     row = '[' + row + ']';
     row = row.replace(/\n/g, '');
-
     return row;
 }

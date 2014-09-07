@@ -51,15 +51,11 @@ function getHeight(string) {
 }
 
 function getWidth(string) {
-    var maxIndex = 0;
-    string.split('\n').forEach(function (row) {
-        var index = row.lastIndexOf('#');
-        if (index > maxIndex) {
-            maxIndex = index;
-        }
-    });
-
-    return maxIndex + 1;
+    var arrayMax = Function.prototype.apply.bind(Math.max, null);
+    return arrayMax(
+        string.split('\n').map(function (elem) {
+            return elem.lastIndexOf('#') + 1;
+        }));
 }
 
 function translate(string) {

@@ -28,10 +28,9 @@ function rowHasTiles(row) {
 }
 
 function parse(level, id) {
-    var voidsAdded = insertVoids(level.data);
-    var height = getHeight(voidsAdded);
-    var width = getWidth(voidsAdded);
-    var tiles = translate(voidsAdded);
+    var height = getHeight(level.data);
+    var width = getWidth(level.data);
+    var tiles = translate(level.data);
     var rows = jsFormat(tiles);
     return {
         id: id,
@@ -40,10 +39,6 @@ function parse(level, id) {
         height: height,
         rows: rows
     };
-}
-
-function insertVoids(string) {
-    return string;
 }
 
 function getHeight(string) {
@@ -59,7 +54,8 @@ function getWidth(string) {
 }
 
 function translate(string) {
-    return string
+    var withVoids = insertVoids(string);
+    return withVoids
         .replace(/V/g, '0')
         .replace(/ /g, '1')
         .replace(/\./g, '2')
@@ -68,6 +64,18 @@ function translate(string) {
         .replace(/\+/g, '5')
         .replace(/@/g, '6')
         .replace(/#/g, '7');
+}
+
+/*
+ * This function will scan all rows and make sure that spaces preceding any wall,
+ * from any direction, will be replaced with the translated number for void.
+ */
+function insertVoids(string) {
+    return string;
+    // from right to left is handled by trim
+    // from left to right by scanning
+    // from top to bottom by scanning
+    // from bottom to top by scanning
 }
 
 function jsFormat(rows) {

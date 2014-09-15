@@ -30,7 +30,8 @@ function rowHasTiles(row) {
 function parse(level, id) {
     var height = getHeight(level.data);
     var width = getWidth(level.data);
-    var tiles = translate(level.data);
+    var withVoids = insertVoids(level.data);
+    var tiles = translate(withVoids);
     var rows = jsFormat(tiles);
     return {
         id: id,
@@ -54,8 +55,7 @@ function getWidth(string) {
 }
 
 function translate(string) {
-    var withVoids = insertVoids(string);
-    return withVoids
+    return string
         .replace(/V/g, '0')
         .replace(/ /g, '1')
         .replace(/\./g, '2')
@@ -68,19 +68,76 @@ function translate(string) {
 
 /*
  * This function will scan all rows and make sure that spaces preceding any wall,
- * from any direction, will be replaced with the translated number for void.
+ * from any direction, will be replaced with the translated number for void. It is
+ * messy, but why bother when it's just used a couple of times during development
+ * of the main app.
  */
 function insertVoids(string) {
-    return string;
-    // from right to left is handled by trim
+    var width = getWidth(string);
+    var height = getHeight(string);
+
+    // create [][]
+    var rows = [];
+    string.split('\n').forEach(function (textRow) {
+        var row = [];
+        textRow.split('').forEach(function (character) {
+            row.push(character);
+        });
+
+        rows.push(row);
+    });
+
+    // from right to left is handled by trim, so not needed here
+
     // from left to right by scanning
+    rows.forEach(function (row) {
+        for (var col = 0, len = row.length; col < len; col++) {
+            if (row[col] == ' ' || row[col] == 'V') {
+                row[col] = 'V';
+            } else {
+                break;
+            }
+        }
+    });
+
     // from top to bottom by scanning
+    for(var col = 0;  col < width; col++) {
+        for(var row = 0; row < height; row++) {
+            if(rows[row] && rows[row][col]) {
+                if(rows[row][col] == ' ' || rows[row][col] == 'V') {
+                    rows[row][col] = 'V';
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+
     // from bottom to top by scanning
+    for(var col = 0;  col < width; col++) {
+        for(var row = height - 1; row >= 0; row--) {
+            if(rows[row] && rows[row][col]) {
+                if(rows[row][col] == ' ' || rows[row][col] == 'V') {
+                    rows[row][col] = 'V';
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+
+    // make string again
+    return rows.reduce(function(prev, curr) {
+        var row = curr.reduce(function (prev, curr) {
+            return prev + curr;
+        }, '');
+
+        return prev + row + '\n';
+    }, '').trim();
 }
 
 function jsFormat(rows) {
     var rows = rows.split('\n');
-    rows.pop();
     return rows.map(jsFormatLine);
 }
 

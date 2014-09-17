@@ -2,7 +2,7 @@
 
 angular.module('meanieBanApp')
     .service('utility', function () {
-        this.getUniqueValueOf = function getUniqueValueOf(property, inArray) {
+        this.getUniqueValueOf = function (property, inArray) {
             var flags = [],
                 output = [],
                 length = inArray.length;

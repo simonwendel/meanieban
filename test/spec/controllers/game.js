@@ -10,13 +10,15 @@ describe('Controller: GameCtrl', function () {
         scope = $rootScope.$new();
         routeParams = { id: 6 };
 
-        level = {id: 6, width: 8, height: 1, name: 'test level 1', rows: [
-            [0, 1, 2, 3, 4, 5, 6, 7]
-        ]};
+        level = {
+            id: 6, width: 8, height: 1, collection: 'test collection 1', rows: [
+                [0, 1, 2, 3, 4, 5, 6, 7]
+            ]};
 
-        levelCollection = {get: function (id) {
-            return level;
-        }};
+        levelCollection = {
+            get: function (id) {
+                return level;
+            }};
 
         spyOn(levelCollection, 'get').andCallThrough();
 

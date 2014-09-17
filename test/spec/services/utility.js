@@ -1,14 +1,14 @@
 'use strict';
 
-describe('Service: utility', function () {
+describe('Service: arrayUtility', function () {
 
     // load the service's module
     beforeEach(module('meanieBanApp'));
 
     // instantiate service
-    var utility;
-    beforeEach(inject(function (_utility_) {
-        utility = _utility_;
+    var arrayUtility;
+    beforeEach(inject(function (_arrayUtility_) {
+        arrayUtility = _arrayUtility_;
     }));
 
     describe('uniqueValueOf()', function () {
@@ -31,7 +31,7 @@ describe('Service: utility', function () {
                 }
             ];
 
-            var unique = utility.getUniqueValueOf('blah', inArray);
+            var unique = arrayUtility.getUniqueValueOf('blah', inArray);
             expect(unique).toEqual(['X', 'Y', 'Z']);
         });
     });

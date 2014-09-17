@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .service('utility', function () {
+    .service('arrayUtility', function () {
         this.getUniqueValueOf = function (property, inArray) {
             var flags = [],
                 output = [],

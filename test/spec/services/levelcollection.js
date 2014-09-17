@@ -1,12 +1,12 @@
 'use strict';
 
-describe('Factory: levelCollection', function () {
+describe('Service: LevelCollection', function () {
 
-    var levelCollection;
+    var LevelCollection;
     beforeEach(
         module('meanieBanApp', function ($provide) {
             var levelDataMock = [
-                {id: -2, width: 9, height: 9, name: 'test level 2', rows: [
+                {id: -2, width: 9, height: 9, collection: 'Coll 1', rows: [
                     [0, 7, 7, 1, 7, 7, 7, 7, 7],
                     [7, 7, 1, 7, 7, 1, 2, 1, 7],
                     [7, 1, 7, 7, 1, 4, 2, 1, 7],
@@ -17,7 +17,7 @@ describe('Factory: levelCollection', function () {
                     [7, 1, 1, 1, 7, 1, 7, 7],
                     [7, 7, 7, 7, 7, 1, 7]
                 ]},
-                {id: -3, width: 8, height: 1, name: 'test level 1', rows: [
+                {id: -3, width: 8, height: 1, collection: 'Coll 1', rows: [
                     [0, 1, 2, 3, 4, 5, 6, 7]
                 ]}
             ];
@@ -25,43 +25,44 @@ describe('Factory: levelCollection', function () {
             $provide.value('levelData', levelDataMock);
         }));
 
-    beforeEach(inject(function (_levelCollection_) {
-        levelCollection = _levelCollection_;
+    beforeEach(inject(function (_LevelCollection_) {
+        LevelCollection = _LevelCollection_;
     }));
 
     describe('levelCollection.all()', function () {
 
         it('should return all levels in the levelCollection.', function () {
-            var levels = levelCollection.all();
+            var levels = LevelCollection.all();
             expect(levels.length).toBe(2);
 
             expect(levels[0].id).toBe(-2);
-            expect(levels[0].name).toBe('test level 2');
+            expect(levels[0].collection).toBe('Coll 1');
             expect(levels[0].height).toBe(9);
             expect(levels[0].width).toBe(9);
 
             expect(levels[1].id).toBe(-3);
-            expect(levels[1].name).toBe('test level 1');
+            expect(levels[1].collection).toBe('Coll 1');
             expect(levels[1].height).toBe(1);
             expect(levels[1].width).toBe(8);
         });
 
     });
 
-    describe('levelCollection.names()', function () {
+    describe('levelCollection.collections()', function () {
 
         it('should return all level names from the levelCollection.', function () {
-            var names = levelCollection.names();
-            expect(names.length).toBe(2);
-            expect(names[0].name).toBe('test level 2');
-            expect(names[1].name).toBe('test level 1');
+            var collections = LevelCollection.collections();
+            expect(collections.length).toBe(1);
+            expect(collections[0].name).toBe('Coll 1');
         });
 
         it('should return all level ids from the levelCollection.', function () {
-            var names = levelCollection.names();
-            expect(names.length).toBe(2);
-            expect(names[0].id).toBe(-2);
-            expect(names[1].id).toBe(-3);
+            var collections = LevelCollection.collections();
+            expect(collections.length).toBe(1);
+            expect(collections[0].levels).toEqual([
+                { id: -2},
+                { id: -3 }
+            ]);
         });
 
     });
@@ -69,10 +70,10 @@ describe('Factory: levelCollection', function () {
     describe('levelCollection.get()', function () {
 
         it('should return a level by id.', function () {
-            var level = levelCollection.get(-2);
+            var level = LevelCollection.get(-2);
             expect(level).toBeDefined();
             expect(level.id).toBe(-2);
-            expect(level.name).toBe('test level 2');
+            expect(level.collection).toBe('Coll 1');
         });
 
     });

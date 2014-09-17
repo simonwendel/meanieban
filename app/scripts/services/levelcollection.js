@@ -6,7 +6,7 @@ angular.module('meanieBanApp')
             return levelData;
         };
 
-        // this should be O(n²) or similar
+        // this should be O(n^2) or similar
         this.collections = function () {
             var collections = [];
             var names = arrayUtility.getUniqueValueOf('collection', levelData);

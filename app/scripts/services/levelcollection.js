@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .service('LevelCollection', function LevelCollection(levelData, Utility) {
+    .service('levelCollection', function (levelData, Utility) {
         this.all = function () {
             return levelData;
         };

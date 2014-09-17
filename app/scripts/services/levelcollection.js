@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .service('levelCollection', function (levelData, Utility) {
+    .service('levelCollection', function (levelData, utility) {
         this.all = function () {
             return levelData;
         };
@@ -9,7 +9,7 @@ angular.module('meanieBanApp')
         // this should be O(n²) or similar
         this.collections = function () {
             var collections = [];
-            var names = Utility.getUniqueValueOf('collection', levelData);
+            var names = utility.getUniqueValueOf('collection', levelData);
             names.forEach(function (name) {
                 collections.push({
                     name: name,

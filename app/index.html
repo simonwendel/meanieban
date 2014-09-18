@@ -17,23 +17,31 @@
 </head>
 <body ng-app="meanieBanApp">
 <!--[if lt IE 7]>
-<p class="browse-happy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+<p class="out-of-date-warning">You are using an <strong>outdated</strong> browser. Please <a
+        href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <div class="container">
-    <div class="header">
-        <h3 class="logo"><a href="#/">MeanieBan!</a></h3>
+    <div class="row extended-background">
+        <div class="header">
+            <h3 class="logo"><a href="#/">MeanieBan!</a></h3>
+        </div>
     </div>
 
-    <div ng-view=""></div>
+    <div class="row">
+        <div ng-view=""></div>
+    </div>
 
-    <div class="footer">
-        <a href="http://www.simonwendel.se"><i class="fa fa-home brand-colors"></i> of the creator</a>
-        <p class="pull-right">&copy; 2014 Simon Wendel</p>
+    <div class="row footer">
+        <div class="col-md-6 text-left">
+            <span>&copy; 2014 Simon Wendel</span>
+        </div>
+        <div class="col-md-6 text-right">
+            <span><a href="http://www.simonwendel.se"><i class="fa fa-home"></i> of the creator</a></span>
+        </div>
     </div>
 </div>
-
 <script>
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;

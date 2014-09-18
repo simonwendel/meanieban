@@ -7,6 +7,9 @@ $bootstrap-sass-asset-helper: (twbs-font-path("") != unquote('twbs-font-path("")
 // Variables
 // --------------------------------------------------
 
+// Spacing
+
+$big-spacing:            50px;
 
 //== Colors
 //
@@ -26,6 +29,10 @@ $brand-danger:          #d9534f !default;
 
 $logo-color:            $brand-primary;
 $logo-shadow:           darken($brand-primary, 20%) !default;
+
+$content-border-color:        #e5e5e5 !default;
+$footer-background-color:     $logo-shadow;
+$footer-text-color:           white !default;
 
 //== Scaffolding
 //

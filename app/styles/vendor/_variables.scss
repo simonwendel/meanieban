@@ -7,10 +7,6 @@ $bootstrap-sass-asset-helper: (twbs-font-path("") != unquote('twbs-font-path("")
 // Variables
 // --------------------------------------------------
 
-// Spacing
-
-$big-spacing:            50px;
-
 //== Colors
 //
 //## Gray and brand colors for use across Bootstrap.
@@ -26,13 +22,6 @@ $brand-success:         #5cb85c !default;
 $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
-
-$logo-color:            $brand-primary;
-$logo-shadow:           darken($brand-primary, 20%) !default;
-
-$content-border-color:        #e5e5e5 !default;
-$footer-background-color:     $logo-shadow;
-$footer-text-color:           white !default;
 
 //== Scaffolding
 //

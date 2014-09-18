@@ -1,5 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
-@import "variables";
+
+@import "vendor/variables";
+@import "custom-variables";
+
 // $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
@@ -23,6 +26,7 @@
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  background: $body-color;
 }
 
 .header {
@@ -72,6 +76,14 @@ body {
   .text-right::after  {
     margin-left: 0;
   }
+}
+
+.footer::after {
+  border-top: 10px $footer-bottom-border solid;
+  background: $footer-bottom-color;
+  width: 9999em;
+  margin-left: -50%;
+  height: 100px;
 }
 
 // END FOOTER

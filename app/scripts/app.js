@@ -11,11 +11,14 @@ angular
     ])
     .config(function ($routeProvider) {
         $routeProvider
+            .when('/', {
+                templateUrl: 'views/start.html'
+            })
             .when('/game/:id', {
                 templateUrl: 'views/game.html',
                 controller: 'GameCtrl'
             })
             .otherwise({
-                redirectTo: '/game/-1'
+                redirectTo: '/'
             });
     });

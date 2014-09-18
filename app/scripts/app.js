@@ -14,6 +14,9 @@ angular
             .when('/', {
                 templateUrl: 'views/start.html'
             })
+            .when('/attribution', {
+                templateUrl: 'views/attribution.html'
+            })
             .when('/game/:id', {
                 templateUrl: 'views/game.html',
                 controller: 'GameCtrl'

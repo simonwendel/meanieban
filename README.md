@@ -12,6 +12,6 @@ MeanieBan is copyright (C) 2014 Simon Wendel and available under the GNU GPLv3 (
 
 
 
-[1]: https://angularjs.org/        "AngularJS"
-[2]: http://getbootstrap.com/  "Bootstrap"
-[3]: https://www.gnu.org/licenses/gpl-3.0.txt    "GNU GPLv3"
+[1]: https://angularjs.org/                     "AngularJS"
+[2]: http://getbootstrap.com/                   "Bootstrap"
+[3]: https://www.gnu.org/licenses/gpl-3.0.txt   "GNU GPLv3"

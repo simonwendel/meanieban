@@ -42,6 +42,16 @@ body {
   padding: 0.2em 0;
 }
 
+.the-fine-print {
+  font-size: 0.8em;
+  color: $gray-light;
+}
+
+#start-button {
+  font-size: 1.2em;
+  margin-right: 20px;
+}
+
 // FOOTER
 .footer, .footer a {
   color: $footer-text-color;
@@ -84,3 +94,12 @@ body {
 }
 
 // END FOOTER
+
+// utilities
+.fa-rotate-45 {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

@@ -22,23 +22,29 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div class="container">
-    <div class="row extended-background">
-        <div class="header">
-            <h3 class="logo"><a href="#/">MeanieBan!</a></h3>
+<div id="page">
+    <div class="container">
+        <div class="row extended-background">
+            <div class="header">
+                <h3 class="logo"><a href="#/">MeanieBan!</a></h3>
+            </div>
         </div>
+
+        <div class="row">
+            <div ng-view=""></div>
+        </div>
+
+        <div class="push"></div>
     </div>
 
-    <div class="row">
-        <div ng-view=""></div>
-    </div>
-
-    <div class="row footer">
-        <div class="col-md-6 text-left">
-            <span>&copy; 2014 Simon Wendel</span>
-        </div>
-        <div class="col-md-6 text-right">
-            <span><a href="http://www.simonwendel.se"><i class="fa fa-home"></i> of the creator</a></span>
+    <div class="container">
+        <div class="row footer">
+            <div class="col-md-6 text-left">
+                <span>&copy; 2014 Simon Wendel</span>
+            </div>
+            <div class="col-md-6 text-right">
+                <span><a href="http://www.simonwendel.se"><i class="fa fa-home"></i> of the creator</a></span>
+            </div>
         </div>
     </div>
 </div>

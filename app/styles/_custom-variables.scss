@@ -2,17 +2,19 @@
 
 // Spacing
 
-$big-spacing:            50px;
+$big-spacing: 50px;
 
 // Colors
 
-$logo-color:            $brand-primary;
-$logo-shadow:           darken($brand-primary, 20%) !default;
+$logo-color: $brand-primary;
+$logo-shadow: darken($brand-primary, 20%) !default;
 
-$body-color:            lighten(#000, 77.5%) !default;
+$body-color: $gray-lighter;
 
-$content-border-color:        #e5e5e5 !default;
-$footer-background-color:     $logo-shadow;
-$footer-text-color:           white !default;
-$footer-bottom-border:        darken($footer-background-color, 17%) !default;
-$footer-bottom-color:         lighten(#000, 80%) !default;
+$content-border-color: #e5e5e5 !default;
+$footer-background-color: $logo-shadow;
+$footer-text-color: white !default;
+
+$footer-bottom-dark: darken($footer-background-color, 17%) !default;
+$footer-bottom-gray: lighten(#000, 77.5%) !default;
+$footer-bottom-light: lighten(#000, 80%) !default;

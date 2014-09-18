@@ -11,17 +11,6 @@
 // Remember this for all partials!
 // @import "partials/blahfile";
 
-.brand-colors {
-  color: $brand-primary;
-}
-
-.out-of-date-warning {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
-
 /* Space out content a bit */
 body {
   padding-top: 20px;
@@ -46,8 +35,11 @@ body {
   }
 }
 
-body {
-  overflow-x: hidden;
+.out-of-date-warning {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
 }
 
 // FOOTER
@@ -60,6 +52,7 @@ body {
   position: relative;
   background: $footer-background-color;
 
+  /* adding the left and right fills out to the page edges */
   .text-left::before, .text-right::after {
     content: "";
     background: $footer-background-color;
@@ -69,21 +62,25 @@ body {
     width: 9999em;
   }
 
+  /* left side fill to edge */
   .text-left::before{
     margin-left: -9999em;
   }
 
+  /* right side fill to edge */
   .text-right::after  {
     margin-left: 0;
   }
 }
 
+/* below the footer we want three colored stripes */
 .footer::after {
-  border-top: 10px $footer-bottom-border solid;
-  background: $footer-bottom-color;
+  border-top: 10px $footer-bottom-dark solid;
+  background: $footer-bottom-gray;
+  border-bottom: 20px $footer-bottom-light solid;
   width: 9999em;
   margin-left: -50%;
-  height: 100px;
+  height: 50px;
 }
 
 // END FOOTER

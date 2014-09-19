@@ -3,7 +3,7 @@
 angular.module('meanieBanApp')
     .directive('sokobanGrid', function () {
         return {
-            templateUrl: 'views/sokoban-grid-template.html',
+            templateUrl: 'views/directives/sokoban-grid.html',
             restrict: 'AE',
             replace: false,
             scope: {

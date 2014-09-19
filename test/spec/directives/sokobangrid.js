@@ -3,7 +3,7 @@
 describe('Directive: sokobanGrid', function () {
 
     beforeEach(module('meanieBanApp'));
-    beforeEach(module('views/sokoban-grid-template.html'));
+    beforeEach(module('views/directives/sokoban-grid.html'));
 
     var element, directiveScope, level;
 

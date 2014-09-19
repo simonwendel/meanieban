@@ -8,6 +8,11 @@ angular.module('meanieBanApp')
             replace: false,
             scope: {
                 grid: '='
+            },
+            link: function ($scope, $element) {
+                var classes = $element.attr('class');
+                $element.removeAttr('class');
+                $element.children('table').attr('class', classes);
             }
         };
     });

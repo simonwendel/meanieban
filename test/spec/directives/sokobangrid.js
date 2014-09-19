@@ -16,7 +16,7 @@ describe('Directive: sokobanGrid', function () {
 
         pageScope.level = level;
 
-        element = angular.element('<sokoban-grid grid="level.rows"></sokoban-grid>');
+        element = angular.element('<sokoban-grid grid="level.rows" class="some classes"></sokoban-grid>');
         element = $compile(element)(pageScope);
 
         pageScope.$digest();
@@ -28,5 +28,11 @@ describe('Directive: sokobanGrid', function () {
         expect(directiveScope.grid).toBe(level.rows);
         expect(element.html()).toBeDefined();
         expect(element.html()).not.toBe('');
+    });
+
+    it('should move classes down to the table element.', function () {
+        var classes = element.find('table').attr('class');
+        expect(classes).toContain('some');
+        expect(classes).toContain('classes');
     });
 });

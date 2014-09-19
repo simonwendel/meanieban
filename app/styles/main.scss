@@ -28,10 +28,7 @@ body {
     text-align: center;
     text-shadow: 2px 2px 1px $logo-shadow;
     filter: dropshadow(color=$logo-shadow, offx=2, offy=2);
-
-    a {
-      text-decoration: none;
-    }
+    text-decoration: underline;
   }
 }
 

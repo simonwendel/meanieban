@@ -11,10 +11,10 @@
 // Remember this for all partials!
 // @import "partials/blahfile";
 
-/* Space out content a bit */
+/* Space out content a bit and set the bg */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: $standard-padding;
+  padding-bottom: $standard-padding;
   background: $body-color;
 }
 
@@ -46,7 +46,8 @@ body {
 
 #start-button {
   font-size: 1.2em;
-  margin-right: 40px;
+  margin-top: 1.5 * $standard-padding;
+  margin-right: 2 * $standard-padding;
 }
 
 // FOOTER

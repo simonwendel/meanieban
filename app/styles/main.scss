@@ -13,8 +13,8 @@
 
 /* Space out content a bit and set the bg */
 body {
-  padding-top: $standard-padding;
-  padding-bottom: $standard-padding;
+  padding-top: $standard-spacing;
+  padding-bottom: $standard-spacing;
   background: $body-color;
 }
 
@@ -46,8 +46,8 @@ body {
 
 #start-button {
   font-size: 1.2em;
-  margin-top: 1.5 * $standard-padding;
-  margin-right: 2 * $standard-padding;
+  margin-top: 1.5 * $standard-spacing;
+  margin-right: 2 * $standard-spacing;
 }
 
 // FOOTER

@@ -96,6 +96,11 @@ body {
 // END FOOTER
 
 // utilities
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
 .fa-rotate-45 {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);

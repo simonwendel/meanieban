@@ -16,7 +16,9 @@ describe('Directive: sokobanGrid', function () {
 
         pageScope.level = level;
 
-        element = angular.element('<sokoban-grid grid="level.rows" class="some classes"></sokoban-grid>');
+        element = angular.element(
+            '<sokoban-grid grid="level.rows" class="some classes"></sokoban-grid>');
+
         element = $compile(element)(pageScope);
 
         pageScope.$digest();

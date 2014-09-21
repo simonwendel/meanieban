@@ -7,12 +7,17 @@ angular.module('meanieBanApp')
             restrict: 'AE',
             replace: false,
             scope: {
-                grid: '='
+                grid: '=',
+                keydown: '='
             },
             link: function (scope, element) {
                 var classes = element.attr('class');
                 element.removeAttr('class');
                 element.children('table').attr('class', classes);
+
+                $(element).closest('body').on('keydown', function (event) {
+                    scope.keydown(event);
+                });
             }
         };
     });

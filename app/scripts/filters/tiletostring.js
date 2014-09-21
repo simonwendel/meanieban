@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .filter('tileToString', function TileToStringFilter() {
+    .filter('tileToString', function () {
         return function (input) {
             switch (input) {
                 case 0:

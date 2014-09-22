@@ -58,4 +58,18 @@ describe('Service: arrayUtility', function () {
             expect(converter.callback.callCount).toBe(6);
         });
     });
+
+    describe('get2dIndexOf', function () {
+        it('should find index of first occurrence of item in 2D array.', function () {
+            var array = [
+                [1, 2, 3, 4],
+                [5, 6, 7, 8],
+                [9, 10]
+            ];
+
+            expect(arrayUtility.get2dIndexOf(7, array)).toEqual([1, 2]);
+            expect(arrayUtility.get2dIndexOf(10, array)).toEqual([2, 1]);
+            expect(arrayUtility.get2dIndexOf(19, array)).toBeUndefined();
+        });
+    });
 });

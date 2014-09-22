@@ -26,8 +26,20 @@ angular.module('meanieBanApp')
             });
         }
 
+        function get2dIndexOf(item, array) {
+            for (var i = 0; i < array.length; i++) {
+                var index = array[i].indexOf(item);
+                if (index > -1) {
+                    return [i, index];
+                }
+            }
+
+            return undefined;
+        }
+
         return {
             getUniqueValuesOf: getUniqueValuesOf,
-            convert: convert
+            convert: convert,
+            get2dIndexOf: get2dIndexOf
         };
     });

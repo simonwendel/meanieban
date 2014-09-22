@@ -3,7 +3,7 @@
 angular.module('meanieBanApp')
     .factory('tileUtility', function () {
 
-        var maps = [
+        var mappings = [
             'void',
             'floor',
             'dock',
@@ -15,7 +15,7 @@ angular.module('meanieBanApp')
         ];
 
         function tileToString(input) {
-            var string = maps[input];
+            var string = mappings[input];
             if(string) {
                 return string;
             }
@@ -28,7 +28,7 @@ angular.module('meanieBanApp')
                 throw new Error('Invalid input. Only strings allowed as input.');
             }
 
-            var index = maps.indexOf(string);
+            var index = mappings.indexOf(string);
             if(index != -1) {
                 return index;
             }

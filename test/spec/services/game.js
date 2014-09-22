@@ -21,4 +21,11 @@ describe('Service: Game', function () {
         expect(game.grid).toBeDefined();
     });
 
+    it('should throw exception when grid is undefined to constructor.', function () {
+        expect(function () {
+
+            new Game();
+
+        }).toThrow('Parameter grid to constructor function cannot be undefined.');
+    });
 });

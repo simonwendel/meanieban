@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .factory('tileUtility', function () {
+    .factory('tileUtility', function (arrayUtility) {
 
         var mappings = [
             'void',
@@ -36,9 +36,14 @@ angular.module('meanieBanApp')
             throw new Error('Invalid input. That mapping does not exist.');
         }
 
+        function stringGridToTiles(grid) {
+            return arrayUtility.convert(grid, stringToTile);
+        }
+
         return {
             tileToString: tileToString,
-            stringToTile: stringToTile
+            stringToTile: stringToTile,
+            stringGridToTiles: stringGridToTiles
         };
 
     });

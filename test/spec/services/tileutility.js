@@ -109,4 +109,25 @@ describe('Service: tileUtility', function () {
             }).toThrow('Invalid input. Only strings allowed as input.');
         });
     });
+
+    describe('stringGridToTiles function', function () {
+        it('should have all correct tile mappings.', function () {
+            var input = [
+                ['void', 'floor'],
+                ['dock', 'box-docked'],
+                ['box', 'worker-docked'],
+                ['worker', 'wall']
+            ];
+
+            var expected = [
+                [0, 1],
+                [2, 3],
+                [4, 5],
+                [6, 7]
+            ];
+
+            var actual = tileUtility.stringGridToTiles(input);
+            expect(actual).toEqual(expected);
+        });
+    });
 });

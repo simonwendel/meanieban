@@ -2,16 +2,14 @@
 
 describe('Service: arrayUtility', function () {
 
-    // load the service's module
     beforeEach(module('meanieBanApp'));
 
-    // instantiate service
     var arrayUtility;
     beforeEach(inject(function (_arrayUtility_) {
         arrayUtility = _arrayUtility_;
     }));
 
-    describe('uniqueValueOf()', function () {
+    describe('uniqueValueOf', function () {
         it('should find unique values for specified property from an array of objects', function () {
             var inArray = [
                 {
@@ -36,4 +34,28 @@ describe('Service: arrayUtility', function () {
         });
     });
 
+    describe('convert', function () {
+        it('should call conversion callback on every element in input grid array.', function () {
+            var converter = {
+                callback: function (element) {
+                    return element.toString();
+                }
+            };
+
+            spyOn(converter, 'callback').andCallThrough();
+
+            var input = [
+                [1, 2, 3],
+                [4, 5, 6]
+            ];
+
+            var expected = [
+                ['1', '2', '3'],
+                ['4', '5', '6']
+            ];
+
+            expect(arrayUtility.convert(input, converter.callback)).toEqual(expected);
+            expect(converter.callback.callCount).toBe(6);
+        });
+    });
 });

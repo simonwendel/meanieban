@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .service('arrayUtility', function () {
-        this.getUniqueValueOf = function (property, inArray) {
+    .factory('arrayUtility', function () {
+        function getUniqueValueOf(property, inArray) {
             var flags = [],
                 output = [],
                 length = inArray.length;
@@ -15,4 +15,19 @@ angular.module('meanieBanApp')
 
             return output;
         }
+
+        function convert(grid, conversion) {
+            return grid.map(function (element) {
+                if(Array.isArray(element)) {
+                    return convert(element, conversion);
+                }
+
+                return conversion(element);
+            });
+        }
+
+        return {
+            getUniqueValueOf: getUniqueValueOf,
+            convert: convert
+        };
     });

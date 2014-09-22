@@ -21,10 +21,12 @@ angular.module('meanieBanApp')
         function getWorkerLocation(gridArray) {
             var workerValue = tileUtility.stringToTile('worker');
             var index = arrayUtility.get2dIndexOf(workerValue, gridArray);
-            return {
-                x: index[1],
-                y: index[0]
-            };
+            if(index) {
+                return {
+                    x: index[1],
+                    y: index[0]
+                };
+            }
         }
 
     });

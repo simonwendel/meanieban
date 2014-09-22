@@ -19,10 +19,8 @@
  */
 describe('Service: tileUtility', function () {
 
-    // load the filter's module
     beforeEach(module('meanieBanApp'));
 
-    // initialize a new instance of the filter before each test
     var tileUtility;
     beforeEach(inject(function (_tileUtility_) {
         tileUtility = _tileUtility_;
@@ -30,28 +28,20 @@ describe('Service: tileUtility', function () {
 
     describe('tileToString function', function () {
         it('should have all correct tile mappings.', function () {
-            // should return "void" when given "0"
             expect(tileUtility.tileToString(0)).toBe('void');
 
-            // should return "floor" when given "1"
             expect(tileUtility.tileToString(1)).toBe('floor');
 
-            // should return "dock" when given "2"
             expect(tileUtility.tileToString(2)).toBe('dock');
 
-            // should return "box-docked" when given "3"
             expect(tileUtility.tileToString(3)).toBe('box-docked');
 
-            // should return "box" when given "4"
             expect(tileUtility.tileToString(4)).toBe('box');
 
-            // should return "worker-docked" when given "5"
             expect(tileUtility.tileToString(5)).toBe('worker-docked');
 
-            // should return "worker" when given "6"
             expect(tileUtility.tileToString(6)).toBe('worker');
 
-            // should return "wall" when given "7"
             expect(tileUtility.tileToString(7)).toBe('wall');
         });
 

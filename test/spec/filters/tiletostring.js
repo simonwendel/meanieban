@@ -9,7 +9,7 @@ describe('Filter: tileToString', function () {
         module('meanieBanApp', function ($provide) {
             returnValue = {};
             utilityMock = {
-                tileToString: function (input) {
+                tileToString: function () {
                     return returnValue;
                 }
             };
@@ -24,8 +24,7 @@ describe('Filter: tileToString', function () {
     }));
 
     it('should return use the tileUtility to get some value.', function () {
-        var tile = 15;
-        expect(tileToString(tile)).toBe(returnValue);
+        expect(tileToString('whatever')).toBe(returnValue);
         expect(utilityMock.tileToString.callCount).toBe(1);
     });
 

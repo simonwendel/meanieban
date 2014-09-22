@@ -29,7 +29,7 @@ describe('Service: arrayUtility', function () {
                 }
             ];
 
-            var unique = arrayUtility.getUniqueValueOf('blah', inArray);
+            var unique = arrayUtility.getUniqueValuesOf('blah', inArray);
             expect(unique).toEqual(['X', 'Y', 'Z']);
         });
     });

@@ -2,7 +2,7 @@
 
 angular.module('meanieBanApp')
     .factory('arrayUtility', function () {
-        function getUniqueValueOf(property, inArray) {
+        function getUniqueValuesOf(property, inArray) {
             var flags = [],
                 output = [],
                 length = inArray.length;
@@ -27,7 +27,7 @@ angular.module('meanieBanApp')
         }
 
         return {
-            getUniqueValueOf: getUniqueValueOf,
+            getUniqueValuesOf: getUniqueValuesOf,
             convert: convert
         };
     });

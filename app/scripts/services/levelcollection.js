@@ -9,7 +9,7 @@ angular.module('meanieBanApp')
         // this is O(n^2) or similar
         this.collections = function () {
             var collections = [];
-            var names = arrayUtility.getUniqueValueOf('collection', levelData);
+            var names = arrayUtility.getUniqueValuesOf('collection', levelData);
             names.forEach(function (name) {
                 collections.push({
                     name: name,

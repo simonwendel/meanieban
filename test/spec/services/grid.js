@@ -18,6 +18,7 @@ describe('Service: Grid', function () {
     it('should be constructable from an array of integers.', function () {
         var grid = new Grid(gridArray);
         expect(grid).toBeDefined();
+        expect(grid.getGrid()).toEqual(gridArray);
     });
 
     it('should throw exception when grid is undefined to constructor.', function () {

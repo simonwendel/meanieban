@@ -3,31 +3,42 @@
 angular.module('meanieBanApp')
     .factory('tileUtility', function () {
 
+        var maps = [
+            'void',
+            'floor',
+            'dock',
+            'box-docked',
+            'box',
+            'worker-docked',
+            'worker',
+            'wall'
+        ];
+
         function tileToString(input) {
-            switch (input) {
-                case 0:
-                    return 'void';
-                case 1:
-                    return 'floor';
-                case 2:
-                    return 'dock';
-                case 3:
-                    return 'box-docked';
-                case 4:
-                    return 'box';
-                case 5:
-                    return 'worker-docked';
-                case 6:
-                    return 'worker';
-                case 7:
-                    return 'wall';
+            var string = maps[input];
+            if(string) {
+                return string;
             }
 
             throw new Error('Invalid input. Value must be an integer in [0,7].');
         }
 
+        function stringToTile(string) {
+            if(typeof string != 'string') {
+                throw new Error('Invalid input. Only strings allowed as input.');
+            }
+
+            var index = maps.indexOf(string);
+            if(index != -1) {
+                return index;
+            }
+
+            throw new Error('Invalid input. That mapping does not exist.');
+        }
+
         return {
-            tileToString: tileToString
+            tileToString: tileToString,
+            stringToTile: stringToTile
         };
 
     });

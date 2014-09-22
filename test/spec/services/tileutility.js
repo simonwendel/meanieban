@@ -67,4 +67,40 @@ describe('Service: tileUtility', function () {
             expect(functionCall).toThrow('Invalid input. Value must be an integer in [0,7].');
         });
     });
+
+    describe('stringToTile function', function () {
+        it('should have all correct tile mappings.', function () {
+            expect(tileUtility.stringToTile('void')).toBe(0);
+
+            expect(tileUtility.stringToTile('floor')).toBe(1);
+
+            expect(tileUtility.stringToTile('dock')).toBe(2);
+
+            expect(tileUtility.stringToTile('box-docked')).toBe(3);
+
+            expect(tileUtility.stringToTile('box')).toBe(4);
+
+            expect(tileUtility.stringToTile('worker-docked')).toBe(5);
+
+            expect(tileUtility.stringToTile('worker')).toBe(6);
+
+            expect(tileUtility.stringToTile('wall')).toBe(7);
+        });
+
+        it('should throw if no mapping present for input string.', function () {
+            expect(function () {
+
+                tileUtility.stringToTile('non-existant-tile-type');
+
+            }).toThrow('Invalid input. That mapping does not exist.');
+        });
+
+        it('should throw if input is not a string.', function () {
+            expect(function () {
+
+                tileUtility.stringToTile(3.14);
+
+            }).toThrow('Invalid input. Only strings allowed as input.');
+        });
+    });
 });

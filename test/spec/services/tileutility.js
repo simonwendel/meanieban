@@ -96,7 +96,7 @@ describe('Service: tileUtility', function () {
         it('should throw if no mapping present for input string.', function () {
             expect(function () {
 
-                tileUtility.stringToTile('non-existant-tile-type');
+                tileUtility.stringToTile('non-existent-tile-type');
 
             }).toThrow('Invalid input. That mapping does not exist.');
         });

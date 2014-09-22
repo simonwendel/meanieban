@@ -29,68 +29,51 @@ describe('Service: tileUtility', function () {
     }));
 
     describe('tileToString function', function () {
-        it('should return "void" when given "0".', function () {
-            var tile = 0;
-            expect(tileUtility.tileToString(tile)).toBe('void');
-        });
+        it('should have all correct tile mappings.', function () {
+            // should return "void" when given "0"
+            expect(tileUtility.tileToString(0)).toBe('void');
 
-        it('should return "floor" when given "1".', function () {
-            var tile = 1;
-            expect(tileUtility.tileToString(tile)).toBe('floor');
-        });
+            // should return "floor" when given "1"
+            expect(tileUtility.tileToString(1)).toBe('floor');
 
-        it('should return "dock" when given "2".', function () {
-            var tile = 2;
-            expect(tileUtility.tileToString(tile)).toBe('dock');
-        });
+            // should return "dock" when given "2"
+            expect(tileUtility.tileToString(2)).toBe('dock');
 
-        it('should return "box-docked" when given "3".', function () {
-            var tile = 3;
-            expect(tileUtility.tileToString(tile)).toBe('box-docked');
-        });
+            // should return "box-docked" when given "3"
+            expect(tileUtility.tileToString(3)).toBe('box-docked');
 
-        it('should return "box" when given "4".', function () {
-            var tile = 4;
-            expect(tileUtility.tileToString(tile)).toBe('box');
-        });
+            // should return "box" when given "4"
+            expect(tileUtility.tileToString(4)).toBe('box');
 
-        it('should return "worker-docked" when given "5".', function () {
-            var tile = 5;
-            expect(tileUtility.tileToString(tile)).toBe('worker-docked');
-        });
+            // should return "worker-docked" when given "5"
+            expect(tileUtility.tileToString(5)).toBe('worker-docked');
 
-        it('should return "worker" when given "6".', function () {
-            var tile = 6;
-            expect(tileUtility.tileToString(tile)).toBe('worker');
-        });
+            // should return "worker" when given "6"
+            expect(tileUtility.tileToString(6)).toBe('worker');
 
-        it('should return "wall" when given "7".', function () {
-            var tile = 7;
-            expect(tileUtility.tileToString(tile)).toBe('wall');
+            // should return "wall" when given "7"
+            expect(tileUtility.tileToString(7)).toBe('wall');
         });
 
         it('should throw an exception when given input < 0.', function () {
-            var tile = -1;
             var functionCall = function () {
-                tileUtility.tileToString(tile);
+                tileUtility.tileToString(-1);
             };
 
             expect(functionCall).toThrow('Invalid input. Value must be an integer in [0,7].');
         });
 
         it('should throw an exception when given input > 7.', function () {
-            var tile = 8;
             var functionCall = function () {
-                tileUtility.tileToString(tile);
+                tileUtility.tileToString(8);
             };
 
             expect(functionCall).toThrow('Invalid input. Value must be an integer in [0,7].');
         });
 
         it('should throw an exception when given input which is not an integer.', function () {
-            var tile = 3.14;
             var functionCall = function () {
-                tileUtility.tileToString(tile);
+                tileUtility.tileToString(3.14);
             };
 
             expect(functionCall).toThrow('Invalid input. Value must be an integer in [0,7].');

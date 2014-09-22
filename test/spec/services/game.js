@@ -20,7 +20,7 @@ describe('Service: Game', function () {
     it('should be able to use as a constructor.', function () {
         var game = new Game(grid);
         expect(game).toBeDefined();
-        expect(game.grid()).toBeDefined();
+        expect(game.grid()).toBe(grid);
     });
 
     it('should throw exception when grid is undefined to constructor.', function () {

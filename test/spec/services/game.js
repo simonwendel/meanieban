@@ -34,7 +34,7 @@ describe('Service: Game', function () {
     it('should throw exception when grid is not an instance of Grid.', function () {
         expect(function () {
 
-            new Game(new Object());
+            new Game({});
 
         }).toThrow('Parameter grid to constructor function must be an instance of Grid.');
     });

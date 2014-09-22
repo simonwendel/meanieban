@@ -16,7 +16,7 @@ describe('Controller: GameCtrl', function () {
             ]};
 
         LevelCollection = {
-            get: function (id) {
+            get: function () {
                 return level;
             }};
 

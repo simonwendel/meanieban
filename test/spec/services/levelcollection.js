@@ -1,8 +1,8 @@
 'use strict';
 
-describe('Service: levelCollection', function () {
+describe('Service: LevelCollection', function () {
 
-    var levelCollection;
+    var LevelCollection;
     beforeEach(
         module('meanieBanApp', function ($provide) {
             var levelDataMock = [
@@ -25,14 +25,14 @@ describe('Service: levelCollection', function () {
             $provide.value('levelData', levelDataMock);
         }));
 
-    beforeEach(inject(function (_levelCollection_) {
-        levelCollection = _levelCollection_;
+    beforeEach(inject(function (_LevelCollection_) {
+        LevelCollection = _LevelCollection_;
     }));
 
-    describe('levelCollection.all()', function () {
+    describe('LevelCollection.all()', function () {
 
-        it('should return all levels in the levelCollection.', function () {
-            var levels = levelCollection.all();
+        it('should return all levels in the LevelCollection.', function () {
+            var levels = LevelCollection.all();
             expect(levels.length).toBe(2);
 
             expect(levels[0].id).toBe(-2);
@@ -48,16 +48,16 @@ describe('Service: levelCollection', function () {
 
     });
 
-    describe('levelCollection.collections()', function () {
+    describe('LevelCollection.collections()', function () {
 
-        it('should return all level names from the levelCollection.', function () {
-            var collections = levelCollection.collections();
+        it('should return all level names from the LevelCollection.', function () {
+            var collections = LevelCollection.collections();
             expect(collections.length).toBe(1);
             expect(collections[0].name).toBe('Coll 1');
         });
 
-        it('should return all level ids from the levelCollection.', function () {
-            var collections = levelCollection.collections();
+        it('should return all level ids from the LevelCollection.', function () {
+            var collections = LevelCollection.collections();
             expect(collections.length).toBe(1);
             expect(collections[0].levels).toEqual([
                 { id: -2},
@@ -67,10 +67,10 @@ describe('Service: levelCollection', function () {
 
     });
 
-    describe('levelCollection.get()', function () {
+    describe('LevelCollection.get()', function () {
 
         it('should return a level by id.', function () {
-            var level = levelCollection.get(-2);
+            var level = LevelCollection.get(-2);
             expect(level).toBeDefined();
             expect(level.id).toBe(-2);
             expect(level.collection).toBe('Coll 1');

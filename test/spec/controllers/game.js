@@ -4,7 +4,7 @@ describe('Controller: GameCtrl', function () {
 
     beforeEach(module('meanieBanApp'));
 
-    var GameCtrl, scope, routeParams, levelCollection, level;
+    var GameCtrl, scope, routeParams, LevelCollection, level;
 
     beforeEach(inject(function ($controller, $rootScope) {
         scope = $rootScope.$new();
@@ -15,17 +15,17 @@ describe('Controller: GameCtrl', function () {
                 [0, 1, 2, 3, 4, 5, 6, 7]
             ]};
 
-        levelCollection = {
+        LevelCollection = {
             get: function (id) {
                 return level;
             }};
 
-        spyOn(levelCollection, 'get').andCallThrough();
+        spyOn(LevelCollection, 'get').andCallThrough();
 
         GameCtrl = $controller('GameCtrl', {
             $scope: scope,
             $routeParams: routeParams,
-            levelCollection: levelCollection
+            LevelCollection: LevelCollection
         });
     }));
 
@@ -33,8 +33,8 @@ describe('Controller: GameCtrl', function () {
         expect(scope.levelId).toBe(routeParams.id);
     });
 
-    it('should get a level from the levelCollection.', function () {
+    it('should get a level from the LevelCollection.', function () {
         expect(scope.level).toBe(level);
-        expect(levelCollection.get.callCount).toBe(1);
+        expect(LevelCollection.get.callCount).toBe(1);
     });
 });

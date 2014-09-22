@@ -3,7 +3,7 @@
 angular.module('meanieBanApp')
     .factory('Grid', function (arrayUtility, tileUtility) {
 
-        var Grid = function (gridArray) {
+        return function (gridArray) {
             if (!gridArray) {
                 throw new Error('Parameter gridArray to constructor function cannot be undefined.');
             }
@@ -26,7 +26,5 @@ angular.module('meanieBanApp')
                 y: index[0]
             };
         }
-
-        return Grid;
 
     });

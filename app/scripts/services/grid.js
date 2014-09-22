@@ -9,7 +9,7 @@ angular.module('meanieBanApp')
             }
 
             var grid = gridArray;
-            this.getGrid = function () {
+            this.grid = function () {
                 return grid;
             };
 

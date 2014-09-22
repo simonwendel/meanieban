@@ -18,7 +18,7 @@ describe('Service: Grid', function () {
     it('should be constructable from an array of integers.', function () {
         var grid = new Grid(gridArray);
         expect(grid).toBeDefined();
-        expect(grid.getGrid()).toEqual(gridArray);
+        expect(grid.grid()).toEqual(gridArray);
     });
 
     it('should be able to get worker location in the Grid.', function () {

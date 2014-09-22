@@ -38,4 +38,9 @@ describe('Service: Game', function () {
 
         }).toThrow('Parameter grid to constructor function must be an instance of Grid.');
     });
+
+    it('should return the player location when asked.', function () {
+        var game = new Game(grid);
+        expect(game.workerLocation()).toEqual({ x: 3, y: 1});
+    });
 });

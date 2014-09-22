@@ -9,7 +9,7 @@ describe('Service: arrayUtility', function () {
         arrayUtility = _arrayUtility_;
     }));
 
-    describe('uniqueValueOf', function () {
+    describe('getUniqueValuesOf', function () {
         it('should find unique values for specified property from an array of objects', function () {
             var inArray = [
                 {

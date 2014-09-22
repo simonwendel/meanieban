@@ -55,20 +55,18 @@ describe('Service: tileUtility', function () {
             expect(tileUtility.tileToString(7)).toBe('wall');
         });
 
-        it('should throw an exception when given input < 0.', function () {
-            var functionCall = function () {
+        it('should throw an exception when given input not in [0,7].', function () {
+            expect(function () {
+
                 tileUtility.tileToString(-1);
-            };
 
-            expect(functionCall).toThrow('Invalid input. Value must be an integer in [0,7].');
-        });
+            }).toThrow('Invalid input. Value must be an integer in [0,7].');
 
-        it('should throw an exception when given input > 7.', function () {
-            var functionCall = function () {
+            expect(function () {
+
                 tileUtility.tileToString(8);
-            };
 
-            expect(functionCall).toThrow('Invalid input. Value must be an integer in [0,7].');
+            }).toThrow('Invalid input. Value must be an integer in [0,7].');
         });
 
         it('should throw an exception when given input which is not an integer.', function () {

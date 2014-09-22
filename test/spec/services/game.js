@@ -31,7 +31,7 @@ describe('Service: Game', function () {
         }).toThrow('Parameter grid to constructor function cannot be undefined.');
     });
 
-    it('should throw exception when grid is not a instance of Grid.', function () {
+    it('should throw exception when grid is not an instance of Grid.', function () {
         expect(function () {
 
             new Game(new Object());

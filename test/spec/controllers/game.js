@@ -31,7 +31,7 @@ describe('Controller: GameCtrl', function () {
         });
     }));
 
-    it('should get a level from the LevelCollection.', function () {
+    it('should get level data from the LevelCollection.', function () {
         expect(LevelCollection.usedId).toBe(routeParams.id);
         expect(LevelCollection.get.callCount).toBe(1);
     });

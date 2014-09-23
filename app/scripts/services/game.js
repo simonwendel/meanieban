@@ -1,23 +1,23 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .factory('Game', function (Grid) {
+    .factory('Game', function (Level) {
 
-        return function (grid) {
-            if (grid === undefined) {
-                throw new Error('Parameter grid to constructor function cannot be undefined.');
+        return function (level) {
+            if (level === undefined) {
+                throw new Error('Parameter level to constructor function cannot be undefined.');
             }
 
-            if(!(grid instanceof Grid)) {
-                throw new Error('Parameter grid to constructor function must be an instance of Grid.');
+            if(!(level instanceof Level)) {
+                throw new Error('Parameter level to constructor function must be an instance of Level.');
             }
 
-            this.grid = function () {
-                return grid;
+            this.level = function () {
+                return level;
             };
 
             this.workerLocation = function () {
-                return grid.workerLocation();
+                return level.workerLocation();
             };
         };
     });

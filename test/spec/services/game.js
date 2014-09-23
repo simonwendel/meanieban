@@ -4,36 +4,35 @@ describe('Service: Game', function () {
 
     beforeEach(module('meanieBanApp'));
 
-    var Game, grid;
-    beforeEach(inject(function (_Game_, tileUtility, Grid, smallestSolvable) {
+    var Game, level;
+    beforeEach(inject(function (_Game_, tileUtility, Level, smallestSolvable) {
         Game = _Game_;
-        grid = new Grid(smallestSolvable);
+        level = new Level(smallestSolvable);
     }));
 
     it('should be able to use as a constructor.', function () {
-        var game = new Game(grid);
+        var game = new Game(level);
         expect(game).toBeDefined();
-        expect(game.grid()).toBe(grid);
     });
 
-    it('should throw exception when grid is undefined to constructor.', function () {
+    it('should throw exception when level is undefined to constructor.', function () {
         expect(function () {
 
             new Game();
 
-        }).toThrow('Parameter grid to constructor function cannot be undefined.');
+        }).toThrow('Parameter level to constructor function cannot be undefined.');
     });
 
-    it('should throw exception when grid is not an instance of Grid.', function () {
+    it('should throw exception when level is not an instance of Level.', function () {
         expect(function () {
 
             new Game({});
 
-        }).toThrow('Parameter grid to constructor function must be an instance of Grid.');
+        }).toThrow('Parameter level to constructor function must be an instance of Level.');
     });
 
     it('should return the player location when asked.', function () {
-        var game = new Game(grid);
+        var game = new Game(level);
         expect(game.workerLocation()).toEqual({ x: 3, y: 1});
     });
 });

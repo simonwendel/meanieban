@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .factory('Grid', function (arrayUtility, tileUtility) {
+    .factory('Level', function (arrayUtility, tileUtility) {
 
         return function (gridArray) {
             if (!gridArray) {

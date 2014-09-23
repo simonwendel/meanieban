@@ -10,11 +10,6 @@ describe('Controller: PlayCtrl', function () {
         scope = $rootScope.$new();
         routeParams = { id: 6 };
 
-        var level = {
-            id: 6, width: 8, height: 1, collection: 'test collection 1', rows: [
-                [0, 1, 2, 3, 4, 5, 6, 7]
-            ]};
-
         LevelCollection = {
             usedId: undefined,
             get: function (id) {

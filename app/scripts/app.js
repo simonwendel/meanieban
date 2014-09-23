@@ -17,9 +17,9 @@ angular
             .when('/attribution', {
                 templateUrl: 'views/attribution.html'
             })
-            .when('/game/:id', {
-                templateUrl: 'views/game.html',
-                controller: 'GameCtrl'
+            .when('/play/:id', {
+                templateUrl: 'views/play.html',
+                controller: 'PlayCtrl'
             })
             .otherwise({
                 redirectTo: '/'

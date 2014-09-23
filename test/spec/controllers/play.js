@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: GameCtrl', function () {
+describe('Controller: PlayCtrl', function () {
 
     beforeEach(module('meanieBanApp'));
 
@@ -24,7 +24,7 @@ describe('Controller: GameCtrl', function () {
 
         spyOn(LevelCollection, 'get').andCallThrough();
 
-        $controller('GameCtrl', {
+        $controller('PlayCtrl', {
             $scope: scope,
             $routeParams: routeParams,
             LevelCollection: LevelCollection
@@ -35,6 +35,5 @@ describe('Controller: GameCtrl', function () {
         expect(LevelCollection.usedId).toBe(routeParams.id);
         expect(LevelCollection.get.callCount).toBe(1);
     });
-
 
 });

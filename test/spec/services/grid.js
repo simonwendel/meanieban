@@ -5,14 +5,9 @@ describe('Service: Grid', function () {
     beforeEach(module('meanieBanApp'));
 
     var Grid, gridArray;
-    beforeEach(inject(function (_Grid_, tileUtility) {
+    beforeEach(inject(function (_Grid_, tileUtility, smallestSolvableTestValue) {
         Grid = _Grid_;
-
-        gridArray = tileUtility.stringGridToTiles([
-            ['wall', 'wall', 'wall', 'wall', 'wall'],
-            ['wall', 'dock', 'box', 'worker', 'wall'],
-            ['wall', 'wall', 'wall', 'wall', 'wall'],
-        ]);
+        gridArray = smallestSolvableTestValue;
     }));
 
     it('should be constructable from an array of integers.', function () {

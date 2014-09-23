@@ -11,9 +11,7 @@ describe('Controller: PlayCtrl', function () {
         routeParams = { id: 6 };
 
         LevelCollection = {
-            usedId: undefined,
-            get: function (id) {
-                this.usedId = id
+            get: function () {
             }
         };
 
@@ -27,7 +25,7 @@ describe('Controller: PlayCtrl', function () {
     }));
 
     it('should get level data from the LevelCollection.', function () {
-        expect(LevelCollection.usedId).toBe(routeParams.id);
+        expect(LevelCollection.get).toHaveBeenCalledWith(routeParams.id);
         expect(LevelCollection.get.callCount).toBe(1);
     });
 

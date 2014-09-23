@@ -20,8 +20,8 @@ describe('Controller: PlayCtrl', function () {
     }));
 
     it('should get level data from the LevelCollection.', function () {
-        expect(LevelCollection.get).toHaveBeenCalledWith(routeParams.id);
         expect(LevelCollection.get.callCount).toBe(1);
+        expect(LevelCollection.get).toHaveBeenCalledWith(routeParams.id);
     });
 
 });

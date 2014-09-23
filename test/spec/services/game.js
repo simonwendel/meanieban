@@ -5,16 +5,9 @@ describe('Service: Game', function () {
     beforeEach(module('meanieBanApp'));
 
     var Game, grid;
-    beforeEach(inject(function (_Game_, tileUtility, Grid) {
+    beforeEach(inject(function (_Game_, tileUtility, Grid, smallestSolvableTestValue) {
         Game = _Game_;
-
-        var gridArray  = tileUtility.stringGridToTiles([
-            ['wall', 'wall', 'wall', 'wall', 'wall'],
-            ['wall', 'dock', 'box', 'worker', 'wall'],
-            ['wall', 'wall', 'wall', 'wall', 'wall'],
-        ]);
-
-        grid = new Grid(gridArray);
+        grid = new Grid(smallestSolvableTestValue);
     }));
 
     it('should be able to use as a constructor.', function () {

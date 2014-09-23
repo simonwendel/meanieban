@@ -5,9 +5,9 @@ describe('Service: Game', function () {
     beforeEach(module('meanieBanApp'));
 
     var Game, grid;
-    beforeEach(inject(function (_Game_, tileUtility, Grid, smallestSolvableTestValue) {
+    beforeEach(inject(function (_Game_, tileUtility, Grid, smallestSolvable) {
         Game = _Game_;
-        grid = new Grid(smallestSolvableTestValue);
+        grid = new Grid(smallestSolvable);
     }));
 
     it('should be able to use as a constructor.', function () {

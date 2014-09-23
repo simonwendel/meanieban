@@ -5,9 +5,9 @@ describe('Service: Grid', function () {
     beforeEach(module('meanieBanApp'));
 
     var Grid, gridArray;
-    beforeEach(inject(function (_Grid_, tileUtility, smallestSolvableTestValue) {
+    beforeEach(inject(function (_Grid_, tileUtility, smallestSolvable) {
         Grid = _Grid_;
-        gridArray = smallestSolvableTestValue;
+        gridArray = smallestSolvable;
     }));
 
     it('should be constructable from an array of integers.', function () {

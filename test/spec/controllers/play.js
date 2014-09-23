@@ -10,12 +10,7 @@ describe('Controller: PlayCtrl', function () {
         scope = $rootScope.$new();
         routeParams = { id: 6 };
 
-        LevelCollection = {
-            get: function () {
-            }
-        };
-
-        spyOn(LevelCollection, 'get').andCallThrough();
+        LevelCollection = jasmine.createSpyObj('LevelCollection', ['get']);
 
         $controller('PlayCtrl', {
             $scope: scope,

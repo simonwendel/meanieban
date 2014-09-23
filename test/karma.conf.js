@@ -30,6 +30,7 @@ module.exports = function (config) {
             'test/matchers/toBeJsonEqual.js',
             'app/scripts/**/*.js',
             'test/mock/**/*.js',
+            'test/utilities/**/*.js',
             'test/**/spec/**/*.js', // we use /**/ before spec so test utilities also get their tests run
             'app/views/**/*.html' // for templates in directives
         ],

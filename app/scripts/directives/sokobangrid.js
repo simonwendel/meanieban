@@ -11,6 +11,10 @@ angular.module('meanieBanApp')
                 keydown: '='
             },
             link: function (scope, element) {
+                if(typeof scope.keydown != 'function') {
+                    throw new Error('Scope variable keydown must be a function.');
+                }
+
                 var classes = element.attr('class');
                 element.removeAttr('class');
                 element.children('table').attr('class', classes);

@@ -28,4 +28,7 @@ describe('Controller: PlayCtrl', function () {
         expect(scope.level).toBe(level);
     });
 
+    it('should have a key-down handler attached to scope.', function () {
+        expect(typeof scope.keydown).toBe('function');
+    });
 });

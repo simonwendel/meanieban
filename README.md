@@ -9,7 +9,7 @@ MeanieBan is copyright (C) 2014 Simon Wendel and available under the GNU GPLv3 (
 but with the following attributions:
 
 * The yoshi-32 and simple-32 Sokoban skins were produced by Borgar Þorsteinsson ([4]) and released under a Creative Commons 
-  license ([5]). A copy of the license is in LICENSE_simple32_yoshi32.txt
+  license ([5]). A copy of the license is in LICENSE_skins.txt.
 * The level.data comes from the KDE4 version of KSokoban ([6]), which is released under the GNU General Public License v2. 
   It is an aggregate of levels from:
     * xsokoban 3.3c

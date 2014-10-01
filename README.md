@@ -5,13 +5,10 @@ MeanieBan is a simple Sokoban clone written using AngularJS ([1]) and Twitter Bo
 
 License and Attribution
 -----------------------
-MeanieBan is copyright (C) 2014 Simon Wendel and available under the GNU GPLv3 - see LICENSE.txt or online sources ([3]) - 
-but with the following attributions:
+MeanieBan is copyright (C) 2014 Simon Wendel and available under the GNU GPLv3 --- see LICENSE.txt or online sources ([3]) --- but with the following attributions:
 
-* The yoshi-32 and simple-32 Sokoban skins were produced by Borgar Þorsteinsson ([4]) and released under a Creative Commons 
-  license ([5]). A copy of the license is in LICENSE_skins.txt.
-* The level.data comes from the KDE4 version of KSokoban ([6]), which is released under the GNU General Public License v2. 
-  It is an aggregate of levels from:
+* The yoshi-32 and simple-32 Sokoban skins were produced by Borgar Þorsteinsson ([4]) and released under a Creative Commons license ([5]). A copy of the license is in LICENSE_skins.txt.
+* The level.data comes from the KDE4 version of KSokoban ([6]), which is released under the GNU General Public License v2. It is an aggregate of levels from:
     * xsokoban 3.3c
     * MacSokoban 3.0.3
     * Sokoban 2.4

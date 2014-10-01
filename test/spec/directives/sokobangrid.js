@@ -5,9 +5,7 @@ describe('Directive: sokobanGrid', function () {
     beforeEach(module('meanieBanApp'));
     beforeEach(module('views/directives/sokoban-grid.html'));
 
-    var element, directiveScope, pageScope;
-
-    beforeEach(inject(function ($rootScope, $compile) {
+    function buildDirective($rootScope, $compile, keydownHandler) {
         pageScope = $rootScope.$new();
         var level = {id: 6, width: 8, height: 1, name: 'test level 1', rows: [
             [0, 1, 2],
@@ -15,19 +13,26 @@ describe('Directive: sokobanGrid', function () {
         ]};
 
         pageScope.level = level;
-        pageScope.keydown = function (event) {
-        };
+        pageScope.keydown = keydownHandler;
 
         element = angular.element(
-            '<body>' +
+                '<body>' +
                 '<sokoban-grid keydown="keydown" grid="level.rows" class="some classes"></sokoban-grid>' +
-            '</body>');
+                '</body>');
 
         element = $compile(element)(pageScope);
 
         pageScope.$digest();
 
         directiveScope = element.isolateScope();
+    }
+
+    var element, directiveScope, pageScope;
+    beforeEach(inject(function ($rootScope, $compile) {
+        var keydownHandler = function (event) {
+        };
+
+        buildDirective($rootScope, $compile, keydownHandler);
     }));
 
     it('should get some settings from the grid attribute.', function () {

@@ -11,7 +11,7 @@ describe('Controller: PlayCtrl', function () {
 
         levelGrid = smallestSolvable;
         LevelCollection = { get: new Function() };
-        spyOn(LevelCollection, 'get').andReturn(levelGrid);
+        spyOn(LevelCollection, 'get').andReturn({ rows: levelGrid });
 
         Game = _Game_;
         Level = _Level_;

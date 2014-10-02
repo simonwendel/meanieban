@@ -37,6 +37,11 @@ describe('Service: Game', function () {
         expect(game.grid()).toBe(smallestSolvable);
     });
 
+    it('should have a move function.', function () {
+        var game = new Game(level);
+        expect(game.move instanceof Function).toBeTruthy();
+    });
+
     it('should return the player location when asked.', function () {
         var game = new Game(level);
         expect(game.workerLocation()).toEqual({ x: 3, y: 1});

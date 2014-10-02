@@ -5,7 +5,7 @@ describe('Controller: PlayCtrl', function () {
     beforeEach(module('meanieBanApp'));
 
     var scope, routeParams, LevelCollection, levelGrid, Game, Level;
-    beforeEach(inject(function ($controller, $rootScope, smallestSolvable, _Game_, _Level_) {
+    beforeEach(inject(function ($controller, $rootScope, smallestSolvable, _Game_, _Level_, keyCodeToDirectionMap) {
         scope = $rootScope.$new();
         routeParams = { id: 6 };
 
@@ -21,7 +21,8 @@ describe('Controller: PlayCtrl', function () {
             $routeParams: routeParams,
             LevelCollection: LevelCollection,
             Game: Game,
-            Level: Level
+            Level: Level,
+            keyCodeToDirectionMap: keyCodeToDirectionMap
         });
     }));
 
@@ -32,6 +33,23 @@ describe('Controller: PlayCtrl', function () {
 
     it('should have a key-down handler attached to scope.', function () {
         expect(scope.keydown instanceof Function).toBeTruthy();
+    });
+
+    it('should use the Game.move() function when key-down handler is called.', function () {
+        spyOn(scope.game, 'move').andCallThrough();
+
+        scope.keydown({keyCode: 39});
+
+        expect(scope.game.move).toHaveBeenCalledWith('right');
+        expect(scope.game.move.callCount).toBe(1);
+    });
+
+    it('should not use the Game.move() function when key-down handler is called with non-arrow-key.', function () {
+        spyOn(scope.game, 'move').andCallThrough();
+
+        scope.keydown({keyCode: 1});
+
+        expect(scope.game.move.callCount).toBe(0);
     });
 
     it('should have a new Game attached to scope.', function () {

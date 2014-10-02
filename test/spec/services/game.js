@@ -32,7 +32,7 @@ describe('Service: Game', function () {
         }).toThrow('Parameter level to constructor function must be an instance of Level.');
     });
 
-    it('should expose grid.', function () {
+    it('should expose grid through accessor function.', function () {
         var game = new Game(level);
         expect(game.grid()).toBe(smallestSolvable);
     });

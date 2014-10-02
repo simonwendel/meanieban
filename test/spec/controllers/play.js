@@ -4,21 +4,23 @@ describe('Controller: PlayCtrl', function () {
 
     beforeEach(module('meanieBanApp'));
 
-    var scope, routeParams, LevelCollection, level;
+    var scope, routeParams, LevelCollection, level, Game;
     beforeEach(inject(function ($controller, $rootScope, smallestSolvable) {
         scope = $rootScope.$new();
         routeParams = { id: 6 };
-
 
         level = smallestSolvable;
 
         LevelCollection = { get: new Function() };
         spyOn(LevelCollection, 'get').andReturn(level);
 
+        Game = jasmine.createSpy('Game');
+
         $controller('PlayCtrl', {
             $scope: scope,
             $routeParams: routeParams,
-            LevelCollection: LevelCollection
+            LevelCollection: LevelCollection,
+            Game: Game
         });
     }));
 
@@ -29,6 +31,12 @@ describe('Controller: PlayCtrl', function () {
     });
 
     it('should have a key-down handler attached to scope.', function () {
-        expect(typeof scope.keydown).toBe('function');
+        expect(scope.keydown instanceof Function).toBeTruthy();
+    });
+
+    it('should have a new Game attached to scope.', function () {
+        expect(Game.callCount).toBe(1);
+        expect(Game).toHaveBeenCalledWith(level);
+        expect(scope.game instanceof Game).toBeTruthy();
     });
 });

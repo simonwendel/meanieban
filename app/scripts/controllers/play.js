@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .controller('PlayCtrl', function ($scope, $routeParams, LevelCollection, Game) {
+    .controller('PlayCtrl', function ($scope, $routeParams, LevelCollection, Game, Level) {
         var currentId = $routeParams.id;
 
-        $scope.level = LevelCollection.get(currentId);
-        $scope.game = new Game($scope.level);
+        var grid = LevelCollection.get(currentId);
+        var level = new Level(grid);
 
+        $scope.game = new Game(level);
         $scope.keydown = function () {
 
         };

@@ -4,9 +4,10 @@ describe('Service: Game', function () {
 
     beforeEach(module('meanieBanApp'));
 
-    var Game, level;
-    beforeEach(inject(function (_Game_, tileUtility, Level, smallestSolvable) {
+    var Game, level, smallestSolvable;
+    beforeEach(inject(function (_Game_, tileUtility, Level, _smallestSolvable_) {
         Game = _Game_;
+        smallestSolvable = _smallestSolvable_;
         level = new Level(smallestSolvable);
     }));
 
@@ -29,6 +30,11 @@ describe('Service: Game', function () {
             new Game({});
 
         }).toThrow('Parameter level to constructor function must be an instance of Level.');
+    });
+
+    it('should expose grid.', function () {
+        var game = new Game(level);
+        expect(game.grid()).toBe(smallestSolvable);
     });
 
     it('should return the player location when asked.', function () {

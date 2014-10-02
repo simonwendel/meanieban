@@ -5,7 +5,7 @@ describe('Controller: PlayCtrl', function () {
     beforeEach(module('meanieBanApp'));
 
     var scope, routeParams, LevelCollection, levelGrid, Game, Level;
-    beforeEach(inject(function ($controller, $rootScope, smallestSolvable) {
+    beforeEach(inject(function ($controller, $rootScope, smallestSolvable, _Game_, _Level_) {
         scope = $rootScope.$new();
         routeParams = { id: 6 };
 
@@ -13,8 +13,8 @@ describe('Controller: PlayCtrl', function () {
         LevelCollection = { get: new Function() };
         spyOn(LevelCollection, 'get').andReturn(levelGrid);
 
-        Game = jasmine.createSpy('Game');
-        Level = jasmine.createSpy('Level');
+        Game = _Game_;
+        Level = _Level_;
 
         $controller('PlayCtrl', {
             $scope: scope,
@@ -35,10 +35,7 @@ describe('Controller: PlayCtrl', function () {
     });
 
     it('should have a new Game attached to scope.', function () {
-        expect(Level.callCount).toBe(1);
-        expect(Level).toHaveBeenCalledWith(levelGrid);
-
-        expect(Game.callCount).toBe(1);
         expect(scope.game instanceof Game).toBeTruthy();
+        expect(scope.grid).toBe(levelGrid);
     });
 });

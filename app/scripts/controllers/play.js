@@ -8,6 +8,7 @@ angular.module('meanieBanApp')
         var level = new Level(grid);
 
         $scope.game = new Game(level);
+        $scope.grid = $scope.game.grid();
         $scope.keydown = function () {
 
         };

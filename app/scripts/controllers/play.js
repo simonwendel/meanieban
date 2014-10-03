@@ -8,7 +8,9 @@ angular.module('meanieBanApp')
         var level = new Level(levelData.rows);
 
         $scope.game = new Game(level);
+
         $scope.grid = $scope.game.grid();
+
         $scope.skin = 'yoshi-32';
 
         $scope.keydown = function (event) {

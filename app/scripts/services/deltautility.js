@@ -2,31 +2,29 @@
 
 angular.module('meanieBanApp')
     .factory('deltaUtility', function () {
+        var directionsDeltaMap = {
+            'up': {
+                dx: 0, dy: -1
+            },
+            'down': {
+                dx: 0, dy: 1
+            },
+            'left': {
+                dx: -1, dy: 0
+            },
+            'right': {
+                dx: 1, dy: 0
+            }};
 
         function compute(direction) {
-            if(!direction || ['up', 'down', 'left', 'right'].indexOf(direction) == -1) {
+            var delta = directionsDeltaMap[direction];
+            if (!delta) {
                 throw new Error('Direction must be "up", "down", "left" or "right".');
             }
 
-            var dx, dy;
-            switch (direction) {
-                case 'up':
-                    dx = 0, dy = -1;
-                    break;
-                case 'down':
-                    dx = 0, dy = 1;
-                    break;
-                case 'left':
-                    dx = -1, dy = 0;
-                    break;
-                case 'right':
-                    dx = 1, dy = 0;
-                    break;
-            }
-
             return {
-                x: dx,
-                y: dy
+                x: delta.dx,
+                y: delta.dy
             };
         }
 

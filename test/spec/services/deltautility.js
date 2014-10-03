@@ -17,6 +17,10 @@ describe('Service: deltaUtility', function () {
         expect(function () {
             deltaUtility.compute({});
         }).toThrow('Direction must be "up", "down", "left" or "right".');
+
+        expect(function () {
+            deltaUtility.compute(undefined);
+        }).toThrow('Direction must be "up", "down", "left" or "right".');
     });
 
     it('should compute deltas according to direction.', function () {

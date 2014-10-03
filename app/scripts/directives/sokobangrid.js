@@ -2,6 +2,7 @@
 
 angular.module('meanieBanApp')
     .directive('sokobanGrid', function () {
+
         return {
             templateUrl: 'views/directives/sokoban-grid.html',
             restrict: 'AE',
@@ -25,4 +26,5 @@ angular.module('meanieBanApp')
                 });
             }
         };
+
     });

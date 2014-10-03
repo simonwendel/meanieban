@@ -26,6 +26,11 @@ describe('Controller: PlayCtrl', function () {
         });
     }));
 
+    it('should have a skin name attached to scope.', function () {
+        expect(scope.skin).toBeDefined();
+        expect(typeof scope.skin).toBe('string');
+    });
+
     it('should get level data from the LevelCollection.', function () {
         expect(LevelCollection.get.callCount).toBe(1);
         expect(LevelCollection.get).toHaveBeenCalledWith(routeParams.id);

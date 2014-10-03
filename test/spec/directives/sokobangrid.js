@@ -34,7 +34,7 @@ describe('Directive: sokobanGrid', function () {
         buildDirective($rootScope, $compile, keydownHandler);
     }));
 
-    it('should get some settings from the grid attribute.', function () {
+    it('should get settings from the grid attribute and build html.', function () {
         expect(directiveScope.grid).toBe(pageScope.level.rows);
         expect(element.html()).toBeDefined();
         expect(element.html()).not.toBe('');

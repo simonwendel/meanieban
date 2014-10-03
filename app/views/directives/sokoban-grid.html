@@ -1,7 +1,7 @@
 <table>
     <tr ng-repeat="row in grid">
         <td ng-repeat="cell in row track by $index">
-            <img ng-src="images/skins/yoshi-32/yoshi-32-{{cell | tileToString}}.png" />
+            <img ng-src="images/skins/{{skin}}/{{skin}}-{{cell | tileToString}}.png" />
         </td>
     </tr>
 </table>

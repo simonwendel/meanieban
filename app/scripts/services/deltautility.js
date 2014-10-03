@@ -2,6 +2,7 @@
 
 angular.module('meanieBanApp')
     .factory('deltaUtility', function () {
+
         var directionsDeltaMap = {
             'up': {
                 dx: 0, dy: -1
@@ -31,4 +32,5 @@ angular.module('meanieBanApp')
         return {
             compute: compute
         };
+
     });

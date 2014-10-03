@@ -3,6 +3,7 @@
 describe('Directive: sokobanGrid', function () {
 
     beforeEach(module('meanieBanApp'));
+
     beforeEach(module('views/directives/sokoban-grid.html'));
 
     function buildDirective($rootScope, $compile, keydownHandler) {

@@ -2,6 +2,7 @@
 
 angular.module('meanieBanApp')
     .factory('arrayUtility', function () {
+
         function getUniqueValuesOf(property, inArray) {
             var flags = [],
                 output = [],
@@ -42,4 +43,5 @@ angular.module('meanieBanApp')
             convert: convert,
             get2dIndexOf: get2dIndexOf
         };
+
     });

@@ -58,4 +58,5 @@ describe('Controller: PlayCtrl', function () {
 
         expect(scope.game.move.callCount).toBe(0);
     });
+
 });

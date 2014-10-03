@@ -102,4 +102,5 @@ describe('Service: tileUtility', function () {
             expect(actual).toEqual(expected);
         });
     });
+
 });

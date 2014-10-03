@@ -51,4 +51,5 @@ describe('Service: Game', function () {
         var game = new Game(level);
         expect(game.workerLocation()).toEqual({ x: 3, y: 1});
     });
+
 });

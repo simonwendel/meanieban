@@ -57,4 +57,5 @@ describe('Directive: sokobanGrid', function () {
                 buildDirective($rootScope, $compile, {});
             }).toThrow('Scope variable keydown must be a function.');
         }));
+
 });

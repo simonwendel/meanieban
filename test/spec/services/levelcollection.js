@@ -77,4 +77,5 @@ describe('Service: LevelCollection', function () {
         });
 
     });
+
 });

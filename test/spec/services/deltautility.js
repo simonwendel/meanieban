@@ -29,4 +29,5 @@ describe('Service: deltaUtility', function () {
         expect(deltaUtility.compute('left')).toEqual({x: -1, y: 0});
         expect(deltaUtility.compute('right')).toEqual({x: 1, y: 0});
     });
+
 });

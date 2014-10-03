@@ -72,4 +72,5 @@ describe('Service: arrayUtility', function () {
             expect(arrayUtility.get2dIndexOf(19, array)).toBeUndefined();
         });
     });
+
 });

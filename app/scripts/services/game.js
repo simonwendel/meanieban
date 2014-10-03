@@ -28,4 +28,5 @@ angular.module('meanieBanApp')
                 return level.grid();
             }
         };
+
     });

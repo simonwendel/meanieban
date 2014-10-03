@@ -2,7 +2,6 @@
 
 angular.module('meanieBanApp')
     .value('levelData', [
-
         {id: 0, width: 11, height: 11, collection: 'Sasquatch', rows: [
             [0, 0, 0, 7, 7, 7],
             [0, 0, 7, 7, 1, 7, 0, 7, 7, 7, 7],

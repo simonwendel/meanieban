@@ -2,6 +2,7 @@
 
 angular.module('meanieBanApp')
     .service('LevelCollection', function (levelData, arrayUtility) {
+
         this.all = function () {
             return levelData;
         };
@@ -29,4 +30,5 @@ angular.module('meanieBanApp')
                 return level.id == id;
             })[0];
         }
+
     });

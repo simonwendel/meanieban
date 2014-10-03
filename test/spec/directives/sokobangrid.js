@@ -29,9 +29,7 @@ describe('Directive: sokobanGrid', function () {
 
     var element, directiveScope, pageScope;
     beforeEach(inject(function ($rootScope, $compile) {
-        var keydownHandler = function (event) {
-        };
-
+        var keydownHandler = new Function();
         buildDirective($rootScope, $compile, keydownHandler);
     }));
 

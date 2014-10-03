@@ -15,10 +15,11 @@ describe('Directive: sokobanGrid', function () {
 
         pageScope.level = level;
         pageScope.keydown = keydownHandler;
+        pageScope.skin = 'some skin';
 
         element = angular.element(
                 '<body>' +
-                '<sokoban-grid keydown="keydown" grid="level.rows" class="some classes"></sokoban-grid>' +
+                '<sokoban-grid keydown="keydown" grid="level.rows" skin="skin" class="some classes"></sokoban-grid>' +
                 '</body>');
 
         element = $compile(element)(pageScope);
@@ -38,6 +39,10 @@ describe('Directive: sokobanGrid', function () {
         expect(directiveScope.grid).toBe(pageScope.level.rows);
         expect(element.html()).toBeDefined();
         expect(element.html()).not.toBe('');
+    });
+
+    it('should attach skin attribute to directive scope.', function () {
+        expect(directiveScope.skin).toBe(pageScope.skin);
     });
 
     it('should move classes down to the table element.', function () {

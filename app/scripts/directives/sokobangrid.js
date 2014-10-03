@@ -8,7 +8,8 @@ angular.module('meanieBanApp')
             replace: false,
             scope: {
                 grid: '=',
-                keydown: '='
+                keydown: '=',
+                skin: '='
             },
             link: function (scope, element) {
                 if(typeof scope.keydown != 'function') {

@@ -26,9 +26,15 @@ angular.module('meanieBanApp')
         }
 
         function get(id) {
-            return levelData.filter(function (level) {
+            var found = levelData.filter(function (level) {
                 return level.id == id;
             })[0];
+
+            if (found) {
+                return found;
+            }
+
+            throw new Error('No level found by that id.');
         }
 
         this.all = all;

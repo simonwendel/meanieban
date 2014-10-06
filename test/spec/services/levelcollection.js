@@ -76,6 +76,12 @@ describe('Service: LevelCollection', function () {
             expect(level.collection).toBe('Coll 1');
         });
 
+        it('should throw exception if no level found by specified id.', function () {
+            expect(function () {
+                LevelCollection.get(-8);
+            }).toThrow('No level found by that id.');
+        });
+
     });
 
 });

@@ -3,12 +3,12 @@
 angular.module('meanieBanApp')
     .service('LevelCollection', function (levelData, arrayUtility) {
 
-        this.all = function () {
+        function all() {
             return levelData;
-        };
+        }
 
         // this is O(n^2) or similar
-        this.collections = function () {
+        function collections() {
             var collections = [];
             var names = arrayUtility.getUniqueValuesOf('collection', levelData);
             names.forEach(function (name) {
@@ -23,12 +23,17 @@ angular.module('meanieBanApp')
             });
 
             return collections;
-        };
+        }
 
-        this.get = function (id) {
+        function get(id) {
             return levelData.filter(function (level) {
                 return level.id == id;
             })[0];
         }
 
+        this.all = all;
+
+        this.collections = collections;
+
+        this.get = get;
     });

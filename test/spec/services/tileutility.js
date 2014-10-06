@@ -103,4 +103,37 @@ describe('Service: tileUtility', function () {
         });
     });
 
+    describe('tileToChar function', function () {
+        it('should have all correct tile mappings.', function () {
+            expect(tileUtility.tileToChar(0)).toBe('0');
+            expect(tileUtility.tileToChar(1)).toBe(' ');
+            expect(tileUtility.tileToChar(2)).toBe('.');
+            expect(tileUtility.tileToChar(3)).toBe('*');
+            expect(tileUtility.tileToChar(4)).toBe('$');
+            expect(tileUtility.tileToChar(5)).toBe('+');
+            expect(tileUtility.tileToChar(6)).toBe('@');
+            expect(tileUtility.tileToChar(7)).toBe('#');
+        });
+
+        it('should throw an exception when given input not in [0,7].', function () {
+            expect(function () {
+                tileUtility.tileToChar(-1);
+            }).toThrow('Invalid input. Value must be an integer in [0,7].');
+
+            expect(function () {
+                tileUtility.tileToChar(8);
+            }).toThrow('Invalid input. Value must be an integer in [0,7].');
+        });
+
+        it('should throw an exception when given input which is not an integer.', function () {
+            expect(function () {
+                tileUtility.tileToChar(3.14);
+            }).toThrow('Invalid input. Value must be an integer in [0,7].');
+
+            expect(function () {
+                tileUtility.tileToChar('3.14');
+            }).toThrow('Invalid input. Value must be an integer in [0,7].');
+        });
+    });
+
 });

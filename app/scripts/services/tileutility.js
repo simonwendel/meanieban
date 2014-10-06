@@ -3,7 +3,7 @@
 angular.module('meanieBanApp')
     .factory('tileUtility', function (arrayUtility) {
 
-        var mappings = [
+        var stringMappings = [
             'void',
             'floor',
             'dock',
@@ -14,9 +14,20 @@ angular.module('meanieBanApp')
             'wall'
         ];
 
+        var charMappings = [
+            '0',
+            ' ',
+            '.',
+            '*',
+            '$',
+            '+',
+            '@',
+            '#'
+        ];
+
         function tileToString(input) {
-            var string = mappings[input];
-            if(string) {
+            var string = stringMappings[input];
+            if (string) {
                 return string;
             }
 
@@ -24,12 +35,12 @@ angular.module('meanieBanApp')
         }
 
         function stringToTile(string) {
-            if(typeof string != 'string') {
+            if (typeof string != 'string') {
                 throw new Error('Invalid input. Only strings allowed as input.');
             }
 
-            var index = mappings.indexOf(string);
-            if(index != -1) {
+            var index = stringMappings.indexOf(string);
+            if (index != -1) {
                 return index;
             }
 
@@ -40,10 +51,20 @@ angular.module('meanieBanApp')
             return arrayUtility.convert(grid, stringToTile);
         }
 
+        function tileToChar(input) {
+            var char = charMappings[input];
+            if (char) {
+                return char;
+            }
+
+            throw new Error('Invalid input. Value must be an integer in [0,7].');
+        }
+
         return {
             tileToString: tileToString,
             stringToTile: stringToTile,
-            stringGridToTiles: stringGridToTiles
+            stringGridToTiles: stringGridToTiles,
+            tileToChar: tileToChar
         };
 
     });

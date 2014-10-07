@@ -11,11 +11,6 @@ describe('Service: Game', function () {
         level = new Level(smallestSolvable);
     }));
 
-    it('should be able to use as a constructor.', function () {
-        var game = new Game(level);
-        expect(game).toBeDefined();
-    });
-
     it('should throw exception when level is undefined to constructor.', function () {
         expect(function () {
 

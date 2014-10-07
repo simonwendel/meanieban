@@ -4,8 +4,8 @@ describe('Controller: PlayCtrl', function () {
 
     beforeEach(module('meanieBanApp'));
 
-    var scope, routeParams, LevelCollection, levelGrid, Game, Level;
-    beforeEach(inject(function ($controller, $rootScope, smallestSolvable, _Game_, _Level_, keyCodeToDirectionMap) {
+    var scope, routeParams, LevelCollection, levelGrid, Game;
+    beforeEach(inject(function ($controller, $rootScope, smallestSolvable, _Game_, Level, keyCodeToDirectionMap) {
         scope = $rootScope.$new();
         routeParams = { id: 6 };
 
@@ -14,7 +14,6 @@ describe('Controller: PlayCtrl', function () {
         spyOn(LevelCollection, 'get').andReturn({ rows: levelGrid });
 
         Game = _Game_;
-        Level = _Level_;
 
         $controller('PlayCtrl', {
             $scope: scope,

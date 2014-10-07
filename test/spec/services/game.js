@@ -5,7 +5,7 @@ describe('Service: Game', function () {
     beforeEach(module('meanieBanApp'));
 
     var Game, level, smallestSolvable;
-    beforeEach(inject(function (_Game_, tileUtility, Level, _smallestSolvable_) {
+    beforeEach(inject(function (_Game_, Level, _smallestSolvable_) {
         Game = _Game_;
         smallestSolvable = _smallestSolvable_;
         level = new Level(smallestSolvable);

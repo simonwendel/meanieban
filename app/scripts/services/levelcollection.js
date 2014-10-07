@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .service('LevelCollection', function (levelData, arrayUtility) {
+    .service('LevelCollection', function (levelData, arrayUtility, tileUtility) {
         // this is O(n^2) or similar
         function collections() {
             var collections = [];
@@ -26,7 +26,13 @@ angular.module('meanieBanApp')
             })[0];
 
             if (found) {
-                return found;
+                return {
+                    id: found.id,
+                    width: found.width,
+                    height: found.height,
+                    collection: found.collection,
+                    rows: tileUtility.tileGridToChars(found.rows)
+                };
             }
 
             throw new Error('No level found by that id.');

@@ -2,10 +2,10 @@
 
 describe('Service: LevelCollection', function () {
 
-    var LevelCollection;
+    var levelDataMock;
     beforeEach(
         module('meanieBanApp', function ($provide) {
-            var levelDataMock = [
+            levelDataMock = [
                 {id: -2, width: 9, height: 9, collection: 'Coll 1', rows: [
                     [0, 7, 7, 1, 7, 7, 7, 7, 7],
                     [7, 7, 1, 7, 7, 1, 2, 1, 7],
@@ -25,8 +25,10 @@ describe('Service: LevelCollection', function () {
             $provide.value('levelData', levelDataMock);
         }));
 
-    beforeEach(inject(function (_LevelCollection_) {
+    var LevelCollection, tileUtility;
+    beforeEach(inject(function (_LevelCollection_, _tileUtility_) {
         LevelCollection = _LevelCollection_;
+        tileUtility = _tileUtility_;
     }));
 
     describe('LevelCollection.collections()', function () {
@@ -55,6 +57,11 @@ describe('Service: LevelCollection', function () {
             expect(level).toBeDefined();
             expect(level.id).toBe(-2);
             expect(level.collection).toBe('Coll 1');
+        });
+
+        it('should translate the raw integer tiles into character representation.', function () {
+            var level = LevelCollection.get(-2);
+            expect(level.rows).toEqual(tileUtility.tileGridToChars(levelDataMock[0].rows));
         });
 
         it('should throw exception if no level found by specified id.', function () {

@@ -26,13 +26,9 @@ angular.module('meanieBanApp')
             })[0];
 
             if (found) {
-                return {
-                    id: found.id,
-                    width: found.width,
-                    height: found.height,
-                    collection: found.collection,
-                    rows: tileUtility.tileGridToChars(found.rows)
-                };
+                var output = angular.copy(found);
+                output.rows = tileUtility.tileGridToChars(output.rows);
+                return output;
             }
 
             throw new Error('No level found by that id.');

@@ -26,6 +26,8 @@ angular.module('meanieBanApp')
             })[0];
 
             if (found) {
+                // copied so levelData object is not polluted with some
+                // objects having already translated rows
                 var output = angular.copy(found);
                 output.rows = tileUtility.tileGridToChars(output.rows);
                 return output;

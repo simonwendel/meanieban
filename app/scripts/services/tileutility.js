@@ -60,11 +60,16 @@ angular.module('meanieBanApp')
             throw new Error('Invalid input. Value must be an integer in [0,7].');
         }
 
+        function tileGridToChars(grid) {
+            return arrayUtility.convert(grid, tileToChar);
+        }
+
         return {
             tileToString: tileToString,
             stringToTile: stringToTile,
             stringGridToTiles: stringGridToTiles,
-            tileToChar: tileToChar
+            tileToChar: tileToChar,
+            tileGridToChars: tileGridToChars
         };
 
     });

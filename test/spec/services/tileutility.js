@@ -136,4 +136,25 @@ describe('Service: tileUtility', function () {
         });
     });
 
+    describe('tileGridToChars function', function () {
+        it('should have all correct tile mappings.', function () {
+            var input = [
+                [0, 1],
+                [2, 3],
+                [4, 5],
+                [6, 7]
+            ];
+
+            var expected = [
+                ['0', ' '],
+                ['.', '*'],
+                ['$', '+'],
+                ['@', '#']
+            ];
+
+            var actual = tileUtility.tileGridToChars(input);
+            expect(actual).toEqual(expected);
+        });
+    });
+
 });

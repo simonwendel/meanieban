@@ -29,25 +29,6 @@ describe('Service: LevelCollection', function () {
         LevelCollection = _LevelCollection_;
     }));
 
-    describe('LevelCollection.all()', function () {
-
-        it('should return all levels in the LevelCollection.', function () {
-            var levels = LevelCollection.all();
-            expect(levels.length).toBe(2);
-
-            expect(levels[0].id).toBe(-2);
-            expect(levels[0].collection).toBe('Coll 1');
-            expect(levels[0].height).toBe(9);
-            expect(levels[0].width).toBe(9);
-
-            expect(levels[1].id).toBe(-3);
-            expect(levels[1].collection).toBe('Coll 1');
-            expect(levels[1].height).toBe(1);
-            expect(levels[1].width).toBe(8);
-        });
-
-    });
-
     describe('LevelCollection.collections()', function () {
 
         it('should return all level names from the LevelCollection.', function () {

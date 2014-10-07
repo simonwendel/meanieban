@@ -2,11 +2,6 @@
 
 angular.module('meanieBanApp')
     .service('LevelCollection', function (levelData, arrayUtility) {
-
-        function all() {
-            return levelData;
-        }
-
         // this is O(n^2) or similar
         function collections() {
             var collections = [];
@@ -36,8 +31,6 @@ angular.module('meanieBanApp')
 
             throw new Error('No level found by that id.');
         }
-
-        this.all = all;
 
         this.collections = collections;
 

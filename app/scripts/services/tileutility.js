@@ -64,12 +64,21 @@ angular.module('meanieBanApp')
             return arrayUtility.convert(grid, tileToChar);
         }
 
+        function compoundChars(input) {
+            if(Array.isArray(input)) {
+                return input.join('');
+            }
+
+            throw new Error('Input must be an Array.');
+        }
+
         return {
             tileToString: tileToString,
             stringToTile: stringToTile,
             stringGridToTiles: stringGridToTiles,
             tileToChar: tileToChar,
-            tileGridToChars: tileGridToChars
+            tileGridToChars: tileGridToChars,
+            compoundChars: compoundChars
         };
 
     });

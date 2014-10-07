@@ -157,4 +157,29 @@ describe('Service: tileUtility', function () {
         });
     });
 
+    describe('compoundChars function', function () {
+        it('should create a string from an array of chars.', function () {
+            var input = [
+                '0', ' ',
+                '.', '*',
+                '$', '+',
+                '@', '#'];
+
+            var expected = '0 .*$+@#';
+
+            var actual = tileUtility.compoundChars(input);
+            expect(actual).toEqual(expected);
+        });
+
+        it('should throw exception if input is not an array.', function () {
+            expect(function () {
+                tileUtility.compoundChars(1);
+            }).toThrow('Input must be an Array.');
+
+            expect(function () {
+                tileUtility.compoundChars({});
+            }).toThrow('Input must be an Array.');
+        });
+    });
+
 });

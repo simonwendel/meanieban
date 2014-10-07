@@ -39,21 +39,21 @@ describe('Service: tileUtility', function () {
         it('should throw an exception when given input not in [0,7].', function () {
             expect(function () {
                 tileUtility.tileToString(-1);
-            }).toThrow('Invalid input. Value must be an integer in [0,7].');
+            }).toThrow('Input must be an integer in [0,7].');
 
             expect(function () {
                 tileUtility.tileToString(8);
-            }).toThrow('Invalid input. Value must be an integer in [0,7].');
+            }).toThrow('Input must be an integer in [0,7].');
         });
 
         it('should throw an exception when given input which is not an integer.', function () {
             expect(function () {
                 tileUtility.tileToString(3.14);
-            }).toThrow('Invalid input. Value must be an integer in [0,7].');
+            }).toThrow('Input must be an integer in [0,7].');
 
             expect(function () {
                 tileUtility.tileToString('3.14');
-            }).toThrow('Invalid input. Value must be an integer in [0,7].');
+            }).toThrow('Input must be an integer in [0,7].');
         });
     });
 
@@ -72,13 +72,13 @@ describe('Service: tileUtility', function () {
         it('should throw if no mapping present for input string.', function () {
             expect(function () {
                 tileUtility.stringToTile('non-existent-tile-type');
-            }).toThrow('Invalid input. That mapping does not exist.');
+            }).toThrow('That mapping does not exist.');
         });
 
         it('should throw if input is not a string.', function () {
             expect(function () {
                 tileUtility.stringToTile(3.14);
-            }).toThrow('Invalid input. Only strings allowed as input.');
+            }).toThrow('Only strings allowed as input.');
         });
     });
 
@@ -118,21 +118,21 @@ describe('Service: tileUtility', function () {
         it('should throw an exception when given input not in [0,7].', function () {
             expect(function () {
                 tileUtility.tileToChar(-1);
-            }).toThrow('Invalid input. Value must be an integer in [0,7].');
+            }).toThrow('Input must be an integer in [0,7].');
 
             expect(function () {
                 tileUtility.tileToChar(8);
-            }).toThrow('Invalid input. Value must be an integer in [0,7].');
+            }).toThrow('Input must be an integer in [0,7].');
         });
 
         it('should throw an exception when given input which is not an integer.', function () {
             expect(function () {
                 tileUtility.tileToChar(3.14);
-            }).toThrow('Invalid input. Value must be an integer in [0,7].');
+            }).toThrow('Input must be an integer in [0,7].');
 
             expect(function () {
                 tileUtility.tileToChar('3.14');
-            }).toThrow('Invalid input. Value must be an integer in [0,7].');
+            }).toThrow('Input must be an integer in [0,7].');
         });
     });
 

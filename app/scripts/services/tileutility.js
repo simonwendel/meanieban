@@ -31,12 +31,12 @@ angular.module('meanieBanApp')
                 return string;
             }
 
-            throw new Error('Invalid input. Value must be an integer in [0,7].');
+            throw new Error('Input must be an integer in [0,7].');
         }
 
         function stringToTile(string) {
             if (typeof string != 'string') {
-                throw new Error('Invalid input. Only strings allowed as input.');
+                throw new Error('Only strings allowed as input.');
             }
 
             var index = stringMappings.indexOf(string);
@@ -44,7 +44,7 @@ angular.module('meanieBanApp')
                 return index;
             }
 
-            throw new Error('Invalid input. That mapping does not exist.');
+            throw new Error('That mapping does not exist.');
         }
 
         function stringGridToTiles(grid) {
@@ -57,7 +57,7 @@ angular.module('meanieBanApp')
                 return char;
             }
 
-            throw new Error('Invalid input. Value must be an integer in [0,7].');
+            throw new Error('Input must be an integer in [0,7].');
         }
 
         function tileGridToChars(grid) {

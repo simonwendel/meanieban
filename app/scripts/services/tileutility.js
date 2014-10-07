@@ -65,7 +65,7 @@ angular.module('meanieBanApp')
         }
 
         function compoundChars(input) {
-            if(Array.isArray(input)) {
+            if (Array.isArray(input)) {
                 return input.join('');
             }
 

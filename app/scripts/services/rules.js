@@ -17,4 +17,10 @@
  */
 angular.module('meanieBanApp')
     .service('Rules', function Rules() {
+
+        function isOpenDock(tile) {
+            return tile === '.';
+        }
+
+        this.isOpenDock = isOpenDock;
     });

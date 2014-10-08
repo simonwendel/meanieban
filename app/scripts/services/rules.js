@@ -16,11 +16,18 @@
  My own: There is also the special case of 0 -> void.
  */
 angular.module('meanieBanApp')
-    .service('Rules', function Rules() {
+    .service('Rules', function Rules(validMoves) {
 
         function isOpenDock(tile) {
             return tile === '.';
         }
 
+        function tryMove(state) {
+            var move = validMoves[state];
+            if(!move) return false;
+        }
+
         this.isOpenDock = isOpenDock;
+
+        this.tryMove = tryMove;
     });

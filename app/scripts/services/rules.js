@@ -16,14 +16,19 @@
  My own: There is also the special case of 0 -> void.
  */
 angular.module('meanieBanApp')
-    .service('Rules', function Rules(validMoves) {
+    .service('Rules', function Rules(validMoves, tileUtility) {
 
         function isOpenDock(tile) {
             return tile === '.';
         }
 
         function tryMove(state) {
-            var move = validMoves[state];
+            if(!Array.isArray(state)) {
+                throw new Error('Input state is not an Array.');
+            }
+
+            var string = tileUtility.compoundChars(state);
+            var move = validMoves[string];
             if(!move) return false;
         }
 

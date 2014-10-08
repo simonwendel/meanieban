@@ -30,15 +30,21 @@ describe('Service: Rules', function () {
     });
 
     describe('tryMove', function () {
+        it('should throw exception when not given an array.', function () {
+            expect(function () {
+                Rules.tryMove({});
+            }).toThrow('Input state is not an Array.');
+        });
+
         it('should return false if the move is not valid.', function () {
-            var move = '678';
+            var move = ['6', '7', '8'];
             expect(Rules.tryMove(move)).toBeFalsy();
         });
 
         it('should not update the move if the move is not valid.', function () {
-            var move = '678';
+            var move = ['6', '7', '8'];
             Rules.tryMove(move);
-            expect(move).toBe('678');
+            expect(move).toEqual(['6', '7', '8']);
         });
     });
 

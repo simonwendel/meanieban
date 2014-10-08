@@ -13,24 +13,33 @@ describe('Service: Rules', function () {
         Rules = _Rules_;
     }));
 
-    it('should tell if a tile is an open dock.', function () {
-        expect(Rules.isOpenDock('.')).toBeTruthy();
+    describe('isOpenDock', function () {
+        it('should tell if a tile is an open dock.', function () {
+            expect(Rules.isOpenDock('.')).toBeTruthy();
+        });
+
+        it('should tell if a tile is not an open dock.', function () {
+            expect(Rules.isOpenDock('0')).toBeFalsy();
+            expect(Rules.isOpenDock('#')).toBeFalsy();
+            expect(Rules.isOpenDock('@')).toBeFalsy();
+            expect(Rules.isOpenDock('+')).toBeFalsy();
+            expect(Rules.isOpenDock('$')).toBeFalsy();
+            expect(Rules.isOpenDock('*')).toBeFalsy();
+            expect(Rules.isOpenDock(' ')).toBeFalsy();
+        });
     });
 
-    it('should tell if a tile is not an open dock.', function () {
-        expect(Rules.isOpenDock('0')).toBeFalsy();
-        expect(Rules.isOpenDock('#')).toBeFalsy();
-        expect(Rules.isOpenDock('@')).toBeFalsy();
-        expect(Rules.isOpenDock('+')).toBeFalsy();
-        expect(Rules.isOpenDock('$')).toBeFalsy();
-        expect(Rules.isOpenDock('*')).toBeFalsy();
-        expect(Rules.isOpenDock(' ')).toBeFalsy();
-    });
+    describe('tryMove', function () {
+        it('should return false if the move is not valid.', function () {
+            var move = '678';
+            expect(Rules.tryMove(move)).toBeFalsy();
+        });
 
-    it('should return false from doMove if the move is not valid.', function () {
-        var move = '678';
-        expect(Rules.tryMove(move)).toBeFalsy();
-        expect(move).toBe('678');
+        it('should not update the move if the move is not valid.', function () {
+            var move = '678';
+            Rules.tryMove(move);
+            expect(move).toBe('678');
+        });
     });
 
 });

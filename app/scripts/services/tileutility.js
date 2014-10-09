@@ -38,29 +38,26 @@ angular.module('meanieBanApp')
             return arrayUtility.convert(grid, tileToChar);
         }
 
-        function compoundChars(input) {
-            if (Array.isArray(input)) {
-                return input.join('');
+        function charToString(input) {
+            if (typeof input != 'string') {
+                throw new Error('Only strings allowed as input.');
             }
 
-            throw new Error('Input must be an Array.');
-        }
-
-        function expandChars(input) {
-            if(typeof input === 'string') {
-                return input.split('');
+            var index = charMappings.indexOf(input);
+            if (index > -1) {
+                return stringMappings[index];
             }
 
-            throw new Error('Input must be a String.');
+            throw new Error('That mapping does not exist.');
         }
 
         function stringToChar(input) {
-            if(typeof input != 'string') {
+            if (typeof input != 'string') {
                 throw new Error('Only strings allowed as input.');
             }
 
             var index = stringMappings.indexOf(input);
-            if(index > -1) {
+            if (index > -1) {
                 return charMappings[index];
             }
 
@@ -71,27 +68,30 @@ angular.module('meanieBanApp')
             return arrayUtility.convert(input, stringToChar);
         }
 
-        function charToString(input) {
-            if(typeof input != 'string') {
-                throw new Error('Only strings allowed as input.');
+        function compoundChars(input) {
+            if (Array.isArray(input)) {
+                return input.join('');
             }
 
-            var index = charMappings.indexOf(input);
-            if(index > -1) {
-                return stringMappings[index];
+            throw new Error('Input must be an Array.');
+        }
+
+        function expandChars(input) {
+            if (typeof input === 'string') {
+                return input.split('');
             }
 
-            throw new Error('That mapping does not exist.');
+            throw new Error('Input must be a String.');
         }
 
         return {
             tileToChar: tileToChar,
             tileGridToChars: tileGridToChars,
-            compoundChars: compoundChars,
-            expandChars: expandChars,
-            stringToChar: stringToChar,
             charToString: charToString,
-            stringGridToChars: stringGridToChars
+            stringToChar: stringToChar,
+            stringGridToChars: stringGridToChars,
+            compoundChars: compoundChars,
+            expandChars: expandChars
         };
 
     });

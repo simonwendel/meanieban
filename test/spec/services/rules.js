@@ -3,10 +3,10 @@
 describe('Service: Rules', function () {
 
     var mockMoves;
-    beforeEach(module('meanieBanApp'), function ($provide) {
+    beforeEach(module('meanieBanApp', function ($provide) {
         mockMoves = {'123': '234'};
         $provide.value('validMoves', mockMoves);
-    });
+    }));
 
     var Rules;
     beforeEach(inject(function (_Rules_) {

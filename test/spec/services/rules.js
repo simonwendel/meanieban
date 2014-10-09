@@ -32,7 +32,9 @@ describe('Service: Rules', function () {
     describe('tryMove', function () {
         it('should throw exception when not given an array.', function () {
             expect(function () {
+
                 Rules.tryMove({});
+
             }).toThrow('Input state is not an Array.');
         });
 

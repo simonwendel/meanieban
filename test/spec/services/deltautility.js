@@ -11,15 +11,21 @@ describe('Service: deltaUtility', function () {
 
     it('should throw exception if passed other than direction.', function () {
         expect(function () {
+
             deltaUtility.compute('east');
+
         }).toThrow('Direction must be "up", "down", "left" or "right".');
 
         expect(function () {
+
             deltaUtility.compute({});
+
         }).toThrow('Direction must be "up", "down", "left" or "right".');
 
         expect(function () {
+
             deltaUtility.compute(undefined);
+
         }).toThrow('Direction must be "up", "down", "left" or "right".');
     });
 

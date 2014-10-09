@@ -53,11 +53,12 @@ describe('Directive: sokobanGrid', function () {
         expect(directiveScope.keydown).toBe(pageScope.keydown);
     });
 
-    it('should require key-down handler to be a function.',
-        inject(function ($rootScope, $compile) {
-            expect(function () {
-                buildDirective($rootScope, $compile, {});
-            }).toThrow('Scope variable keydown must be a function.');
-        }));
+    it('should require key-down handler to be a function.', inject(function ($rootScope, $compile) {
+        expect(function () {
+
+            buildDirective($rootScope, $compile, {});
+
+        }).toThrow('Scope variable keydown must be a function.');
+    }));
 
 });

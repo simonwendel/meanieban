@@ -27,7 +27,9 @@ describe('Service: Level', function () {
 
     it('should throw exception if no worker location is found in the Level.', function () {
         expect(function () {
+
             new Level(tileUtility.stringGridToChars([['wall']]));
+
         }).toThrow('Invalid level, no worker location found.');
     });
 

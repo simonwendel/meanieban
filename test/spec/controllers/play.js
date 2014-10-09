@@ -4,16 +4,14 @@ describe('Controller: PlayCtrl', function () {
 
     beforeEach(module('meanieBanApp'));
 
-    var scope, routeParams, LevelCollection, levelGrid, Game;
-    beforeEach(inject(function ($controller, $rootScope, smallestSolvable, _Game_, Level, keyCodeToDirectionMap) {
+    var scope, routeParams, LevelCollection, levelGrid;
+    beforeEach(inject(function ($controller, $rootScope, smallestSolvable, Game, Level, keyCodeToDirectionMap) {
         scope = $rootScope.$new();
         routeParams = { id: 6 };
 
         levelGrid = smallestSolvable;
         LevelCollection = { get: new Function() };
         spyOn(LevelCollection, 'get').andReturn({ rows: levelGrid });
-
-        Game = _Game_;
 
         $controller('PlayCtrl', {
             $scope: scope,
@@ -35,10 +33,10 @@ describe('Controller: PlayCtrl', function () {
         expect(LevelCollection.get).toHaveBeenCalledWith(routeParams.id);
     });
 
-    it('should have a new Game attached to scope.', function () {
+    it('should have a new Game attached to scope.', inject(function (Game) {
         expect(scope.game instanceof Game).toBeTruthy();
         expect(scope.grid).toBe(levelGrid);
-    });
+    }));
 
     it('should have a key-down handler attached to scope.', function () {
         expect(scope.keydown instanceof Function).toBeTruthy();

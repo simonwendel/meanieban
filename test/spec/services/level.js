@@ -32,8 +32,19 @@ describe('Service: Level', function () {
         });
 
         it('should be able to get docked worker location in the Level.', function () {
-            var level = new Level(tileUtility.stringGridToTiles([['worker-docked']]));
+            var level = new Level(tileUtility.stringGridToTiles([
+                ['worker-docked']
+            ]));
             expect(level.workerLocation()).toEqual({x: 0, y: 0});
+        });
+
+        it('should throw exception if no worker location is found in the Level.', function () {
+            var level = new Level(tileUtility.stringGridToTiles([
+                ['wall']
+            ]));
+            expect(function () {
+                level.workerLocation();
+            }).toThrow('Invalid level, no worker location found.');
         });
     });
 

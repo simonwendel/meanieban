@@ -24,6 +24,8 @@ angular.module('meanieBanApp')
 
             index = searchTiles('worker-docked', gridArray);
             if(index) return index;
+
+            throw new Error('Invalid level, no worker location found.')
         }
 
         function searchTiles(tileString, gridArray) {

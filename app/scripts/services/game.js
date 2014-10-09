@@ -12,10 +12,6 @@ angular.module('meanieBanApp')
                 throw new Error('Parameter level to constructor function must be an instance of Level.');
             }
 
-            this.level = function () {
-                return level;
-            };
-
             this.move = function () {
 
             };

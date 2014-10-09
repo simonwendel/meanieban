@@ -32,11 +32,6 @@ describe('Service: Game', function () {
         expect(game.grid()).toBe(smallestSolvable);
     });
 
-    it('should expose the level through accessor function.', function () {
-        var game = new Game(level);
-        expect(game.level()).toBe(level);
-    });
-
     it('should have a move function.', function () {
         var game = new Game(level);
         expect(game.move instanceof Function).toBeTruthy();

@@ -31,8 +31,8 @@ angular.module('meanieBanApp')
         }
 
         function searchTiles(tileString, gridArray) {
-            var workerValue = tileUtility.stringToTile(tileString);
-            var index = arrayUtility.get2dIndexOf(workerValue, gridArray);
+            var worker = tileUtility.stringToChar(tileString);
+            var index = arrayUtility.get2dIndexOf(worker, gridArray);
             if(index) {
                 return {
                     x: index[1],

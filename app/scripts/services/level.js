@@ -27,6 +27,15 @@ angular.module('meanieBanApp')
                     y: index[0]
                 };
             }
+
+            workerValue = tileUtility.stringToTile('worker-docked');
+            index = arrayUtility.get2dIndexOf(workerValue, gridArray);
+            if(index) {
+                return {
+                    x: index[1],
+                    y: index[0]
+                };
+            }
         }
 
     });

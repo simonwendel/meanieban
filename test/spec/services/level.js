@@ -4,10 +4,11 @@ describe('Service: Level', function () {
 
     beforeEach(module('meanieBanApp'));
 
-    var Level, gridArray;
-    beforeEach(inject(function (_Level_, tileUtility, smallestSolvable) {
+    var Level, gridArray, tileUtility;
+    beforeEach(inject(function (_Level_, _tileUtility_, smallestSolvable) {
         Level = _Level_;
         gridArray = smallestSolvable;
+        tileUtility = _tileUtility_;
     }));
 
     it('should be constructable from an array of integers.', function () {
@@ -16,17 +17,24 @@ describe('Service: Level', function () {
         expect(level.grid()).toEqual(gridArray);
     });
 
-    it('should be able to get worker location in the Level.', function () {
-        var level = new Level(gridArray);
-        expect(level.workerLocation()).toEqual({x: 3, y: 1});
-    });
-
     it('should throw exception when grid is undefined to constructor.', function () {
         expect(function () {
 
             new Level();
 
         }).toThrow('Parameter gridArray to constructor function cannot be undefined.');
+    });
+
+    describe('workerLocation()', function () {
+        it('should be able to get worker location in the Level.', function () {
+            var level = new Level(gridArray);
+            expect(level.workerLocation()).toEqual({x: 3, y: 1});
+        });
+
+        it('should be able to get docked worker location in the Level.', function () {
+            var level = new Level(tileUtility.stringGridToTiles([['worker-docked']]));
+            expect(level.workerLocation()).toEqual({x: 0, y: 0});
+        });
     });
 
 });

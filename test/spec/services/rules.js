@@ -41,10 +41,10 @@ describe('Service: Rules', function () {
             expect(Rules.tryMove(move)).toBeFalsy();
         });
 
-        it('should not update the move if the move is not valid.', function () {
-            var move = ['6', '7', '8'];
-            Rules.tryMove(move);
-            expect(move).toEqual(['6', '7', '8']);
+        it('should return the next state of the three tiles if the move is valid.', function () {
+            var move = ['1', '2', '3'];
+            var next = Rules.tryMove(move);
+            expect(next).toEqual(['2', '3', '4']);
         });
     });
 

@@ -29,7 +29,10 @@ angular.module('meanieBanApp')
 
             var string = tileUtility.compoundChars(state);
             var move = validMoves[string];
-            if(!move) return false;
+            if(move)
+                return tileUtility.expandChars(move);
+
+            return false;
         }
 
         this.isOpenDock = isOpenDock;

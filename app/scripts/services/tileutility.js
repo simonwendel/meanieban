@@ -72,13 +72,22 @@ angular.module('meanieBanApp')
             throw new Error('Input must be an Array.');
         }
 
+        function expandChars(input) {
+            if(typeof input === 'string') {
+                return input.split('');
+            }
+
+            throw new Error('Input must be a String.');
+        }
+
         return {
             tileToString: tileToString,
             stringToTile: stringToTile,
             stringGridToTiles: stringGridToTiles,
             tileToChar: tileToChar,
             tileGridToChars: tileGridToChars,
-            compoundChars: compoundChars
+            compoundChars: compoundChars,
+            expandChars: expandChars
         };
 
     });

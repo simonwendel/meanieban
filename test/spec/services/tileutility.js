@@ -182,4 +182,29 @@ describe('Service: tileUtility', function () {
         });
     });
 
+    describe('expandChars function', function () {
+        it('should create an array of chars from a string.', function () {
+            var input = '0 .*$+@#';
+
+            var expected = [
+                '0', ' ',
+                '.', '*',
+                '$', '+',
+                '@', '#'];
+
+            var actual = tileUtility.expandChars(input);
+            expect(actual).toEqual(expected);
+        });
+
+        it('should throw exception if input is not a string.', function () {
+            expect(function () {
+                tileUtility.expandChars(1);
+            }).toThrow('Input must be a String.');
+
+            expect(function () {
+                tileUtility.expandChars({});
+            }).toThrow('Input must be a String.');
+        });
+    });
+
 });

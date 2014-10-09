@@ -93,6 +93,19 @@ angular.module('meanieBanApp')
             throw new Error('That mapping does not exist.');
         }
 
+        function charToString(input) {
+            if(typeof input != 'string') {
+                throw new Error('Only strings allowed as input.');
+            }
+
+            var index = charMappings.indexOf(input);
+            if(index > -1) {
+                return stringMappings[index];
+            }
+
+            throw new Error('That mapping does not exist.');
+        }
+
         return {
             tileToString: tileToString,
             stringToTile: stringToTile,
@@ -101,7 +114,8 @@ angular.module('meanieBanApp')
             tileGridToChars: tileGridToChars,
             compoundChars: compoundChars,
             expandChars: expandChars,
-            stringToChar: stringToChar
+            stringToChar: stringToChar,
+            charToString: charToString
         };
 
     });

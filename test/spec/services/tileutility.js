@@ -232,4 +232,29 @@ describe('Service: tileUtility', function () {
         });
     });
 
+    describe('charToString function', function () {
+        it('should have all correct tile mappings.', function () {
+            expect(tileUtility.charToString('0')).toBe('void');
+            expect(tileUtility.charToString(' ')).toBe('floor');
+            expect(tileUtility.charToString('.')).toBe('dock');
+            expect(tileUtility.charToString('*')).toBe('box-docked');
+            expect(tileUtility.charToString('$')).toBe('box');
+            expect(tileUtility.charToString('+')).toBe('worker-docked');
+            expect(tileUtility.charToString('@')).toBe('worker');
+            expect(tileUtility.charToString('#')).toBe('wall');
+        });
+
+        it('should throw if no mapping present for input string.', function () {
+            expect(function () {
+                tileUtility.charToString('non-existent-tile-type');
+            }).toThrow('That mapping does not exist.');
+        });
+
+        it('should throw if input is not a string.', function () {
+            expect(function () {
+                tileUtility.charToString(3.14);
+            }).toThrow('Only strings allowed as input.');
+        });
+    });
+
 });

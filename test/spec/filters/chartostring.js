@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Filter: tileToString', function () {
+describe('Filter: charToString', function () {
 
     beforeEach(module('meanieBanApp'));
 
@@ -9,23 +9,23 @@ describe('Filter: tileToString', function () {
         module('meanieBanApp', function ($provide) {
             returnValue = {};
             utilityMock = {
-                tileToString: function () {
+                charToString: function () {
                     return returnValue;
                 }
             };
 
-            spyOn(utilityMock, 'tileToString').andCallThrough();
+            spyOn(utilityMock, 'charToString').andCallThrough();
             $provide.value('tileUtility', utilityMock);
         }));
 
-    var tileToString;
+    var charToString;
     beforeEach(inject(function ($filter) {
-        tileToString = $filter('tileToString');
+        charToString = $filter('charToString');
     }));
 
     it('should return use the tileUtility to get some value.', function () {
-        expect(tileToString('whatever')).toBe(returnValue);
-        expect(utilityMock.tileToString.callCount).toBe(1);
+        expect(charToString('whatever')).toBe(returnValue);
+        expect(utilityMock.charToString.callCount).toBe(1);
     });
 
 });

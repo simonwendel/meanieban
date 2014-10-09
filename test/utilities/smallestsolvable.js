@@ -5,7 +5,7 @@
 // can be produced in Sokoban.
 angular.module('meanieBanApp')
     .factory('smallestSolvable', function (tileUtility) {
-        return tileUtility.stringGridToTiles([
+        return tileUtility.stringGridToChars([
             ['wall', 'wall', 'wall', 'wall', 'wall'],
             ['wall', 'dock', 'box', 'worker', 'wall'],
             ['wall', 'wall', 'wall', 'wall', 'wall']

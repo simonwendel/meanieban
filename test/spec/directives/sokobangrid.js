@@ -8,10 +8,7 @@ describe('Directive: sokobanGrid', function () {
 
     function buildDirective($rootScope, $compile, keydownHandler) {
         pageScope = $rootScope.$new();
-        var level = {id: 6, width: 8, height: 1, name: 'test level 1', rows: [
-            [0, 1, 2],
-            [3, 4, 5]
-        ]};
+        var level = {id: 6, width: 8, height: 1, name: 'test level 1', rows: smallestSolvable};
 
         pageScope.level = level;
         pageScope.keydown = keydownHandler;
@@ -29,9 +26,10 @@ describe('Directive: sokobanGrid', function () {
         directiveScope = element.isolateScope();
     }
 
-    var element, directiveScope, pageScope;
-    beforeEach(inject(function ($rootScope, $compile) {
+    var element, directiveScope, pageScope, smallestSolvable;
+    beforeEach(inject(function ($rootScope, $compile, _smallestSolvable_) {
         var keydownHandler = new Function();
+        smallestSolvable = _smallestSolvable_;
         buildDirective($rootScope, $compile, keydownHandler);
     }));
 

@@ -37,4 +37,9 @@ describe('Service: Game', function () {
         expect(game.move instanceof Function).toBeTruthy();
     });
 
+    it('should have a function returning number of moves.', function () {
+        var game = new Game(level);
+        expect(game.moves()).toBe(0);
+    });
+
 });

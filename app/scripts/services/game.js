@@ -16,6 +16,11 @@ angular.module('meanieBanApp')
 
             };
 
+            var moves = 0;
+            this.moves = function () {
+                return moves;
+            };
+
             this.grid = function () {
                 return level.grid();
             }

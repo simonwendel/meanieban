@@ -38,6 +38,10 @@ describe('Controller: PlayCtrl', function () {
         expect(scope.grid).toBe(levelGrid);
     }));
 
+    it('should have number of moves attached to scope.', function () {
+        expect(scope.moves).toBe(0);
+    });
+
     it('should have a key-down handler attached to scope.', function () {
         expect(scope.keydown instanceof Function).toBeTruthy();
     });

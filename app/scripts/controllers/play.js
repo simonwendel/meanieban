@@ -7,6 +7,8 @@ angular.module('meanieBanApp')
         var levelData = LevelCollection.get(currentId);
         var level = new Level(levelData.rows);
 
+        $scope.moves = 0;
+
         $scope.game = new Game(level);
 
         $scope.grid = $scope.game.grid();

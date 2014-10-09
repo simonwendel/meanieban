@@ -19,17 +19,16 @@ angular.module('meanieBanApp')
         };
 
         function getWorkerLocation(gridArray) {
-            var workerValue = tileUtility.stringToTile('worker');
-            var index = arrayUtility.get2dIndexOf(workerValue, gridArray);
-            if(index) {
-                return {
-                    x: index[1],
-                    y: index[0]
-                };
-            }
+            var index = searchTiles('worker', gridArray);
+            if(index) return index;
 
-            workerValue = tileUtility.stringToTile('worker-docked');
-            index = arrayUtility.get2dIndexOf(workerValue, gridArray);
+            index = searchTiles('worker-docked', gridArray);
+            if(index) return index;
+        }
+
+        function searchTiles(tileString, gridArray) {
+            var workerValue = tileUtility.stringToTile(tileString);
+            var index = arrayUtility.get2dIndexOf(workerValue, gridArray);
             if(index) {
                 return {
                     x: index[1],

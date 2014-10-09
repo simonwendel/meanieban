@@ -17,7 +17,7 @@ angular.module('meanieBanApp')
             };
 
             this.workerLocation = function () {
-                return level.workerLocation();
+                return level.worker().location;
             };
 
             this.grid = function () {

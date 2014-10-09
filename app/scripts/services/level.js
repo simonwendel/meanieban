@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .factory('Level', function (arrayUtility, tileUtility) {
+    .factory('Level', function (arrayUtility, tileUtility, Worker) {
 
         return function (gridArray) {
             if (!gridArray) {
@@ -13,8 +13,10 @@ angular.module('meanieBanApp')
                 return grid;
             };
 
-            this.workerLocation = function () {
-                return getWorkerLocation(grid);
+            var location = getWorkerLocation(grid);
+            var worker = new Worker(location.x, location.y);
+            this.worker = function () {
+                return worker;
             };
         };
 

@@ -25,26 +25,30 @@ describe('Service: Level', function () {
         }).toThrow('Parameter gridArray to constructor function cannot be undefined.');
     });
 
-    describe('workerLocation()', function () {
+    it('should throw exception if no worker location is found in the Level.', function () {
+        expect(function () {
+            new Level(tileUtility.stringGridToTiles([
+                ['wall']
+            ]));
+        }).toThrow('Invalid level, no worker location found.');
+    });
+
+    describe('worker()', function () {
+        it('should return an object of type Worker.', inject(function (Worker) {
+            var level = new Level(gridArray);
+            expect(level.worker() instanceof Worker).toBeTruthy();
+        }));
+
         it('should be able to get worker location in the Level.', function () {
             var level = new Level(gridArray);
-            expect(level.workerLocation()).toEqual({x: 3, y: 1});
+            expect(level.worker().location).toEqual({x: 3, y: 1});
         });
 
         it('should be able to get docked worker location in the Level.', function () {
             var level = new Level(tileUtility.stringGridToTiles([
                 ['worker-docked']
             ]));
-            expect(level.workerLocation()).toEqual({x: 0, y: 0});
-        });
-
-        it('should throw exception if no worker location is found in the Level.', function () {
-            var level = new Level(tileUtility.stringGridToTiles([
-                ['wall']
-            ]));
-            expect(function () {
-                level.workerLocation();
-            }).toThrow('Invalid level, no worker location found.');
+            expect(level.worker().location).toEqual({x: 0, y: 0});
         });
     });
 

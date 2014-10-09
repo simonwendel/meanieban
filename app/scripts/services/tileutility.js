@@ -93,6 +93,10 @@ angular.module('meanieBanApp')
             throw new Error('That mapping does not exist.');
         }
 
+        function stringGridToChars(input) {
+            return arrayUtility.convert(input, stringToChar);
+        }
+
         function charToString(input) {
             if(typeof input != 'string') {
                 throw new Error('Only strings allowed as input.');
@@ -115,7 +119,8 @@ angular.module('meanieBanApp')
             compoundChars: compoundChars,
             expandChars: expandChars,
             stringToChar: stringToChar,
-            charToString: charToString
+            charToString: charToString,
+            stringGridToChars: stringGridToChars
         };
 
     });

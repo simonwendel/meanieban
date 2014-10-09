@@ -232,6 +232,27 @@ describe('Service: tileUtility', function () {
         });
     });
 
+    describe('stringGridToChars function', function () {
+        it('should have all correct tile mappings.', function () {
+            var input = [
+                ['void', 'floor'],
+                ['dock', 'box-docked'],
+                ['box', 'worker-docked'],
+                ['worker', 'wall']
+            ];
+
+            var expected = [
+                ['0', ' '],
+                ['.', '*'],
+                ['$', '+'],
+                ['@', '#']
+            ];
+
+            var actual = tileUtility.stringGridToChars(input);
+            expect(actual).toEqual(expected);
+        });
+    });
+
     describe('charToString function', function () {
         it('should have all correct tile mappings.', function () {
             expect(tileUtility.charToString('0')).toBe('void');

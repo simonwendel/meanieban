@@ -38,7 +38,7 @@ describe('Service: Rules', function () {
 
         it('should return false if the move is not valid.', function () {
             var move = ['6', '7', '8'];
-            expect(Rules.tryMove(move)).toBeFalsy();
+            expect(Rules.tryMove(move)).toEqual(false);
         });
 
         it('should return the next state of the three tiles if the move is valid.', function () {

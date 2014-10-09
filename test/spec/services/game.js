@@ -37,9 +37,4 @@ describe('Service: Game', function () {
         expect(game.move instanceof Function).toBeTruthy();
     });
 
-    it('should return the player location when asked.', function () {
-        var game = new Game(level);
-        expect(game.workerLocation()).toEqual({ x: 3, y: 1});
-    });
-
 });

@@ -1,4 +1,5 @@
 {
+    "maxerr": 500,
     "node": true,
     "browser": true,
     "esnext": true,

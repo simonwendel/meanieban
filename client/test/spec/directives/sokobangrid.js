@@ -28,7 +28,9 @@ describe('Directive: sokobanGrid', function () {
 
     var element, directiveScope, pageScope, smallestSolvable;
     beforeEach(inject(function ($rootScope, $compile, _smallestSolvable_) {
-        var keydownHandler = new Function();
+        var keydownHandler = function () {
+        };
+
         smallestSolvable = _smallestSolvable_;
         buildDirective($rootScope, $compile, keydownHandler);
     }));

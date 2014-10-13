@@ -26,5 +26,6 @@
         "angular": false,
         "$": true,
         "jQuery": true
-    }
+    },
+    "-W026": false
 }

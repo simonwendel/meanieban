@@ -22,12 +22,16 @@ angular.module('meanieBanApp')
 
         function getWorkerLocation(gridArray) {
             var index = searchTiles('worker', gridArray);
-            if(index) return index;
+            if(index) {
+                return index;
+            }
 
             index = searchTiles('worker-docked', gridArray);
-            if(index) return index;
+            if(index) {
+                return index;
+            }
 
-            throw new Error('Invalid level, no worker location found.')
+            throw new Error('Invalid level, no worker location found.');
         }
 
         function searchTiles(tileString, gridArray) {

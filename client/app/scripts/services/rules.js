@@ -23,14 +23,15 @@ angular.module('meanieBanApp')
         }
 
         function tryMove(state) {
-            if(!Array.isArray(state)) {
+            if (!Array.isArray(state)) {
                 throw new Error('Input state is not an Array.');
             }
 
             var string = tileUtility.compoundChars(state);
             var move = validMoves[string];
-            if(move)
+            if (move) {
                 return tileUtility.expandChars(move);
+            }
 
             return false;
         }

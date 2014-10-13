@@ -13,7 +13,7 @@ angular.module('meanieBanApp')
                 skin: '='
             },
             link: function (scope, element) {
-                if(typeof scope.keydown != 'function') {
+                if(typeof scope.keydown !== 'function') {
                     throw new Error('Scope variable keydown must be a function.');
                 }
 

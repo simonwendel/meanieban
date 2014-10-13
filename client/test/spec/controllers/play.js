@@ -10,7 +10,11 @@ describe('Controller: PlayCtrl', function () {
         routeParams = { id: 6 };
 
         levelGrid = smallestSolvable;
-        LevelCollection = { get: new Function() };
+        LevelCollection = {
+            get: function () {
+            }
+        };
+
         spyOn(LevelCollection, 'get').andReturn({ rows: levelGrid });
 
         $controller('PlayCtrl', {

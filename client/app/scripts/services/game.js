@@ -23,7 +23,7 @@ angular.module('meanieBanApp')
 
             this.grid = function () {
                 return level.grid();
-            }
+            };
         };
 
     });

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // adds startsWith to string from ES6, see:
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith

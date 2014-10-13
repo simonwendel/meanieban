@@ -39,7 +39,7 @@ angular.module('meanieBanApp')
         }
 
         function charToString(input) {
-            if (typeof input != 'string') {
+            if (typeof input !== 'string') {
                 throw new Error('Only strings allowed as input.');
             }
 
@@ -52,7 +52,7 @@ angular.module('meanieBanApp')
         }
 
         function stringToChar(input) {
-            if (typeof input != 'string') {
+            if (typeof input !== 'string') {
                 throw new Error('Only strings allowed as input.');
             }
 

@@ -8,7 +8,7 @@ describe('Directive: widePage', function () {
 
     it('should be able to compile using supplied partial HTML template.', inject(function ($compile, $rootScope) {
         var scope = $rootScope.$new();
-        var element = angular.element('<wide-page />');
+        var element = angular.element('<wide-page></wide-page>');
         element = $compile(element)(scope);
         scope.$digest();
 

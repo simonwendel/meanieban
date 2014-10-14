@@ -8,7 +8,7 @@ describe('Directive: narrowPage', function () {
 
     it('should be able to compile using supplied partial HTML template.', inject(function ($compile, $rootScope) {
         var scope = $rootScope.$new();
-        var element = angular.element('<narrow-page />');
+        var element = angular.element('<narrow-page></narrow-page>');
         element = $compile(element)(scope);
         scope.$digest();
 

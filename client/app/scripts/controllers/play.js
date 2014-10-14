@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .controller('PlayCtrl', function ($scope, $routeParams, LevelCollection, Game, Level, keyCodeToDirectionMap) {
+    .controller('PlayCtrl', function ($scope, $routeParams, LevelCollection, Game, Level, keyCodeToDirectionMap, availableSkins) {
 
         var currentId = $routeParams.id;
         var levelData = LevelCollection.get(currentId);
@@ -13,11 +13,11 @@ angular.module('meanieBanApp')
 
         $scope.grid = $scope.game.grid();
 
-        $scope.skin = 'yoshi-32';
+        $scope.skin = availableSkins[0];
 
         $scope.keydown = function (event) {
             var direction = keyCodeToDirectionMap[event.keyCode];
-            if(direction) {
+            if (direction) {
                 $scope.game.move(direction);
             }
         };

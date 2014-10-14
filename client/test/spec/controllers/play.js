@@ -4,8 +4,8 @@ describe('Controller: PlayCtrl', function () {
 
     beforeEach(module('meanieBanApp'));
 
-    var scope, routeParams, LevelCollection, levelGrid;
-    beforeEach(inject(function ($controller, $rootScope, smallestSolvable, Game, Level, keyCodeToDirectionMap) {
+    var scope, routeParams, LevelCollection, levelGrid, availableSkins;
+    beforeEach(inject(function ($controller, $rootScope, smallestSolvable, Game, Level, keyCodeToDirectionMap, _availableSkins_) {
         scope = $rootScope.$new();
         routeParams = { id: 6 };
 
@@ -17,19 +17,21 @@ describe('Controller: PlayCtrl', function () {
 
         spyOn(LevelCollection, 'get').andReturn({ rows: levelGrid });
 
+        availableSkins = _availableSkins_;
+
         $controller('PlayCtrl', {
             $scope: scope,
             $routeParams: routeParams,
             LevelCollection: LevelCollection,
             Game: Game,
             Level: Level,
-            keyCodeToDirectionMap: keyCodeToDirectionMap
+            keyCodeToDirectionMap: keyCodeToDirectionMap,
+            availableSkins: availableSkins
         });
     }));
 
-    it('should have a skin name attached to scope.', function () {
-        expect(scope.skin).toBeDefined();
-        expect(typeof scope.skin).toBe('string');
+    it('should have the first available skin name attached to scope.', function () {
+        expect(scope.skin).toBe(availableSkins[0]);
     });
 
     it('should get level data from the LevelCollection.', function () {

@@ -16,9 +16,9 @@ angular.module('meanieBanApp')
 
             };
 
-            var moves = 0;
+            var numberOfMoves = 0;
             this.moves = function () {
-                return moves;
+                return numberOfMoves;
             };
 
             this.grid = function () {

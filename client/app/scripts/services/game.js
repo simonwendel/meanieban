@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .factory('Game', function (Level) {
+    .factory('Game', function (Level, Rules) {
 
         return function (level) {
             if (level === undefined) {
@@ -23,6 +23,22 @@ angular.module('meanieBanApp')
 
             this.grid = function () {
                 return level.grid();
+            };
+
+            // O(n) over number of cells, worst
+            // case if game is finished
+            this.isFinished = function () {
+                for (var r = 0; r < this.grid().length; r++) {
+                    var row = this.grid()[r];
+                    for (var c = 0; c < row.length; c++) {
+                        var cell = row[c];
+                        if (Rules.isOpenDock(cell)) {
+                            return false;
+                        }
+                    }
+                }
+
+                return true;
             };
         };
 

@@ -42,4 +42,19 @@ describe('Service: Game', function () {
         expect(game.moves()).toBe(0);
     });
 
+    describe('isFinished', function () {
+
+        it('should be able to tell if the game is not finished.', function () {
+            var game = new Game(level);
+            expect(game.isFinished()).toBeFalsy();
+        });
+
+        it('should be able to tell if the game is finished.', inject(function (Level, smallestSolvableSolved) {
+            level = new Level(smallestSolvableSolved);
+            var game = new Game(level);
+            expect(game.isFinished()).toBeTruthy();
+        }));
+
+    });
+
 });

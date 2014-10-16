@@ -19,7 +19,8 @@ angular.module('meanieBanApp')
     .service('Rules', function Rules(validMoves, tileUtility) {
 
         function isOpenDock(tile) {
-            return tile === '.';
+            return tile === tileUtility.stringToChar('dock') ||
+                tile === tileUtility.stringToChar('worker-docked');
         }
 
         function tryMove(state) {

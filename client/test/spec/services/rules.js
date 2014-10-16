@@ -16,13 +16,13 @@ describe('Service: Rules', function () {
     describe('isOpenDock', function () {
         it('should tell if a tile is an open dock.', function () {
             expect(Rules.isOpenDock('.')).toBeTruthy();
+            expect(Rules.isOpenDock('+')).toBeTruthy();
         });
 
         it('should tell if a tile is not an open dock.', function () {
             expect(Rules.isOpenDock('0')).toBeFalsy();
             expect(Rules.isOpenDock('#')).toBeFalsy();
             expect(Rules.isOpenDock('@')).toBeFalsy();
-            expect(Rules.isOpenDock('+')).toBeFalsy();
             expect(Rules.isOpenDock('$')).toBeFalsy();
             expect(Rules.isOpenDock('*')).toBeFalsy();
             expect(Rules.isOpenDock(' ')).toBeFalsy();

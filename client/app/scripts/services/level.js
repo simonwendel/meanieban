@@ -8,19 +8,27 @@ angular.module('meanieBanApp')
                 throw new Error('Parameter grid to constructor function cannot be undefined.');
             }
 
-            var gridArray = grid;
-            this.grid = function () {
-                return gridArray;
-            };
+            // expose //
 
-            var location = getWorkerLocation(gridArray);
+            this.grid = getGrid;
+
+            this.worker = getWorker;
+
+            // implementation //
+
+            var gridArray = grid;
+            function getGrid() {
+                return gridArray;
+            }
+
+            var location = calculateWorkerLocation(gridArray);
             var worker = new Worker(location.x, location.y);
-            this.worker = function () {
+            function getWorker() {
                 return worker;
-            };
+            }
         };
 
-        function getWorkerLocation(gridArray) {
+        function calculateWorkerLocation(gridArray) {
             var index = searchTiles('worker', gridArray);
             if(index) {
                 return index;

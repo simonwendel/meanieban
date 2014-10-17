@@ -1,7 +1,7 @@
 /**
  * Node module to create the levelData value for the ng-app.
  *
- * run by: nodejs import.js <level data filename>
+ * run by: nodejs import.js <level data filename> > <output filename>.js
  */
 var fs = require('fs');
 var parser = require('./textParser');

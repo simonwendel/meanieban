@@ -8,8 +8,6 @@ angular.module('meanieBanApp')
                 throw new Error('Parameter grid to constructor function cannot be undefined.');
             }
 
-            // expose //
-
             this.grid = getGrid;
 
             this.worker = getWorker;

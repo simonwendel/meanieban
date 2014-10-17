@@ -3,8 +3,6 @@
 angular.module('meanieBanApp')
     .service('LevelCollection', function (levelData, arrayUtility, tileUtility) {
 
-        // expose //
-
         this.collections = collections;
 
         this.get = get;

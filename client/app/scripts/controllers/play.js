@@ -3,7 +3,7 @@
 angular.module('meanieBanApp')
     .controller('PlayCtrl', function ($scope, $routeParams, LevelCollection, Game, Level, keyCodeToDirectionMap, availableSkins) {
 
-        var currentId = $routeParams.id;
+        var currentId = parseInt($routeParams.id);
         var levelData = LevelCollection.get(currentId);
         var level = new Level(levelData.rows);
 

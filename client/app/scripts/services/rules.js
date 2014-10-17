@@ -18,6 +18,12 @@
 angular.module('meanieBanApp')
     .service('Rules', function Rules(validMoves, tileUtility) {
 
+        this.isOpenDock = isOpenDock;
+
+        this.tryMove = tryMove;
+
+        // implementation //
+
         function isOpenDock(tile) {
             return tile === tileUtility.stringToChar('dock') ||
                 tile === tileUtility.stringToChar('worker-docked');
@@ -37,7 +43,4 @@ angular.module('meanieBanApp')
             return false;
         }
 
-        this.isOpenDock = isOpenDock;
-
-        this.tryMove = tryMove;
     });

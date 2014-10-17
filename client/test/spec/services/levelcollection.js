@@ -31,7 +31,7 @@ describe('Service: LevelCollection', function () {
         tileUtility = _tileUtility_;
     }));
 
-    describe('LevelCollection.collections()', function () {
+    describe('LevelCollection.collections', function () {
 
         it('should return all level names from the LevelCollection.', function () {
             var collections = LevelCollection.collections();
@@ -50,13 +50,29 @@ describe('Service: LevelCollection', function () {
 
     });
 
-    describe('LevelCollection.get()', function () {
+    describe('LevelCollection.get', function () {
 
         it('should return a level by id.', function () {
             var level = LevelCollection.get(-2);
             expect(level).toBeDefined();
             expect(level.id).toBe(-2);
             expect(level.collection).toBe('Coll 1');
+        });
+
+        it('should throw exception if input id is not an integer.', function () {
+            expect(function () {
+
+                LevelCollection.get(-3.14);
+
+            }).toThrow('Id is not an integer.');
+        });
+
+        it('should throw exception if input id is not a number.', function () {
+            expect(function () {
+
+                LevelCollection.get('-2');
+
+            }).toThrow('Id is not an integer.');
         });
 
         it('should translate the raw integer tiles into character representation.', function () {

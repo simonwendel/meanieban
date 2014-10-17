@@ -28,6 +28,10 @@ angular.module('meanieBanApp')
         }
 
         function get(id) {
+            if(isNaN(id) || parseInt(id) !== id) {
+                throw new Error('Id is not an integer.');
+            }
+
             var found = levelData.filter(function (level) {
                 return level.id === id;
             })[0];

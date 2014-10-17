@@ -1,11 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
-
 @import "vendor/variables";
 @import "custom-variables";
-
 // $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
+
 // endbower
 
 // Remember this for all partials!
@@ -16,6 +15,8 @@ body {
   padding-top: $standard-spacing;
   padding-bottom: $standard-spacing;
   background: $body-bg;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .header {
@@ -71,12 +72,12 @@ body {
   }
 
   /* left side fill to edge */
-  .text-left::before{
+  .text-left::before {
     margin-left: -9999em;
   }
 
   /* right side fill to edge */
-  .text-right::after  {
+  .text-right::after {
     margin-left: 0;
   }
 }
@@ -94,7 +95,7 @@ body {
 // END FOOTER
 
 // utilities
-.col-centered{
+.col-centered {
   float: none;
   margin-left: auto;
   margin-right: auto;

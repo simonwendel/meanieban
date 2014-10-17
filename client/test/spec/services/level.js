@@ -22,7 +22,7 @@ describe('Service: Level', function () {
 
             new Level();
 
-        }).toThrow('Parameter gridArray to constructor function cannot be undefined.');
+        }).toThrow('Parameter grid to constructor function cannot be undefined.');
     });
 
     it('should throw exception if no worker location is found in the Level.', function () {

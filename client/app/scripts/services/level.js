@@ -3,17 +3,17 @@
 angular.module('meanieBanApp')
     .factory('Level', function (arrayUtility, tileUtility, Worker) {
 
-        return function (gridArray) {
-            if (!gridArray) {
-                throw new Error('Parameter gridArray to constructor function cannot be undefined.');
+        return function (grid) {
+            if (!grid) {
+                throw new Error('Parameter grid to constructor function cannot be undefined.');
             }
 
-            var grid = gridArray;
+            var gridArray = grid;
             this.grid = function () {
-                return grid;
+                return gridArray;
             };
 
-            var location = getWorkerLocation(grid);
+            var location = getWorkerLocation(gridArray);
             var worker = new Worker(location.x, location.y);
             this.worker = function () {
                 return worker;

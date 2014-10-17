@@ -12,6 +12,18 @@ angular.module('meanieBanApp')
                 throw new Error('Parameter level to constructor function must be an instance of Level.');
             }
 
+            // expose //
+
+            this.move = move;
+
+            this.moves = moves;
+
+            this.grid = grid;
+
+            this.isFinished = isFinished;
+
+            // implementation //
+
             var numberOfMoves = 0;
 
             function move() {
@@ -26,9 +38,9 @@ angular.module('meanieBanApp')
                 return level.grid();
             }
 
-            // O(n) over number of cells, worst
-            // case if game is finished
             function isFinished() {
+                // O(n) over number of cells, worst
+                // case if game is finished
                 for (var r = 0; r < grid().length; r++) {
                     var row = grid()[r];
                     for (var c = 0; c < row.length; c++) {
@@ -41,16 +53,6 @@ angular.module('meanieBanApp')
 
                 return true;
             }
-
-            // expose //
-
-            this.move = move;
-
-            this.moves = moves;
-
-            this.grid = grid;
-
-            this.isFinished = isFinished;
         };
 
     });

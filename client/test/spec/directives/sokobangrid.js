@@ -8,9 +8,14 @@ describe('Directive: sokobanGrid', function () {
 
     function buildDirective($rootScope, $compile, keydownHandler) {
         pageScope = $rootScope.$new();
-        var level = {id: 6, width: 8, height: 1, name: 'test level 1', rows: smallestSolvable};
+        pageScope.level = {
+            id: 6,
+            width: 8,
+            height: 1,
+            name: 'test level 1',
+            rows: smallestSolvable
+        };
 
-        pageScope.level = level;
         pageScope.keydown = keydownHandler;
         pageScope.skin = 'some skin';
 

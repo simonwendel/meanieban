@@ -33,7 +33,7 @@ describe('Service: Level', function () {
         }).toThrow('Invalid level, no worker location found.');
     });
 
-    describe('worker()', function () {
+    describe('worker', function () {
         it('should return an object of type Worker.', inject(function (Worker) {
             var level = new Level(gridArray);
             expect(level.worker() instanceof Worker).toBeTruthy();

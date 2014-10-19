@@ -24,7 +24,7 @@ describe('Service: tileUtility', function () {
         tileUtility = _tileUtility_;
     }));
 
-    describe('tileToChar function', function () {
+    describe('tileToChar', function () {
         it('should have all correct tile mappings.', function () {
             expect(tileUtility.tileToChar(0)).toBe('0');
             expect(tileUtility.tileToChar(1)).toBe(' ');
@@ -65,7 +65,7 @@ describe('Service: tileUtility', function () {
         });
     });
 
-    describe('tileGridToChars function', function () {
+    describe('tileGridToChars', function () {
         it('should have all correct tile mappings.', function () {
             var input = [
                 [0, 1],
@@ -86,7 +86,7 @@ describe('Service: tileUtility', function () {
         });
     });
 
-    describe('compoundChars function', function () {
+    describe('compoundChars', function () {
         it('should create a string from an array of chars.', function () {
             var input = [
                 '0', ' ',
@@ -115,7 +115,7 @@ describe('Service: tileUtility', function () {
         });
     });
 
-    describe('expandChars function', function () {
+    describe('expandChars', function () {
         it('should create an array of chars from a string.', function () {
             var input = '0 .*$+@#';
 
@@ -144,7 +144,7 @@ describe('Service: tileUtility', function () {
         });
     });
 
-    describe('stringToChar function', function () {
+    describe('stringToChar', function () {
         it('should have all correct tile mappings.', function () {
             expect(tileUtility.stringToChar('void')).toBe('0');
             expect(tileUtility.stringToChar('floor')).toBe(' ');
@@ -173,7 +173,7 @@ describe('Service: tileUtility', function () {
         });
     });
 
-    describe('stringGridToChars function', function () {
+    describe('stringGridToChars', function () {
         it('should have all correct tile mappings.', function () {
             var input = [
                 ['void', 'floor'],
@@ -194,7 +194,7 @@ describe('Service: tileUtility', function () {
         });
     });
 
-    describe('charToString function', function () {
+    describe('charToString', function () {
         it('should have all correct tile mappings.', function () {
             expect(tileUtility.charToString('0')).toBe('void');
             expect(tileUtility.charToString(' ')).toBe('floor');
@@ -223,7 +223,7 @@ describe('Service: tileUtility', function () {
         });
     });
 
-    describe('isValidChar function', function () {
+    describe('isValidChar', function () {
         it('should return true if input is a valid char representation of a tile.', function () {
             expect(tileUtility.isValidChar('0')).toBeTruthy();
             expect(tileUtility.isValidChar(' ')).toBeTruthy();

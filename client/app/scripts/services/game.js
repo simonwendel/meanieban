@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .factory('Game', function (Level, Rules) {
+    .factory('Game', function (Level, Rules, deltaUtility) {
 
         return function (level) {
             if (level === undefined) {
@@ -24,8 +24,18 @@ angular.module('meanieBanApp')
 
             var numberOfMoves = 0;
 
-            function move() {
+            function move(direction) {
+                var tiles = getTiles(direction);
+                var charArray = tiles.map(function (element) {
+                    return element.tile;
+                });
 
+                var newMove = Rules.tryMove(charArray);
+                if (newMove) {
+                    numberOfMoves++;
+                    updateTiles(tiles, newMove);
+                    updatePlayer(direction);
+                }
             }
 
             function moves() {
@@ -50,6 +60,45 @@ angular.module('meanieBanApp')
                 }
 
                 return true;
+            }
+
+            function getTiles(direction) {
+                var delta = deltaUtility.compute(direction);
+
+                var tiles = [];
+
+                var x = level.worker().location.x;
+                var y = level.worker().location.y;
+
+                addTile(x, y, tiles);
+                addTile(x + delta.x, y + delta.y, tiles);
+                addTile(x + 2 * delta.x, y + 2 * delta.y, tiles);
+
+                return tiles;
+            }
+
+            function addTile(x, y, tiles) {
+                if (grid()[y] && grid()[y][x]) {
+                    tiles.push({
+                        x: x,
+                        y: y,
+                        tile: grid()[y][x]
+                    });
+                }
+            }
+
+            function updateTiles(tiles, newMove) {
+                tiles.forEach(function (tile, index) {
+                    var x = tile.x;
+                    var y = tile.y;
+                    level.update(x, y, newMove[index]);
+                });
+            }
+
+            function updatePlayer(direction) {
+                var delta = deltaUtility.compute(direction);
+                var worker = level.worker();
+                worker.update(delta);
             }
         };
 

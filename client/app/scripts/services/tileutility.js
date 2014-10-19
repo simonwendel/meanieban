@@ -84,6 +84,10 @@ angular.module('meanieBanApp')
             throw new Error('Input must be a String.');
         }
 
+        function isValidChar(input) {
+            return charMappings.indexOf(input) !== -1;
+        }
+
         return {
             tileToChar: tileToChar,
             tileGridToChars: tileGridToChars,
@@ -91,7 +95,8 @@ angular.module('meanieBanApp')
             stringToChar: stringToChar,
             stringGridToChars: stringGridToChars,
             compoundChars: compoundChars,
-            expandChars: expandChars
+            expandChars: expandChars,
+            isValidChar: isValidChar
         };
 
     });

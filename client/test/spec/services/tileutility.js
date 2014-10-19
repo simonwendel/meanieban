@@ -223,4 +223,21 @@ describe('Service: tileUtility', function () {
         });
     });
 
+    describe('isValidChar function', function () {
+        it('should return true if input is a valid char representation of a tile.', function () {
+            expect(tileUtility.isValidChar('0')).toBeTruthy();
+            expect(tileUtility.isValidChar(' ')).toBeTruthy();
+            expect(tileUtility.isValidChar('.')).toBeTruthy();
+            expect(tileUtility.isValidChar('*')).toBeTruthy();
+            expect(tileUtility.isValidChar('$')).toBeTruthy();
+            expect(tileUtility.isValidChar('+')).toBeTruthy();
+            expect(tileUtility.isValidChar('@')).toBeTruthy();
+            expect(tileUtility.isValidChar('#')).toBeTruthy();
+        });
+
+        it('should return false if input is not a valid char representation of a tile.', function () {
+            expect(tileUtility.isValidChar('whatevah')).toBeFalsy();
+        });
+    });
+
 });

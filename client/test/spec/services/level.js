@@ -85,4 +85,16 @@ describe('Service: Level', function () {
         });
     });
 
+    describe('isSolved', function () {
+        it('should be able to tell if the level is solved.', inject(function (Level, smallestSolvableSolved) {
+            var level = new Level(smallestSolvableSolved);
+            expect(level.isSolved()).toBeTruthy();
+        }));
+
+        it('should be able to tell if the level is not solved.', function () {
+            var level = new Level(gridArray);
+            expect(level.isSolved()).toBeFalsy();
+        });
+    });
+
 });

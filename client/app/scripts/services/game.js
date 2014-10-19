@@ -18,8 +18,6 @@ angular.module('meanieBanApp')
 
             this.grid = grid;
 
-            this.isFinished = isFinished;
-
             // implementation //
 
             var numberOfMoves = 0;
@@ -44,22 +42,6 @@ angular.module('meanieBanApp')
 
             function grid() {
                 return level.grid();
-            }
-
-            function isFinished() {
-                // O(n) over number of cells, worst
-                // case if game is finished
-                for (var r = 0; r < grid().length; r++) {
-                    var row = grid()[r];
-                    for (var c = 0; c < row.length; c++) {
-                        var cell = row[c];
-                        if (Rules.isOpenDock(cell)) {
-                            return false;
-                        }
-                    }
-                }
-
-                return true;
             }
 
             function getTiles(direction) {

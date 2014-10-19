@@ -25,7 +25,7 @@ describe('Service: Level', function () {
         }).toThrow('Parameter grid to constructor function cannot be undefined.');
     });
 
-    it('should throw exception if no worker location is found in the Level.', function () {
+    it('should throw exception if no worker location is found in the Level on construction.', function () {
         expect(function () {
 
             new Level(tileUtility.stringGridToChars([['wall']]));

@@ -42,4 +42,19 @@ describe('Service: Game', function () {
         expect(game.moves()).toBe(0);
     });
 
+    describe('isFinished', function () {
+        it('should return true if the level is solved.', function () {
+            spyOn(level, 'isSolved').andReturn(true);
+            var game = new Game(level);
+            expect(game.isFinished()).toBeTruthy();
+            expect(level.isSolved.callCount).toBe(1);
+        });
+
+        it('should return false if the level is not solved.', function () {
+            spyOn(level, 'isSolved').andReturn(false);
+            var game = new Game(level);
+            expect(game.isFinished()).toBeFalsy();
+            expect(level.isSolved.callCount).toBe(1);
+        });
+    });
 });

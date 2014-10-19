@@ -18,6 +18,8 @@ angular.module('meanieBanApp')
 
             this.grid = grid;
 
+            this.isFinished = isFinished;
+
             // implementation //
 
             var numberOfMoves = 0;
@@ -42,6 +44,10 @@ angular.module('meanieBanApp')
 
             function grid() {
                 return level.grid();
+            }
+
+            function isFinished() {
+                return level.isSolved();
             }
 
             function getTiles(direction) {

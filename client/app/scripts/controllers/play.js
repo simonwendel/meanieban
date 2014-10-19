@@ -19,6 +19,7 @@ angular.module('meanieBanApp')
             var direction = keyCodeToDirectionMap[event.keyCode];
             if (direction) {
                 $scope.game.move(direction);
+                $scope.$apply();
             }
         };
 

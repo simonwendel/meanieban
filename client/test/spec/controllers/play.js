@@ -71,4 +71,12 @@ describe('Controller: PlayCtrl', function () {
         expect(scope.game.move.callCount).toBe(0);
     });
 
+    it('should re-render grid after Game.move().', function () {
+        spyOn(scope, '$apply').andCallThrough();
+
+        // 39 -> right
+        scope.keydown({keyCode: 39});
+        expect(scope.$apply.callCount).toBe(1);
+    });
+
 });

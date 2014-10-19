@@ -50,4 +50,39 @@ describe('Service: Level', function () {
         });
     });
 
+    describe('update', function () {
+        it('should throw exception if the co-ordinates are out of bounds on the grid.', function () {
+            spyOn(tileUtility, 'isValidChar').andReturn(true);
+            var level = new Level(gridArray);
+
+            expect(function () {
+                level.update(-1, -1, 'tile');
+            }).toThrow('Coordinates out of bounds on level grid.');
+
+            expect(function () {
+                level.update(2, 5, 'tile');
+            }).toThrow('Coordinates out of bounds on level grid.');
+        });
+
+        it('should throw exception if the new state is not valid.', function () {
+            spyOn(tileUtility, 'isValidChar').andReturn(false);
+            var level = new Level(gridArray);
+
+            expect(function () {
+                level.update(-1, -1, 'tile');
+            }).toThrow('Cannot set invalid state in grid.');
+            expect(tileUtility.isValidChar.callCount).toBe(1);
+        });
+
+        it('should be able to set a new valid state in the Level grid.', function () {
+            spyOn(tileUtility, 'isValidChar').andReturn(true);
+            var level = new Level(gridArray);
+
+            level.update(1, 1, 'tile');
+
+            expect(level.grid()[1][1]).toEqual('tile');
+            expect(tileUtility.isValidChar.callCount).toBe(1);
+        });
+    });
+
 });

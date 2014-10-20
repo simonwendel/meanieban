@@ -71,7 +71,7 @@ describe('Controller: PlayCtrl', function () {
         expect(scope.game.move.callCount).toBe(0);
     });
 
-    it('should re-render grid after Game.move().', function () {
+    it('should re-render grid after move is done.', function () {
         spyOn(scope, '$apply').andCallThrough();
 
         // 39 -> right

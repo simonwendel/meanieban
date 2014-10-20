@@ -85,15 +85,23 @@ describe('Service: Level', function () {
         });
     });
 
-    describe('isSolved', function () {
-        it('should be able to tell if the level is solved.', inject(function (Level, smallestSolvableSolved) {
-            var level = new Level(smallestSolvableSolved);
-            expect(level.isSolved()).toBeTruthy();
-        }));
+    describe('inspect', function () {
+        it('should run a strategy on all tiles until the strategy returns true and then return true.', function () {
+            var strategy = jasmine.createSpy('strategy').andCallFake(
+                function (cell) {
+                    return cell === tileUtility.stringToChar('worker');
+                });
 
-        it('should be able to tell if the level is not solved.', function () {
             var level = new Level(gridArray);
-            expect(level.isSolved()).toBeFalsy();
+            expect(level.inspect(strategy)).toBeTruthy();
+            expect(strategy.callCount).toBe(9);
+        });
+
+        it('should run the strategy on all tiles and return false if the strategy returns false for all.', function () {
+            var strategy = jasmine.createSpy('strategy').andReturn(false);
+            var level = new Level(gridArray);
+            expect(level.inspect(strategy)).toBeFalsy();
+            expect(strategy.callCount).toBe(15);
         });
     });
 

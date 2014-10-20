@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .factory('Level', function (arrayUtility, tileUtility, Worker, Rules) {
+    .factory('Level', function (arrayUtility, tileUtility, Worker) {
 
         return function (grid) {
             if (!grid) {
@@ -14,7 +14,7 @@ angular.module('meanieBanApp')
 
             this.update = update;
 
-            this.isSolved = isSolved;
+            this.inspect = inspect;
 
             // implementation //
 
@@ -43,20 +43,20 @@ angular.module('meanieBanApp')
                 gridArray[y][x] = state;
             }
 
-            function isSolved() {
+            function inspect(strategy) {
                 // O(n) over number of cells, worst
-                // case if game is finished
+                // case if strategy returns false for all
                 for (var r = 0; r < gridArray.length; r++) {
                     var row = gridArray[r];
                     for (var c = 0; c < row.length; c++) {
                         var cell = row[c];
-                        if (Rules.isOpenDock(cell)) {
-                            return false;
+                        if (strategy(cell)) {
+                            return true;
                         }
                     }
                 }
 
-                return true;
+                return false;
             }
         };
 

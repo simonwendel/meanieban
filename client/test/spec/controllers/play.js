@@ -79,4 +79,13 @@ describe('Controller: PlayCtrl', function () {
         expect(scope.$apply.callCount).toBe(1);
     });
 
+    it('should update moves from Game after move is done.', function () {
+        spyOn(scope.game, 'moves').andReturn(1);
+
+        // 39 -> right
+        scope.keydown({keyCode: 39});
+        expect(scope.moves).toBe(1);
+        expect(scope.game.moves.callCount).toBe(1);
+    });
+
 });

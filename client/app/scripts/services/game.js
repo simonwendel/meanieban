@@ -47,7 +47,7 @@ angular.module('meanieBanApp')
             }
 
             function isFinished() {
-                return level.isSolved();
+                return !level.inspect(Rules.isOpenDock);
             }
 
             function getTiles(direction) {

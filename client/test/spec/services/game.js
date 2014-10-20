@@ -43,18 +43,26 @@ describe('Service: Game', function () {
     });
 
     describe('isFinished', function () {
-        it('should return true if the level is solved.', function () {
-            spyOn(level, 'isSolved').andReturn(true);
-            var game = new Game(level);
-            expect(game.isFinished()).toBeTruthy();
-            expect(level.isSolved.callCount).toBe(1);
-        });
+        it('should use the Rules.isOpenDock and return true if the level is solved.', inject(function (Rules) {
+            // no open docks means the level is solved
+            spyOn(level, 'inspect').andReturn(false);
 
-        it('should return false if the level is not solved.', function () {
-            spyOn(level, 'isSolved').andReturn(false);
             var game = new Game(level);
+
+            expect(game.isFinished()).toBeTruthy();
+            expect(level.inspect.callCount).toBe(1);
+            expect(level.inspect).toHaveBeenCalledWith(Rules.isOpenDock);
+        }));
+
+        it('should use the Rules.isOpenDock and return false if the level is not solved.', inject(function (Rules) {
+            // open docks means the level is not solved
+            spyOn(level, 'inspect').andReturn(true);
+
+            var game = new Game(level);
+
             expect(game.isFinished()).toBeFalsy();
-            expect(level.isSolved.callCount).toBe(1);
-        });
+            expect(level.inspect.callCount).toBe(1);
+            expect(level.inspect).toHaveBeenCalledWith(Rules.isOpenDock);
+        }));
     });
 });

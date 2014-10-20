@@ -52,7 +52,7 @@ describe('Controller: PlayCtrl', function () {
         expect(scope.keydown instanceof Function).toBeTruthy();
     });
 
-    it('should use the Game.move() function when key-down handler is called.', function () {
+    it('should use the Game move function when key-down handler is called.', function () {
         spyOn(scope.game, 'move').andCallThrough();
 
         // 39 -> right
@@ -62,7 +62,7 @@ describe('Controller: PlayCtrl', function () {
         expect(scope.game.move.callCount).toBe(1);
     });
 
-    it('should not use the Game.move() function when key-down handler is called with non-arrow-key.', function () {
+    it('should not use the Game move function when key-down handler is called with non-arrow-key.', function () {
         spyOn(scope.game, 'move').andCallThrough();
 
         // 188 -> comma

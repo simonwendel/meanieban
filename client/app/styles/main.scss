@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
 @import "vendor/variables";
 @import "custom-variables";
+
 // $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
@@ -8,7 +9,7 @@
 // endbower
 
 // Remember this for all partials!
-// @import "partials/blahfile";
+@import "partials/start";
 
 /* Space out content a bit and set the bg */
 body {
@@ -38,17 +39,6 @@ body {
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
-}
-
-.the-fine-print {
-  font-size: 0.8em;
-  color: $gray-light;
-}
-
-#start-button {
-  font-size: 1.2em;
-  margin-top: 1.5 * $standard-spacing;
-  margin-right: 2 * $standard-spacing;
 }
 
 // FOOTER

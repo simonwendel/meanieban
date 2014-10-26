@@ -6,12 +6,14 @@ describe('Directive: gamePad', function () {
 
     beforeEach(module('views/directives/game-pad.html'));
 
-    var element, scope;
+    var element, scope, pageScope;
     beforeEach(inject(function ($rootScope, $compile) {
-        scope = $rootScope.$new();
-        element = angular.element('<game-pad class="some classes"></game-pad>');
-        element = $compile(element)(scope);
-        scope.$digest();
+        pageScope = $rootScope.$new();
+        pageScope.move = function () {};
+
+        element = angular.element('<game-pad move-handler="move" class="some classes"></game-pad>');
+        element = $compile(element)(pageScope);
+        pageScope.$digest();
 
         scope = element.isolateScope();
     }));
@@ -24,6 +26,10 @@ describe('Directive: gamePad', function () {
         var classes = element.find('table').attr('class');
         expect(classes).toContain('some');
         expect(classes).toContain('classes');
+    });
+
+    it('should short-circuit move handler to use the function passed in.', function () {
+        expect(scope.moveHandler).toBe(pageScope.move);
     });
 
 });

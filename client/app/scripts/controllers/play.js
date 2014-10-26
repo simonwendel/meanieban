@@ -13,11 +13,15 @@ angular.module('meanieBanApp')
         $scope.moves = 0;
         $scope.skin = availableSkins[0];
 
+        $scope.move = function (direction) {
+            $scope.game.move(direction);
+            $scope.moves = game.moves();
+        };
+
         $scope.keydown = function (event) {
             var direction = keyCodeToDirectionMap[event.keyCode];
             if (direction) {
-                $scope.game.move(direction);
-                $scope.moves = game.moves();
+                $scope.move(direction);
                 $scope.$apply();
             }
         };

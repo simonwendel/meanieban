@@ -52,40 +52,52 @@ describe('Controller: PlayCtrl', function () {
         expect(scope.keydown instanceof Function).toBeTruthy();
     });
 
-    it('should use the Game move function when key-down handler is called.', function () {
-        spyOn(scope.game, 'move').andCallThrough();
+    it('should have a move function in scope.', function () {
+        expect(scope.move instanceof Function).toBeTruthy();
+    });
 
-        // 39 -> right
-        scope.keydown({keyCode: 39});
+    it('should call the Game move function when move is called.', function () {
+        spyOn(scope.game, 'move');
 
-        expect(scope.game.move).toHaveBeenCalledWith('right');
+        scope.move('left');
+
         expect(scope.game.move.callCount).toBe(1);
-    });
-
-    it('should not use the Game move function when key-down handler is called with non-arrow-key.', function () {
-        spyOn(scope.game, 'move').andCallThrough();
-
-        // 188 -> comma
-        scope.keydown({keyCode: 188});
-
-        expect(scope.game.move.callCount).toBe(0);
-    });
-
-    it('should re-render grid after move is done.', function () {
-        spyOn(scope, '$apply').andCallThrough();
-
-        // 39 -> right
-        scope.keydown({keyCode: 39});
-        expect(scope.$apply.callCount).toBe(1);
     });
 
     it('should update moves from Game after move is done.', function () {
         spyOn(scope.game, 'moves').andReturn(1);
 
-        // 39 -> right
-        scope.keydown({keyCode: 39});
+        scope.move('right');
+
         expect(scope.moves).toBe(1);
         expect(scope.game.moves.callCount).toBe(1);
+    });
+
+    it('should call the move function when key-down handler is called with arrow key.', function () {
+        spyOn(scope, 'move');
+
+        // 39 -> right
+        scope.keydown({keyCode: 39});
+
+        expect(scope.move).toHaveBeenCalledWith('right');
+        expect(scope.move.callCount).toBe(1);
+    });
+
+    it('should not call the move function when key-down handler is called with non-arrow-key.', function () {
+        spyOn(scope, 'move');
+
+        // 188 -> comma
+        scope.keydown({keyCode: 188});
+
+        expect(scope.move.callCount).toBe(0);
+    });
+
+    it('should re-render grid after keydown is done.', function () {
+        spyOn(scope, '$apply').andCallThrough();
+
+        // 39 -> right
+        scope.keydown({keyCode: 39});
+        expect(scope.$apply.callCount).toBe(1);
     });
 
 });

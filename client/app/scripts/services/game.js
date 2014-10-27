@@ -1,93 +1,95 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .factory('Game', function (Level, Rules, deltaUtility) {
+    .factory('Game',
+    ['Level', 'Rules', 'deltaUtility',
+        function (Level, Rules, deltaUtility) {
 
-        return function (level) {
-            if (level === undefined) {
-                throw new Error('Parameter level to constructor function cannot be undefined.');
-            }
-
-            if (!(level instanceof Level)) {
-                throw new Error('Parameter level to constructor function must be an instance of Level.');
-            }
-
-            this.move = move;
-
-            this.moves = moves;
-
-            this.grid = grid;
-
-            this.isFinished = isFinished;
-
-            // implementation //
-
-            var numberOfMoves = 0;
-
-            function move(direction) {
-                var tiles = getTiles(direction);
-                var charArray = tiles.map(function (element) {
-                    return element.tile;
-                });
-
-                var newMove = Rules.tryMove(charArray);
-                if (newMove) {
-                    numberOfMoves++;
-                    updateTiles(tiles, newMove);
-                    updatePlayer(direction);
+            return function (level) {
+                if (level === undefined) {
+                    throw new Error('Parameter level to constructor function cannot be undefined.');
                 }
-            }
 
-            function moves() {
-                return numberOfMoves;
-            }
+                if (!(level instanceof Level)) {
+                    throw new Error('Parameter level to constructor function must be an instance of Level.');
+                }
 
-            function grid() {
-                return level.grid();
-            }
+                this.move = move;
 
-            function isFinished() {
-                return !level.inspect(Rules.isOpenDock);
-            }
+                this.moves = moves;
 
-            function getTiles(direction) {
-                var delta = deltaUtility.compute(direction);
+                this.grid = grid;
 
-                var tiles = [];
+                this.isFinished = isFinished;
 
-                var x = level.worker().location.x;
-                var y = level.worker().location.y;
+                // implementation //
 
-                addTile(x, y, tiles);
-                addTile(x + delta.x, y + delta.y, tiles);
-                addTile(x + 2 * delta.x, y + 2 * delta.y, tiles);
+                var numberOfMoves = 0;
 
-                return tiles;
-            }
+                function move(direction) {
+                    var tiles = getTiles(direction);
+                    var charArray = tiles.map(function (element) {
+                        return element.tile;
+                    });
 
-            function addTile(x, y, tiles) {
-                if (grid()[y] && grid()[y][x]) {
-                    tiles.push({
-                        x: x,
-                        y: y,
-                        tile: grid()[y][x]
+                    var newMove = Rules.tryMove(charArray);
+                    if (newMove) {
+                        numberOfMoves++;
+                        updateTiles(tiles, newMove);
+                        updatePlayer(direction);
+                    }
+                }
+
+                function moves() {
+                    return numberOfMoves;
+                }
+
+                function grid() {
+                    return level.grid();
+                }
+
+                function isFinished() {
+                    return !level.inspect(Rules.isOpenDock);
+                }
+
+                function getTiles(direction) {
+                    var delta = deltaUtility.compute(direction);
+
+                    var tiles = [];
+
+                    var x = level.worker().location.x;
+                    var y = level.worker().location.y;
+
+                    addTile(x, y, tiles);
+                    addTile(x + delta.x, y + delta.y, tiles);
+                    addTile(x + 2 * delta.x, y + 2 * delta.y, tiles);
+
+                    return tiles;
+                }
+
+                function addTile(x, y, tiles) {
+                    if (grid()[y] && grid()[y][x]) {
+                        tiles.push({
+                            x: x,
+                            y: y,
+                            tile: grid()[y][x]
+                        });
+                    }
+                }
+
+                function updateTiles(tiles, newMove) {
+                    tiles.forEach(function (tile, index) {
+                        var x = tile.x;
+                        var y = tile.y;
+                        level.update(x, y, newMove[index]);
                     });
                 }
-            }
 
-            function updateTiles(tiles, newMove) {
-                tiles.forEach(function (tile, index) {
-                    var x = tile.x;
-                    var y = tile.y;
-                    level.update(x, y, newMove[index]);
-                });
-            }
+                function updatePlayer(direction) {
+                    var delta = deltaUtility.compute(direction);
+                    var worker = level.worker();
+                    worker.update(delta);
+                }
+            };
 
-            function updatePlayer(direction) {
-                var delta = deltaUtility.compute(direction);
-                var worker = level.worker();
-                worker.update(delta);
-            }
-        };
-
-    });
+        }]);

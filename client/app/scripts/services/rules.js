@@ -16,31 +16,33 @@
  My own: There is also the special case of 0 -> void.
  */
 angular.module('meanieBanApp')
-    .service('Rules', function Rules(validMoves, tileUtility) {
+    .service('Rules',
+    ['validMoves', 'tileUtility',
+        function (validMoves, tileUtility) {
 
-        this.isOpenDock = isOpenDock;
+            this.isOpenDock = isOpenDock;
 
-        this.tryMove = tryMove;
+            this.tryMove = tryMove;
 
-        // implementation //
+            // implementation //
 
-        function isOpenDock(tile) {
-            return tile === tileUtility.stringToChar('dock') ||
-                tile === tileUtility.stringToChar('worker-docked');
-        }
-
-        function tryMove(state) {
-            if (!Array.isArray(state)) {
-                throw new Error('Input state is not an Array.');
+            function isOpenDock(tile) {
+                return tile === tileUtility.stringToChar('dock') ||
+                    tile === tileUtility.stringToChar('worker-docked');
             }
 
-            var string = tileUtility.compoundChars(state);
-            var move = validMoves[string];
-            if (move) {
-                return tileUtility.expandChars(move);
+            function tryMove(state) {
+                if (!Array.isArray(state)) {
+                    throw new Error('Input state is not an Array.');
+                }
+
+                var string = tileUtility.compoundChars(state);
+                var move = validMoves[string];
+                if (move) {
+                    return tileUtility.expandChars(move);
+                }
+
+                return false;
             }
 
-            return false;
-        }
-
-    });
+        }]);

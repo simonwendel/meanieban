@@ -9,4 +9,23 @@
     td {
         padding: 2px;
     }
+
+    /* a class to make the arrows in the game-pad not
+       becoming selected if you click them too fast.
+       according to http://caniuse.com/#feat=user-select-none
+       this works on all but Opera Mini and IE < 10. Looks
+       way better than doing it by JavaScript. */
+    .unselectable {
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+
+        /*
+          Introduced in IE 10.
+          See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+        */
+        -ms-user-select: none;
+        user-select: none;
+    }
 }

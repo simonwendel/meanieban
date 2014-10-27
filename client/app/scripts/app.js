@@ -2,12 +2,7 @@
 
 angular
     .module('meanieBanApp', [
-        'ngAnimate',
-        'ngCookies',
-        'ngResource',
-        'ngRoute',
-        'ngSanitize',
-        'ngTouch'
+        'ngRoute'
     ])
     .config(
     ['$routeProvider',

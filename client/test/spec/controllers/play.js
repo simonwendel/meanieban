@@ -100,4 +100,10 @@ describe('Controller: PlayCtrl', function () {
         expect(scope.$apply.callCount).toBe(1);
     });
 
+    it('should have a finished function returning isFinished from Game.', function () {
+        spyOn(scope.game, 'isFinished').andReturn(true);
+        expect(scope.gameIsFinished()).toBe(true);
+        expect(scope.game.isFinished.callCount).toBe(1);
+    });
+
 });

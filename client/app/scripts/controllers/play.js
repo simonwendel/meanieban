@@ -13,6 +13,10 @@ angular.module('meanieBanApp')
         $scope.moves = 0;
         $scope.skin = availableSkins[0];
 
+        $scope.gameIsFinished = function () {
+            return game.isFinished();
+        };
+
         $scope.move = function (direction) {
             $scope.game.move(direction);
             $scope.moves = game.moves();

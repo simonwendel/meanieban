@@ -6,17 +6,23 @@ describe('Directive: gamePad', function () {
 
     beforeEach(module('views/directives/game-pad.html'));
 
+    beforeEach(function () {
+        buildUp(function () {});
+    });
+
     var element, scope, pageScope;
-    beforeEach(inject(function ($rootScope, $compile) {
-        pageScope = $rootScope.$new();
-        pageScope.move = function () {};
+    function buildUp(move) {
+        inject(function ($rootScope, $compile) {
+            pageScope = $rootScope.$new();
+            pageScope.move = move;
 
-        element = angular.element('<game-pad move-handler="move" class="some classes"></game-pad>');
-        element = $compile(element)(pageScope);
-        pageScope.$digest();
+            element = angular.element('<game-pad move="move" class="some classes"></game-pad>');
+            element = $compile(element)(pageScope);
+            pageScope.$digest();
 
-        scope = element.isolateScope();
-    }));
+            scope = element.isolateScope();
+        });
+    }
 
     it('should be defined.', function () {
         expect(element.html()).toBeDefined();
@@ -28,8 +34,14 @@ describe('Directive: gamePad', function () {
         expect(classes).toContain('classes');
     });
 
-    it('should short-circuit move handler to use the function passed in.', function () {
-        expect(scope.moveHandler).toBe(pageScope.move);
+    it('should have a handler function attached to scope.', function () {
+        expect(scope.move instanceof Function).toBeTruthy();
+    });
+
+    it('should throw exception if the attached move is not a function.', function () {
+        expect(function () {
+            buildUp({});
+        }).toThrow('Passed-in move is not a Function.');
     });
 
 });

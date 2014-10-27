@@ -7,7 +7,7 @@ describe('Controller: PlayCtrl', function () {
     var scope, routeParams, LevelCollection, levelGrid, availableSkins;
     beforeEach(inject(function ($controller, $rootScope, smallestSolvable, Game, Level, keyCodeToDirectionMap, _availableSkins_) {
         scope = $rootScope.$new();
-        routeParams = { id: 6 };
+        routeParams = {id: 6};
 
         levelGrid = smallestSolvable;
         LevelCollection = {
@@ -15,7 +15,7 @@ describe('Controller: PlayCtrl', function () {
             }
         };
 
-        spyOn(LevelCollection, 'get').andReturn({ rows: levelGrid });
+        spyOn(LevelCollection, 'get').andReturn({rows: levelGrid});
 
         availableSkins = _availableSkins_;
 

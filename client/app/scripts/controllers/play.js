@@ -32,4 +32,8 @@ angular.module('meanieBanApp')
                 }
             };
 
+            $scope.setSkin = function (skin) {
+                $scope.skin = skin;
+            };
+
         }]);

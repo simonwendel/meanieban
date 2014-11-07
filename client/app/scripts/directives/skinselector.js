@@ -2,6 +2,7 @@
 
 angular.module('meanieBanApp')
     .directive('skinSelector', ['availableSkins', function (availableSkins) {
+
         return {
             templateUrl: 'views/directives/skin-selector.html',
             restrict: 'E',
@@ -12,4 +13,5 @@ angular.module('meanieBanApp')
                 $scope.skins = availableSkins;
             }]
         };
+
     }]);

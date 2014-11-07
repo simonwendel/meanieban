@@ -1,9 +1,15 @@
 'use strict';
 
 angular.module('meanieBanApp')
-    .directive('skinSelector', function () {
+    .directive('skinSelector', ['availableSkins', function (availableSkins) {
         return {
-            template: '',
-            restrict: 'E'
+            templateUrl: 'views/directives/skin-selector.html',
+            restrict: 'E',
+            scope: {
+                callback : '='
+            },
+            controller: ['$scope', function ($scope) {
+                $scope.skins = availableSkins;
+            }]
         };
-    });
+    }]);

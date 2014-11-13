@@ -7,10 +7,12 @@ angular.module('meanieBanApp')
             templateUrl: 'views/directives/skin-selector.html',
             restrict: 'E',
             scope: {
-                callback : '='
+                callback: '='
             },
             controller: ['$scope', function ($scope) {
-                $scope.skins = availableSkins;
+                if (!$scope.skins) {
+                    $scope.skins = availableSkins;
+                }
             }]
         };
 

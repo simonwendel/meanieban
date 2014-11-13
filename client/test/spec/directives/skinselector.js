@@ -2,16 +2,33 @@
 
 describe('Directive: skinSelector', function () {
 
-    beforeEach(module('meanieBanApp'));
+    var skins;
+    beforeEach(module('meanieBanApp', function ($provide) {
+        skins = ['1', '2'];
+        $provide.value('availableSkins', skins);
+    }));
+
+    beforeEach(module('views/directives/skin-selector.html'));
 
     var element, scope;
     beforeEach(inject(function ($rootScope, $compile) {
-        scope = $rootScope.$new();
-        element = angular.element('<skin-selector></skin-selector>');
-        element = $compile(element)(scope);
+        var pageScope = $rootScope.$new();
+        pageScope.someFunction = function () {
+        };
+
+        element = angular.element('<skin-selector callback="someFunction"></skin-selector>');
+        element = $compile(element)(pageScope);
+
+        pageScope.$digest();
+        scope = element.isolateScope();
     }));
 
-    it('should make hidden element visible', function () {
+    it('should compile', function () {
         expect(element).toBeDefined();
     });
+
+    it('should have a collection of skins attached to scope.', function () {
+        expect(scope.skins).toBe(skins);
+    });
+
 });

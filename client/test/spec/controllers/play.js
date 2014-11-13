@@ -112,4 +112,21 @@ describe('Controller: PlayCtrl', function () {
         expect(scope.skin).toBe(skin);
     });
 
+    it('should check if game is finished and move if not.', function () {
+        spyOn(scope.game, 'move');
+        spyOn(scope.game, 'isFinished').andReturn(false);
+        scope.move('up');
+
+        expect(scope.game.move.callCount).toBe(1);
+        expect(scope.game.move).toHaveBeenCalledWith('up');
+    });
+
+    it('should check if game is finished and not move if it is.', function () {
+        spyOn(scope.game, 'move');
+        spyOn(scope.game, 'isFinished').andReturn(true);
+        scope.move('up');
+
+        expect(scope.game.move.callCount).toBe(0);
+    });
+
 });

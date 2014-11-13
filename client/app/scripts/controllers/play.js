@@ -20,8 +20,10 @@ angular.module('meanieBanApp')
             };
 
             $scope.move = function (direction) {
-                $scope.game.move(direction);
-                $scope.moves = game.moves();
+                if (!game.isFinished()) {
+                    $scope.game.move(direction);
+                    $scope.moves = game.moves();
+                }
             };
 
             $scope.keydown = function (event) {

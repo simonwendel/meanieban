@@ -106,4 +106,10 @@ describe('Controller: PlayCtrl', function () {
         expect(scope.game.isFinished.callCount).toBe(1);
     });
 
+    it('should have a function to set the skin.', function () {
+        var skin = 'blah';
+        scope.setSkin(skin);
+        expect(scope.skin).toBe(skin);
+    });
+
 });

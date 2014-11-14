@@ -42,6 +42,10 @@ body {
   padding: 0.2em 0;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 // FOOTER
 .footer, .footer a {
   color: $footer-text-color;

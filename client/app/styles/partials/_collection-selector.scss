@@ -1,0 +1,9 @@
+$collection-selector-text-color: $text-color !default;
+$collection-selector-bg-color: $brand-primary !default;
+
+select#collection-selector {
+    color: $collection-selector-text-color;
+    background: $collection-selector-bg-color;
+    border: 0;
+    border-radius: 10px;
+}

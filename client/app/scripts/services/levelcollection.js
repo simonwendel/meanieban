@@ -18,11 +18,14 @@ angular.module('meanieBanApp')
                 names.forEach(function (name) {
                     output.push({
                         name: name,
-                        levels: levelData.map(function (level) {
-                            if (level.collection === name) {
+                        levels: levelData
+                            .filter(function (level) {
+                                return level.collection === name;
+                            })
+                            .map(function (level) {
                                 return {id: level.id};
-                            }
-                        })
+                            })
+
                     });
                 });
 

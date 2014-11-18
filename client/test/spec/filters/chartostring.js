@@ -23,7 +23,7 @@ describe('Filter: charToString', function () {
         charToString = $filter('charToString');
     }));
 
-    it('should return use the tileUtility to get some value.', function () {
+    it('should use the tileUtility to get some value.', function () {
         expect(charToString('whatever')).toBe(returnValue);
         expect(utilityMock.charToString.callCount).toBe(1);
     });

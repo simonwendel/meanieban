@@ -9,8 +9,8 @@ angular
         function ($routeProvider) {
 
             $routeProvider
-                .when('/', {
-                    templateUrl: 'views/start.html'
+                .when('/home', {
+                    templateUrl: 'views/home.html'
                 })
                 .when('/attribution', {
                     templateUrl: 'views/attribution.html'
@@ -20,7 +20,7 @@ angular
                     controller: 'PlayCtrl'
                 })
                 .otherwise({
-                    redirectTo: '/'
+                    redirectTo: '/home'
                 });
 
         }]);

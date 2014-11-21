@@ -15,6 +15,10 @@ angular
                 .when('/attribution', {
                     templateUrl: 'views/attribution.html'
                 })
+                .when('/start', {
+                    templateUrl: 'views/start.html',
+                    controller: 'StartCtrl'
+                })
                 .when('/play/:id', {
                     templateUrl: 'views/play.html',
                     controller: 'PlayCtrl'

@@ -97,4 +97,20 @@ describe('Service: LevelCollection', function () {
 
     });
 
+    describe('LevelCollection.getCollection', function () {
+
+        it('should return a collection of levels within the same collection.', function () {
+            var expected = [{ id: -2}, { id: -3}];
+            var actual = LevelCollection.collectionIds('Coll 1');
+            expect(actual).toEqual(expected);
+        });
+
+        it('should return empty collection if no collection with given name.', function () {
+            var expected = [];
+            var actual = LevelCollection.collectionIds('Coll Not Found');
+            expect(actual).toEqual(expected);
+        });
+
+    });
+
 });

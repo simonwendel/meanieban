@@ -7,6 +7,8 @@ angular.module('meanieBanApp')
 
             this.collections = collections;
 
+            this.collectionIds = collectionIds;
+
             this.get = get;
 
             // implementation //
@@ -30,6 +32,19 @@ angular.module('meanieBanApp')
                 });
 
                 return output;
+            }
+
+            function collectionIds(name) {
+                var filtered =  collections()
+                    .filter(function (coll) {
+                        return coll.name === name;
+                    })
+                    .map(function (coll) {
+                        return coll.levels;
+                    });
+
+                // flatten the array
+                return arrayUtility.flatten(filtered);
             }
 
             function get(id) {

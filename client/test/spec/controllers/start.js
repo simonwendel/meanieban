@@ -12,4 +12,8 @@ describe('Controller: StartCtrl', function () {
         });
     }));
 
+    it('should have a go function function attached to scope.', function () {
+        expect(scope.go instanceof Function).toBeTruthy();
+    });
+
 });

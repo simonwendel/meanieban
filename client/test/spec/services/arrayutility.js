@@ -73,4 +73,18 @@ describe('Service: arrayUtility', function () {
         });
     });
 
+    describe('flatten', function () {
+        it('should flatten an array of several dimensions once.', function () {
+            var array = [[1], [2, 3], [[4, 5], [6, 7]]];
+            expect(arrayUtility.flatten(array)).toEqual([1, 2, 3, [4, 5], [6, 7]]);
+        });
+
+        it('should be repeatable until an array is fully flat.', function () {
+            var array = [[1], [2, 3], [[4, 5], [6, 7]]];
+
+            array = arrayUtility.flatten(array);
+            expect(arrayUtility.flatten(array)).toEqual([1, 2, 3, 4, 5, 6, 7]);
+        });
+    });
+
 });

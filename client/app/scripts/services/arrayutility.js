@@ -41,10 +41,15 @@ angular.module('meanieBanApp')
             return undefined;
         }
 
+        function flatten(array) {
+            return [].concat.apply([], array);
+        }
+
         return {
             getUniqueValuesOf: getUniqueValuesOf,
             convert: convert,
-            get2dIndexOf: get2dIndexOf
+            get2dIndexOf: get2dIndexOf,
+            flatten: flatten
         };
 
     });

@@ -1,4 +1,5 @@
 {
+    "freeze": true,
     "maxerr": 500,
     "node": true,
     "browser": true,
@@ -15,18 +16,18 @@
     "quotmark": "single",
     "regexp": true,
     "undef": true,
-    "unused": true,
+    "unused": "strict",
     "strict": true,
     "trailing": true,
     "smarttabs": true,
     "forin": true,
-    "noempty": false,
+    "noempty": true,
     "nonew": true,
     "plusplus": false,
+    "jquery": true,
+    "nonbsp": true,
     "globals": {
-        "angular": false,
-        "$": true,
-        "jQuery": true
+        "angular": true
     },
     "-W026": false
 }

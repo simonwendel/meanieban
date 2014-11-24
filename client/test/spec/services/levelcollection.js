@@ -2,7 +2,10 @@
 
 describe('Service: LevelCollection', function () {
 
-    var levelDataMock;
+    var levelDataMock,
+        LevelCollection,
+        tileUtility;
+
     beforeEach(
         module('meanieBanApp', function ($provide) {
             levelDataMock = [
@@ -28,7 +31,6 @@ describe('Service: LevelCollection', function () {
             $provide.value('levelData', levelDataMock);
         }));
 
-    var LevelCollection, tileUtility;
     beforeEach(inject(function (_LevelCollection_, _tileUtility_) {
         LevelCollection = _LevelCollection_;
         tileUtility = _tileUtility_;
@@ -97,7 +99,7 @@ describe('Service: LevelCollection', function () {
 
     });
 
-    describe('LevelCollection.getCollection', function () {
+    describe('LevelCollection.collectionIds', function () {
 
         it('should return a collection of levels within the same collection.', function () {
             var expected = [{ id: -2}, { id: -3}];

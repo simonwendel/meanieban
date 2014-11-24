@@ -9,6 +9,15 @@ angular.module('meanieBanApp')
                 selected: '='
             },
             controller: ['$scope', function ($scope) {
+                $scope.renderLabel = function (col) {
+                    var levelCount = ' level';
+                    if(col.levels.length > 1) {
+                        levelCount += 's';
+                    }
+
+                    return col.name + ' - ' + col.levels.length + levelCount;
+                };
+
                 $scope.collections = LevelCollection.collections();
                 $scope.selected = $scope.collections[0].name;
             }]

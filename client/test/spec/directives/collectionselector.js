@@ -52,4 +52,12 @@ describe('Directive: collectionSelector', function () {
         expect(scope.selected).toBe(pageScope.selected);
     });
 
+    it('should have a renderLabel function that renders the option label with single level.', function () {
+        expect(scope.renderLabel(collections[1])).toBe('Mini - 1 level');
+    });
+
+    it('should have a renderLabel function that renders the option label with multiple levels.', function () {
+        expect(scope.renderLabel(collections[0])).toBe('Sasquatch - 3 levels');
+    });
+
 });

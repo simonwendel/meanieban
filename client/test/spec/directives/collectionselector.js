@@ -2,12 +2,15 @@
 
 describe('Directive: collectionSelector', function () {
 
-    var collections, mockLevelCollection;
+    var collections,
+        mockLevelCollection,
+        scope,
+        pageScope;
+
     beforeEach(module('meanieBanApp', function ($provide) {
         collections = [
-            {id: 1, width: 1, height: 1, collection: 'Sasquatch', rows: [[0]]},
-            {id: 2, width: 1, height: 1, collection: 'Sasquatch', rows: [[0]]},
-            {id: 3, width: 1, height: 1, collection: 'Sasquatch', rows: [[0]]}
+            {name: 'Sasquatch', levels: [{id: 1}, {id: 2}, {id: 3}]},
+            {name: 'Mini', levels: [{id: 1}]}
         ];
 
         mockLevelCollection = {
@@ -21,12 +24,15 @@ describe('Directive: collectionSelector', function () {
 
     beforeEach(module('views/directives/collection-selector.html'));
 
-    var scope;
     beforeEach(inject(function ($rootScope, $compile) {
+        var element = angular.element(
+            '<collection-selector selected="selected"></collection-selector>');
+
         spyOn(mockLevelCollection, 'collections').andCallThrough();
 
-        var pageScope = $rootScope.$new();
-        var element = angular.element('<collection-selector></collection-selector>');
+        pageScope = $rootScope.$new();
+        pageScope.selected = {};
+
         element = $compile(element)(pageScope);
 
         pageScope.$digest();
@@ -37,4 +43,13 @@ describe('Directive: collectionSelector', function () {
         expect(scope.collections).toBe(collections);
         expect(mockLevelCollection.collections.callCount).toBe(1);
     });
+
+    it('should attach the name of the first level returned to the selected property.', function () {
+        expect(scope.selected).toBe(collections[0].name);
+    });
+
+    it('should pass the name of the selected level out to the pageScope.', function () {
+        expect(scope.selected).toBe(pageScope.selected);
+    });
+
 });

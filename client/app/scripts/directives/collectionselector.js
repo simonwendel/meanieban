@@ -5,9 +5,12 @@ angular.module('meanieBanApp')
         return {
             templateUrl: 'views/directives/collection-selector.html',
             restrict: 'E',
-            scope: {},
+            scope: {
+                selected: '='
+            },
             controller: ['$scope', function ($scope) {
                 $scope.collections = LevelCollection.collections();
+                $scope.selected = $scope.collections[0].name;
             }]
         };
     }]);

@@ -5,10 +5,10 @@ angular.module('meanieBanApp')
     ['$scope', '$routeParams', 'LevelCollection', 'Game', 'Level', 'keyCodeToDirectionMap', 'availableSkins',
         function ($scope, $routeParams, LevelCollection, Game, Level, keyCodeToDirectionMap, availableSkins) {
 
-            var currentId = parseInt($routeParams.id);
-            var levelData = LevelCollection.get(currentId);
-            var level = new Level(levelData.rows);
-            var game = new Game(level);
+            var first = parseInt($routeParams.first),
+                levelData = LevelCollection.get(first),
+                level = new Level(levelData.rows),
+                game = new Game(level);
 
             $scope.game = game;
             $scope.grid = game.grid();

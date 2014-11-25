@@ -2,12 +2,17 @@
 
 describe('Controller: PlayCtrl', function () {
 
+    var scope,
+        routeParams,
+        LevelCollection,
+        levelGrid,
+        availableSkins;
+
     beforeEach(module('meanieBanApp'));
 
-    var scope, routeParams, LevelCollection, levelGrid, availableSkins;
     beforeEach(inject(function ($controller, $rootScope, smallestSolvable, Game, Level, keyCodeToDirectionMap, _availableSkins_) {
         scope = $rootScope.$new();
-        routeParams = {id: 6};
+        routeParams = {first: 6, last: 8};
 
         levelGrid = smallestSolvable;
         LevelCollection = {
@@ -36,7 +41,7 @@ describe('Controller: PlayCtrl', function () {
 
     it('should get level data from the LevelCollection.', function () {
         expect(LevelCollection.get.callCount).toBe(1);
-        expect(LevelCollection.get).toHaveBeenCalledWith(routeParams.id);
+        expect(LevelCollection.get).toHaveBeenCalledWith(routeParams.first);
     });
 
     it('should have a new Game attached to scope.', inject(function (Game) {

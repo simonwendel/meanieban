@@ -19,7 +19,7 @@ angular
                     templateUrl: 'views/start.html',
                     controller: 'StartCtrl'
                 })
-                .when('/play/:id', {
+                .when('/play/:first-:last', {
                     templateUrl: 'views/play.html',
                     controller: 'PlayCtrl'
                 })

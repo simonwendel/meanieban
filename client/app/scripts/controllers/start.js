@@ -2,7 +2,9 @@
 
 angular.module('meanieBanApp')
     .controller('StartCtrl', ['$scope', '$location', 'LevelCollection', function ($scope, $location, LevelCollection) {
-        $scope.collection = {};
+        $scope.collectionName = function (name) {
+            $scope.collection = name;
+        };
 
         $scope.play = function () {
             var levels = LevelCollection.collectionIds($scope.collection),

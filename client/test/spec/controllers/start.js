@@ -35,8 +35,9 @@ describe('Controller: StartCtrl', function () {
         });
     }));
 
-    it('should have a collection name attached to scope.', function () {
-        expect(scope.collection).toBeDefined();
+    it('should have a function to set collection name attached to scope.', function () {
+        scope.collectionName('blah');
+        expect(scope.collection).toBe('blah');
     });
 
     describe('play', function () {

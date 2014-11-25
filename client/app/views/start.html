@@ -1,9 +1,9 @@
 <narrow-page>
         <p>Please select a level collection:</p>
         <p>
-            <collection-selector selected="collection"></collection-selector>
+            <collection-selector selected-callback="collectionName"></collection-selector>
             <br/>
-            <a id="start-button" ng-click="play" class="btn btn-success">
+            <a id="start-button" ng-click="play()" class="btn btn-success">
                 Start!
             </a>
         </p>

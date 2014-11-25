@@ -26,12 +26,13 @@ describe('Directive: collectionSelector', function () {
 
     beforeEach(inject(function ($rootScope, $compile) {
         var element = angular.element(
-            '<collection-selector selected="selected"></collection-selector>');
+            '<collection-selector selected-callback="selected"></collection-selector>');
 
         spyOn(mockLevelCollection, 'collections').andCallThrough();
 
         pageScope = $rootScope.$new();
-        pageScope.selected = {};
+        pageScope.selected = function () {};
+        spyOn(pageScope, 'selected');
 
         element = $compile(element)(pageScope);
 
@@ -48,8 +49,9 @@ describe('Directive: collectionSelector', function () {
         expect(scope.selected).toBe(collections[0].name);
     });
 
-    it('should pass the name of the selected level out to the pageScope.', function () {
-        expect(scope.selected).toBe(pageScope.selected);
+    it('should call the selected-callback with the scope.selected on init.', function () {
+        expect(pageScope.selected.callCount).toBe(1);
+        expect(pageScope.selected).toHaveBeenCalledWith(scope.selected);
     });
 
     it('should have a renderLabel function that renders the option label with single level.', function () {

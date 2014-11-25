@@ -6,7 +6,7 @@ angular.module('meanieBanApp')
             templateUrl: 'views/directives/collection-selector.html',
             restrict: 'E',
             scope: {
-                selected: '='
+                selectedCallback: '='
             },
             controller: ['$scope', function ($scope) {
                 $scope.renderLabel = function (col) {
@@ -20,6 +20,7 @@ angular.module('meanieBanApp')
 
                 $scope.collections = LevelCollection.collections();
                 $scope.selected = $scope.collections[0].name;
+                $scope.selectedCallback($scope.selected);
             }]
         };
     }]);

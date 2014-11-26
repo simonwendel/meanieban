@@ -1,5 +1,8 @@
 'use strict';
 
+/* full of ugly data, so we will...*/
+/* jshint ignore:start */
+
 angular.module('meanieBanApp')
     .value('levelData', [
         {id: 0, width: 11, height: 11, collection: 'Sasquatch', rows: [
@@ -4920,3 +4923,5 @@ angular.module('meanieBanApp')
             [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7]
         ]}
     ]);
+
+/* jshint ignore:end */

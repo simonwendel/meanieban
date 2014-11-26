@@ -27,5 +27,8 @@
     "plusplus": false,
     "nonbsp": true,
     "noempty": false,
-    "nonew": true
+    "nonew": true,
+    "globals": [
+        "angular"
+    ]
 }

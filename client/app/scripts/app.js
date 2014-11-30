@@ -17,7 +17,8 @@ angular
                 })
                 .when('/start', {
                     templateUrl: 'views/start.html',
-                    controller: 'StartCtrl'
+                    controller: 'StartCtrl',
+                    controllerAs: 'vm'
                 })
                 .when('/play/:first-:last', {
                     templateUrl: 'views/play.html',

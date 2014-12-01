@@ -7,7 +7,7 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
@@ -74,7 +74,7 @@ module.exports = function (grunt) {
             livereload: {
                 options: {
                     open: true,
-                    middleware: function (connect) {
+                    middleware: function(connect) {
                         return [
                             connect.static('.tmp'),
                             connect().use(
@@ -89,7 +89,7 @@ module.exports = function (grunt) {
             test: {
                 options: {
                     port: 9001,
-                    middleware: function (connect) {
+                    middleware: function(connect) {
                         return [
                             connect.static('.tmp'),
                             connect.static('test'),
@@ -169,8 +169,7 @@ module.exports = function (grunt) {
 
         // Automatically inject Bower components into the app
         wiredep: {
-            options: {
-            },
+            options: {},
             app: {
                 src: ['<%= yeoman.app %>/index.html'],
                 ignorePath: /\.\.\//
@@ -323,10 +322,27 @@ module.exports = function (grunt) {
             }
         },
 
-        // ngmin tries to make the code safe for minification automatically by
-        // using the Angular long form for dependency injection. It doesn't work on
-        // things like resolve or inject so those have to be done manually.
-        ngmin: {
+        ngAnnotate: {
+            options: {
+                // Tells if ngAnnotate should add annotations (true by default).
+                add: true,
+
+                // Tells if ngAnnotate should remove annotations (false by
+                // default).
+                remove: false,
+
+                // If provided, only strings matched by the regexp are
+                // interpreted as module names. You can provide both a
+                // regular expression and a string representing
+                // one. See README of ng-annotate for further details:
+                // https://npmjs.org/package/ng-annotate
+                // regexp: regexp,
+
+                // Switches the quote type for strings in the annotations
+                // array to single ones; e.g. '$scope' instead of "$scope"
+                // (false by default).
+                singleQuotes: true
+            },
             dist: {
                 files: [
                     {
@@ -337,6 +353,7 @@ module.exports = function (grunt) {
                     }
                 ]
             }
+
         },
 
         // Replace Google CDN references
@@ -411,8 +428,7 @@ module.exports = function (grunt) {
         }
     });
 
-
-    grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
+    grunt.registerTask('serve', 'Compile then start a connect web server', function(target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'connect:dist:keepalive']);
         }
@@ -427,7 +443,7 @@ module.exports = function (grunt) {
         ]);
     });
 
-    grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
+    grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function(target) {
         grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
         grunt.task.run(['serve:' + target]);
     });
@@ -447,7 +463,7 @@ module.exports = function (grunt) {
         'concurrent:dist',
         'autoprefixer',
         'concat',
-        'ngmin',
+        'ngAnnotate',
         'copy:dist',
         'cdnify',
         'cssmin',

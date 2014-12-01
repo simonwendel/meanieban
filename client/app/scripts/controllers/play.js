@@ -1,41 +1,48 @@
-'use strict';
+;(function() {
+    'use strict';
 
-angular.module('meanieBanApp')
-    .controller('PlayCtrl',
-    ['$scope', '$routeParams', 'LevelCollection', 'Game', 'Level', 'keyCodeToDirectionMap', 'availableSkins',
-        function ($scope, $routeParams, LevelCollection, Game, Level, keyCodeToDirectionMap, availableSkins) {
+    angular.module('meanieBanApp')
+        .controller('PlayCtrl', PlayCtrl);
 
-            var first = parseInt($routeParams.first),
-                levelData = LevelCollection.get(first),
-                level = new Level(levelData.rows),
-                game = new Game(level);
+    /** @ngInject */
+    function PlayCtrl($scope, $routeParams, LevelCollection, Game, Level, keyCodeToDirectionMap, availableSkins) {
+        var vm = this,
+            first = parseInt($routeParams.first),
+            levelData = LevelCollection.get(first),
+            level = new Level(levelData.rows),
+            game = new Game(level);
 
-            $scope.game = game;
-            $scope.grid = game.grid();
-            $scope.moves = 0;
-            $scope.skin = availableSkins[0];
+        vm.game = game;
+        vm.grid = game.grid();
+        vm.moves = 0;
+        vm.skin = availableSkins[0];
+        vm.gameIsFinished = gameIsFinished;
+        vm.move = move;
+        vm.keydown = keydown;
+        vm.setSkin = setSkin;
 
-            $scope.gameIsFinished = function () {
-                return game.isFinished();
-            };
+        function gameIsFinished() {
+            return game.isFinished();
+        }
 
-            $scope.move = function (direction) {
-                if (!game.isFinished()) {
-                    $scope.game.move(direction);
-                    $scope.moves = game.moves();
-                }
-            };
+        function move(direction) {
+            if (!game.isFinished()) {
+                vm.game.move(direction);
+                vm.moves = game.moves();
+            }
+        }
 
-            $scope.keydown = function (event) {
-                var direction = keyCodeToDirectionMap[event.keyCode];
-                if (direction) {
-                    $scope.move(direction);
-                    $scope.$apply();
-                }
-            };
+        // TODO: hacked this for now until I find out how to $scope.$apply() without $scope ;-)
+        function keydown(event) {
+            var direction = keyCodeToDirectionMap[event.keyCode];
+            if (direction) {
+                vm.move(direction);
+                $scope.$apply();
+            }
+        }
 
-            $scope.setSkin = function (skin) {
-                $scope.skin = skin;
-            };
-
-        }]);
+        function setSkin(skin) {
+            vm.skin = skin;
+        }
+    }
+})();

@@ -22,7 +22,8 @@ angular
                 })
                 .when('/play/:first-:last', {
                     templateUrl: 'views/play.html',
-                    controller: 'PlayCtrl'
+                    controller: 'PlayCtrl',
+                    controllerAs: 'vm'
                 })
                 .otherwise({
                     redirectTo: '/home'

@@ -1,15 +1,15 @@
 <narrow-page>
-    <score-board counter="moves"></score-board>
+    <score-board counter="vm.moves"></score-board>
 </narrow-page>
 
 <narrow-page>
-    <skin-selector callback="setSkin"></skin-selector>
+    <skin-selector callback="vm.setSkin"></skin-selector>
 </narrow-page>
 
 <wide-page>
-    <sokoban-grid keydown="keydown" grid="grid" skin="skin" class="col-centered"></sokoban-grid>
+    <sokoban-grid keydown="vm.keydown" grid="vm.grid" skin="vm.skin" class="col-centered"></sokoban-grid>
 </wide-page>
 
 <narrow-page>
-    <game-pad move="move" class="col-centered"></game-pad>
+    <game-pad move="vm.move" class="col-centered"></game-pad>
 </narrow-page>

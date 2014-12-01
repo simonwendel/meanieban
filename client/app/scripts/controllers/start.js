@@ -5,6 +5,7 @@
         .module('meanieBanApp')
         .controller('StartCtrl', StartCtrl);
 
+    /** @ngInject */
     function StartCtrl($location, LevelCollection) {
         var vm = this;
 

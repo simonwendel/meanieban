@@ -1,2 +1,5 @@
-<select id="collection-selector" ng-change="selectedCallback(selected)" ng-model="selected" ng-options="col.name as renderLabel(col) for col in collections">
+<select id="collection-selector"
+        ng-change="vm.selectedCallback(vm.selected)"
+        ng-model="vm.selected"
+        ng-options="col.name as vm.renderLabel(col) for col in vm.collections">
 </select>

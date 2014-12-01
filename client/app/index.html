@@ -8,6 +8,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -26,7 +27,7 @@
     <div class="container">
         <div class="row">
             <div class="header">
-                <h3 class="logo"><a href="#/">MeanieBan!</a></h3>
+                <h3 id="logo"><a href="#/">MeanieBan!</a></h3>
             </div>
         </div>
 
@@ -124,5 +125,19 @@
 <script src="scripts/directives/collectionselector.js"></script>
 <script src="scripts/controllers/start.js"></script>
 <!-- endbuild -->
+
+<!-- TODO: Extract this messy shit from index.html and put it somewhere nice -->
+<script>
+    function animateLogo(x) {
+        $('#logo').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $(this).removeClass();
+        });
+    }
+
+    $(document).ready(function(){
+        animateLogo('rubberBand');
+    });
+</script>
+
 </body>
 </html>

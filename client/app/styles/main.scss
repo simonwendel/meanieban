@@ -4,7 +4,7 @@
 
 // $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
 // Remember this for all partials!
@@ -25,7 +25,7 @@ body {
 .header {
   border-bottom: 1px solid $content-border-color;
 
-  .logo {
+  #logo {
     color: $brand-primary;
     font-family: 'Kaushan Script', cursive;
     font-size: 5em;

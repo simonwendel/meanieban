@@ -8,7 +8,7 @@
 
     describe('Directive: collectionSelector', function() {
 
-        beforeEach(module('views/directives/collection-selector.html'));
+        beforeEach(module('views/directives/sw-collection-selector.html'));
 
         beforeEach(module('meanieBanApp', provideSetup));
 

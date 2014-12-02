@@ -7,7 +7,7 @@
 
     function collectionSelector() {
         return {
-            templateUrl: 'views/directives/collection-selector.html',
+            templateUrl: 'views/directives/sw-collection-selector.html',
             restrict: 'E',
             scope: {
                 selectedCallback: '='

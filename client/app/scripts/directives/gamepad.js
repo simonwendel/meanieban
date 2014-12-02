@@ -6,7 +6,7 @@
 
     function gamePad() {
         return {
-            templateUrl: 'views/directives/game-pad.html',
+            templateUrl: 'views/directives/sw-game-pad.html',
             restrict: 'E',
             scope: {
                 move: '='

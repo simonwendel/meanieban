@@ -8,7 +8,7 @@
 
     describe('Directive: gamePad', function() {
 
-        beforeEach(module('views/directives/game-pad.html'));
+        beforeEach(module('views/directives/sw-game-pad.html'));
 
         beforeEach(module('meanieBanApp'));
 

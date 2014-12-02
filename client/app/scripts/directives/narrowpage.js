@@ -1,12 +1,14 @@
-'use strict';
+;(function() {
+    'use strict';
 
-angular.module('meanieBanApp')
-    .directive('narrowPage', function () {
+    angular.module('meanieBanApp')
+        .directive('swNarrowPage', narrowPage);
 
+    function narrowPage() {
         return {
-            templateUrl: 'views/directives/narrow-page.html',
+            templateUrl: 'views/directives/sw-narrow-page.html',
             restrict: 'E',
             transclude: true
         };
-
-    });
+    }
+})();

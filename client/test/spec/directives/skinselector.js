@@ -1,34 +1,40 @@
-'use strict';
+;(function() {
+    'use strict';
 
-describe('Directive: skinSelector', function () {
+    var skins,
+        element,
+        scope;
 
-    var skins;
-    beforeEach(module('meanieBanApp', function ($provide) {
+    describe('Directive: skinSelector', function() {
+
+        beforeEach(module('views/directives/sw-skin-selector.html'));
+
+        beforeEach(module('meanieBanApp', provideSetup));
+
+        beforeEach(inject(fixtureSetup));
+
+        it('should have a collection of skins attached to scope.', function() {
+            expect(scope.vm.skins).toBe(skins);
+        });
+
+        it('should have a callback attached to scope.', function() {
+            expect(scope.vm.callback instanceof Function).toBeTruthy();
+        });
+    });
+
+    function provideSetup($provide) {
         skins = ['1', '2'];
         $provide.value('availableSkins', skins);
-    }));
+    }
 
-    beforeEach(module('views/directives/skin-selector.html'));
-
-    var element, scope;
-    beforeEach(inject(function ($rootScope, $compile) {
+    function fixtureSetup($rootScope, $compile) {
         var pageScope = $rootScope.$new();
-        pageScope.someFunction = function () {
+        pageScope.someFunction = function() {
         };
 
-        element = angular.element('<skin-selector callback="someFunction"></skin-selector>');
+        element = angular.element('<sw-skin-selector callback="someFunction"></sw-skin-selector>');
         element = $compile(element)(pageScope);
-
         pageScope.$digest();
         scope = element.isolateScope();
-    }));
-
-    it('should compile', function () {
-        expect(element).toBeDefined();
-    });
-
-    it('should have a collection of skins attached to scope.', function () {
-        expect(scope.skins).toBe(skins);
-    });
-
-});
+    }
+})();

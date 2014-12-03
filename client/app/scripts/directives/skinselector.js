@@ -1,19 +1,28 @@
-'use strict';
+;(function() {
+    'use strict';
 
-angular.module('meanieBanApp')
-    .directive('skinSelector', ['availableSkins', function (availableSkins) {
+    angular.module('meanieBanApp')
+        .directive('swSkinSelector', skinSelector);
 
+    function skinSelector() {
         return {
-            templateUrl: 'views/directives/skin-selector.html',
+            templateUrl: 'views/directives/sw-skin-selector.html',
             restrict: 'E',
             scope: {
                 callback: '='
             },
-            controller: ['$scope', function ($scope) {
-                if (!$scope.skins) {
-                    $scope.skins = availableSkins;
-                }
-            }]
+            controller: SkinSelectorCtrl,
+            controllerAs: 'vm'
         };
+    }
 
-    }]);
+    /** @ngInject */
+    function SkinSelectorCtrl($scope, availableSkins) {
+        var vm = this;
+
+        vm.callback = $scope.callback;
+        if (!vm.skins) {
+            vm.skins = availableSkins;
+        }
+    }
+})();

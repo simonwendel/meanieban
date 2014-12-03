@@ -1,14 +1,16 @@
-'use strict';
+;(function() {
+    'use strict';
 
-angular.module('meanieBanApp')
-    .directive('scoreBoard', function () {
+    angular.module('meanieBanApp')
+        .directive('swScoreBoard', scoreBoard);
 
+    function scoreBoard() {
         return {
-            template: '<div><span class="number-of-moves">Number of Moves: {{ counter }}</span></div>',
+            templateUrl: 'views/directives/sw-score-board.html',
             restrict: 'E',
             scope: {
                 counter: '='
             }
         };
-
-    });
+    }
+})();

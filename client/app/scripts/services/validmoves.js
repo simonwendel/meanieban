@@ -1,9 +1,11 @@
-'use strict';
+;(function() {
+    'use strict';
 
-// valid linear progressions between
-// states, (this : next).
-angular.module('meanieBanApp')
-    .value('validMoves', {
+    /**
+     * Holds all valid state transitions (current : next) of three
+     * character moves.
+     */
+    var validMoves = {
         '@ #': ' @#',
         '@  ': ' @ ',
         ' @ ': '  @',
@@ -34,4 +36,8 @@ angular.module('meanieBanApp')
         '+$.': '.@*',
         '+* ': '.+$',
         '+.$': '.+$'
-    });
+    };
+
+    angular.module('meanieBanApp')
+        .value('validMoves', validMoves);
+})();

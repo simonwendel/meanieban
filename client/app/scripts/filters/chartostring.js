@@ -1,12 +1,13 @@
-'use strict';
+;(function() {
+    'use strict';
 
-angular.module('meanieBanApp')
-    .filter('charToString',
-    ['tileUtility',
-        function (tileUtility) {
+    angular.module('meanieBanApp')
+        .filter('charToString', charToString);
 
-            return function (input) {
-                return tileUtility.charToString(input);
-            };
-
-        }]);
+    /** @ngInject */
+    function charToString(tileUtility) {
+        return function(input) {
+            return tileUtility.charToString(input);
+        };
+    }
+})();

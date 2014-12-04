@@ -1,104 +1,108 @@
-'use strict';
+;(function() {
+    'use strict';
 
-angular.module('meanieBanApp')
-    .factory('tileUtility',
-    ['arrayUtility',
-        function (arrayUtility) {
+    angular.module('meanieBanApp')
+        .factory('tileUtility', tileUtility);
 
-            var stringMappings = [
-                'void',
-                'floor',
-                'dock',
-                'box-docked',
-                'box',
-                'worker-docked',
-                'worker',
-                'wall'
-            ];
+    /** @ngInject */
+    function tileUtility(arrayUtility) {
+        arrUtil = arrayUtility;
 
-            var charMappings = [
-                '0',
-                ' ',
-                '.',
-                '*',
-                '$',
-                '+',
-                '@',
-                '#'
-            ];
+        return {
+            tileToChar: tileToChar,
+            tileGridToChars: tileGridToChars,
+            charToString: charToString,
+            stringToChar: stringToChar,
+            stringGridToChars: stringGridToChars,
+            compoundChars: compoundChars,
+            expandChars: expandChars,
+            isValidChar: isValidChar
+        };
+    }
 
-            function tileToChar(input) {
-                var char = charMappings[input];
-                if (char) {
-                    return char;
-                }
+    var stringMappings = [
+            'void',
+            'floor',
+            'dock',
+            'box-docked',
+            'box',
+            'worker-docked',
+            'worker',
+            'wall'
+        ],
+        charMappings = [
+            '0',
+            ' ',
+            '.',
+            '*',
+            '$',
+            '+',
+            '@',
+            '#'
+        ],
+        arrUtil;
 
-                throw new Error('Input must be an integer in [0,7].');
-            }
+    function tileToChar(input) {
+        var char = charMappings[input];
+        if (char) {
+            return char;
+        }
 
-            function tileGridToChars(grid) {
-                return arrayUtility.convert(grid, tileToChar);
-            }
+        throw new Error('Input must be an integer in [0,7].');
+    }
 
-            function charToString(input) {
-                if (typeof input !== 'string') {
-                    throw new Error('Only strings allowed as input.');
-                }
+    function tileGridToChars(grid) {
+        return arrUtil.convert(grid, tileToChar);
+    }
 
-                var index = charMappings.indexOf(input);
-                if (index > -1) {
-                    return stringMappings[index];
-                }
+    function charToString(input) {
+        if (typeof input !== 'string') {
+            throw new Error('Only strings allowed as input.');
+        }
 
-                throw new Error('That mapping does not exist.');
-            }
+        var index = charMappings.indexOf(input);
+        if (index > -1) {
+            return stringMappings[index];
+        }
 
-            function stringToChar(input) {
-                if (typeof input !== 'string') {
-                    throw new Error('Only strings allowed as input.');
-                }
+        throw new Error('That mapping does not exist.');
+    }
 
-                var index = stringMappings.indexOf(input);
-                if (index > -1) {
-                    return charMappings[index];
-                }
+    function stringToChar(input) {
+        if (typeof input !== 'string') {
+            throw new Error('Only strings allowed as input.');
+        }
 
-                throw new Error('That mapping does not exist.');
-            }
+        var index = stringMappings.indexOf(input);
+        if (index > -1) {
+            return charMappings[index];
+        }
 
-            function stringGridToChars(input) {
-                return arrayUtility.convert(input, stringToChar);
-            }
+        throw new Error('That mapping does not exist.');
+    }
 
-            function compoundChars(input) {
-                if (Array.isArray(input)) {
-                    return input.join('');
-                }
+    function stringGridToChars(input) {
+        return arrUtil.convert(input, stringToChar);
+    }
 
-                throw new Error('Input must be an Array.');
-            }
+    function compoundChars(input) {
+        if (Array.isArray(input)) {
+            return input.join('');
+        }
 
-            function expandChars(input) {
-                if (typeof input === 'string') {
-                    return input.split('');
-                }
+        throw new Error('Input must be an Array.');
+    }
 
-                throw new Error('Input must be a String.');
-            }
+    function expandChars(input) {
+        if (typeof input === 'string') {
+            return input.split('');
+        }
 
-            function isValidChar(input) {
-                return charMappings.indexOf(input) !== -1;
-            }
+        throw new Error('Input must be a String.');
+    }
 
-            return {
-                tileToChar: tileToChar,
-                tileGridToChars: tileGridToChars,
-                charToString: charToString,
-                stringToChar: stringToChar,
-                stringGridToChars: stringGridToChars,
-                compoundChars: compoundChars,
-                expandChars: expandChars,
-                isValidChar: isValidChar
-            };
+    function isValidChar(input) {
+        return charMappings.indexOf(input) !== -1;
+    }
 
-        }]);
+})();

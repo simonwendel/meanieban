@@ -1,4 +1,8 @@
-'use strict';
+(function() {
+    'use strict';
 
-angular.module('meanieBanApp')
-  .value('availableSkins', ['yoshi-32', 'simple-32']);
+    var availableSkins = ['yoshi-32', 'simple-32'];
+
+    angular.module('meanieBanApp')
+        .value('availableSkins', availableSkins);
+})();

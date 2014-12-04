@@ -1,16 +1,20 @@
-'use strict';
-
-describe('Service: availableSkins', function () {
-
-    beforeEach(module('meanieBanApp'));
+;(function() {
+    'use strict';
 
     var availableSkins;
-    beforeEach(inject(function (_availableSkins_) {
-        availableSkins = _availableSkins_;
-    }));
 
-    it('should have two default skins.', function () {
-        expect(availableSkins).toEqual(['yoshi-32', 'simple-32']);
+    describe('Service: availableSkins', function() {
+
+        beforeEach(module('meanieBanApp'));
+
+        beforeEach(inject(fixtureSetup));
+
+        it('should have two default skins.', function() {
+            expect(availableSkins).toEqual(['yoshi-32', 'simple-32']);
+        });
     });
 
-});
+    function fixtureSetup(_availableSkins_) {
+        availableSkins = _availableSkins_;
+    }
+})();

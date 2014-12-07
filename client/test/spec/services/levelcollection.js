@@ -2,27 +2,27 @@
     'use strict';
 
     var levelDataMock,
-        LevelCollection,
+        levelCollection,
         tileUtility;
 
-    describe('Service: LevelCollection', function() {
+    describe('Service: levelCollection', function() {
 
         beforeEach(module('meanieBanApp', provideSetup));
 
         beforeEach(inject(fixtureSetup));
 
-        describe('LevelCollection.collections', function() {
+        describe('levelCollection.collections', function() {
 
-            it('should return all level names from the LevelCollection.', function() {
-                var collections = LevelCollection.collections();
+            it('should return all level names from the levelCollection.', function() {
+                var collections = levelCollection.collections();
 
                 expect(collections.length).toBe(2);
                 expect(collections[0].name).toBe('Coll 2');
                 expect(collections[1].name).toBe('Coll 1');
             });
 
-            it('should return all level ids from the LevelCollection.', function() {
-                var collections = LevelCollection.collections();
+            it('should return all level ids from the levelCollection.', function() {
+                var collections = levelCollection.collections();
 
                 expect(collections.length).toBe(2);
                 expect(collections[0].levels).toEqual([{id: -1}]);
@@ -31,10 +31,10 @@
 
         });
 
-        describe('LevelCollection.get', function() {
+        describe('levelCollection.get', function() {
 
             it('should return a level by id.', function() {
-                var level = LevelCollection.get(-2);
+                var level = levelCollection.get(-2);
 
                 expect(level).toBeDefined();
                 expect(level.id).toBe(-2);
@@ -44,7 +44,7 @@
             it('should throw exception if input id is not an integer.', function() {
                 expect(function() {
 
-                    LevelCollection.get(-3.14);
+                    levelCollection.get(-3.14);
 
                 }).toThrow('Id is not an integer.');
             });
@@ -52,13 +52,13 @@
             it('should throw exception if input id is not a number.', function() {
                 expect(function() {
 
-                    LevelCollection.get('-2');
+                    levelCollection.get('-2');
 
                 }).toThrow('Id is not an integer.');
             });
 
             it('should translate the raw integer tiles into character representation.', function() {
-                var level = LevelCollection.get(-2);
+                var level = levelCollection.get(-2);
 
                 expect(level.rows).toEqual(tileUtility.tileGridToChars(levelDataMock[1].rows));
             });
@@ -66,25 +66,25 @@
             it('should throw exception if no level found by specified id.', function() {
                 expect(function() {
 
-                    LevelCollection.get(-8);
+                    levelCollection.get(-8);
 
                 }).toThrow('No level found by that id.');
             });
 
         });
 
-        describe('LevelCollection.collectionIds', function() {
+        describe('levelCollection.collectionIds', function() {
 
             it('should return a collection of levels within the same collection.', function() {
                 var expected = [{id: -2}, {id: -3}],
-                    actual = LevelCollection.collectionIds('Coll 1');
+                    actual = levelCollection.collectionIds('Coll 1');
 
                 expect(actual).toEqual(expected);
             });
 
             it('should return empty collection if no collection with given name.', function() {
                 var expected = [],
-                    actual = LevelCollection.collectionIds('Coll Not Found');
+                    actual = levelCollection.collectionIds('Coll Not Found');
 
                 expect(actual).toEqual(expected);
             });
@@ -123,8 +123,8 @@
         $provide.value('levelData', levelDataMock);
     }
 
-    function fixtureSetup(_LevelCollection_, _tileUtility_) {
-        LevelCollection = _LevelCollection_;
+    function fixtureSetup(_levelCollection_, _tileUtility_) {
+        levelCollection = _levelCollection_;
         tileUtility = _tileUtility_;
     }
 })();

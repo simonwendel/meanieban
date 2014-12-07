@@ -18,11 +18,11 @@
     }
 
     /** @ngInject */
-    function CollectionSelectorCtrl($scope, LevelCollection) {
+    function CollectionSelectorCtrl($scope, levelCollection) {
         var vm = this;
 
         vm.renderLabel = renderLabel;
-        vm.collections = LevelCollection.collections();
+        vm.collections = levelCollection.collections();
         vm.selected = vm.collections[0].name;
         vm.selectedCallback = $scope.selectedCallback;
 

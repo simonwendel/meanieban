@@ -4,7 +4,7 @@
     var PlayCtrl,
         scope,
         routeParams,
-        LevelCollection,
+        levelCollection,
         levelGrid,
         availableSkins;
 
@@ -18,9 +18,9 @@
             expect(PlayCtrl.skin).toBe(availableSkins[0]);
         });
 
-        it('should get level data from the LevelCollection.', function() {
-            expect(LevelCollection.get.callCount).toBe(1);
-            expect(LevelCollection.get).toHaveBeenCalledWith(routeParams.first);
+        it('should get level data from the levelCollection.', function() {
+            expect(levelCollection.get.callCount).toBe(1);
+            expect(levelCollection.get).toHaveBeenCalledWith(routeParams.first);
         });
 
         it('should have a new Game attached to scope.', inject(function(Game) {
@@ -120,19 +120,19 @@
         routeParams = {first: 6, last: 8};
 
         levelGrid = smallestSolvable;
-        LevelCollection = {
+        levelCollection = {
             get: function() {
             }
         };
 
-        spyOn(LevelCollection, 'get').andReturn({rows: levelGrid});
+        spyOn(levelCollection, 'get').andReturn({rows: levelGrid});
 
         availableSkins = _availableSkins_;
 
         PlayCtrl = $controller('PlayCtrl', {
             $scope: scope,
             $routeParams: routeParams,
-            LevelCollection: LevelCollection,
+            levelCollection: levelCollection,
             Game: Game,
             Level: Level,
             keyCodeToDirectionMap: keyCodeToDirectionMap,

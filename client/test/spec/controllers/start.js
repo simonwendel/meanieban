@@ -50,7 +50,7 @@
 
         StartCtrl = $controller('StartCtrl', {
             $location: locationSpy,
-            LevelCollection: levelCollectionMock
+            levelCollection: levelCollectionMock
         });
     }
 })();

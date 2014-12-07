@@ -2,10 +2,10 @@
     'use strict';
 
     angular.module('meanieBanApp')
-        .service('LevelCollection', LevelCollection);
+        .service('levelCollection', levelCollection);
 
     /** @ngInject */
-    function LevelCollection(levelData, arrayUtility, tileUtility) {
+    function levelCollection(levelData, arrayUtility, tileUtility) {
 
         this.collections = collections;
         this.collectionIds = collectionIds;

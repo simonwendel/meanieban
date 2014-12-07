@@ -6,7 +6,7 @@
         .controller('StartCtrl', StartCtrl);
 
     /** @ngInject */
-    function StartCtrl($location, LevelCollection) {
+    function StartCtrl($location, levelCollection) {
         var vm = this;
 
         vm.setCollectionName = setCollectionName;
@@ -17,7 +17,7 @@
         }
 
         function play() {
-            var levels = LevelCollection.collectionIds(vm.collection),
+            var levels = levelCollection.collectionIds(vm.collection),
                 first,
                 last;
 

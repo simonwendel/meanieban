@@ -5,10 +5,10 @@
         .controller('PlayCtrl', PlayCtrl);
 
     /** @ngInject */
-    function PlayCtrl($scope, $routeParams, LevelCollection, Game, Level, keyCodeToDirectionMap, availableSkins) {
+    function PlayCtrl($scope, $routeParams, levelCollection, Game, Level, keyCodeToDirectionMap, availableSkins) {
         var vm = this,
             first = parseInt($routeParams.first),
-            levelData = LevelCollection.get(first),
+            levelData = levelCollection.get(first),
             level = new Level(levelData.rows),
             game = new Game(level);
 

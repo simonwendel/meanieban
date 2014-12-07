@@ -3,7 +3,7 @@
 
     var scope,
         collections,
-        mockLevelCollection,
+        mocklevelCollection,
         pageScope;
 
     describe('Directive: collectionSelector', function() {
@@ -16,7 +16,7 @@
 
         it('should get all collections and attach them to scope.', function() {
             expect(scope.vm.collections).toBe(collections);
-            expect(mockLevelCollection.collections.callCount).toBe(1);
+            expect(mocklevelCollection.collections.callCount).toBe(1);
         });
 
         it('should attach the name of the first level returned to the selected property.', function() {
@@ -43,20 +43,20 @@
             {name: 'Mini', levels: [{id: 1}]}
         ];
 
-        mockLevelCollection = {
+        mocklevelCollection = {
             collections: function() {
                 return collections;
             }
         };
 
-        $provide.value('LevelCollection', mockLevelCollection);
+        $provide.value('levelCollection', mocklevelCollection);
     }
 
     function fixtureSetup($rootScope, $compile) {
         var element = angular.element(
             '<sw-collection-selector selected-callback="selected"></sw-collection-selector>');
 
-        spyOn(mockLevelCollection, 'collections').andCallThrough();
+        spyOn(mocklevelCollection, 'collections').andCallThrough();
 
         pageScope = $rootScope.$new();
         pageScope.selected = function() {

@@ -1,15 +1,21 @@
-'use strict';
+;(function() {
+    'use strict';
 
-angular.module('meanieBanApp')
-    .factory('Worker', function () {
+    angular.module('meanieBanApp')
+        .factory('Worker', Worker);
 
-        return function (x, y) {
-            this.location = {x: x, y: y};
+    function Worker() {
+        return function(x, y) {
+            var location = {x: x, y: y};
 
-            this.update = function (delta) {
-                this.location.x += delta.x;
-                this.location.y += delta.y;
-            };
+            this.location = location;
+            this.update = update;
+
+            // implementation
+            function update(delta) {
+                location.x += delta.x;
+                location.y += delta.y;
+            }
         };
-
-    });
+    }
+})();

@@ -1,48 +1,33 @@
-'use strict';
+(function() {
+    'use strict';
 
-/*
- Standard text format of Sokoban levels (with my own additions):
+    angular.module('meanieBanApp')
+        .service('Rules', Rules);
 
- Level element 	    Character 	ASCII Code      My own value
- -------------      ---------   ----------      ------------
- Wall 	                # 	    0x23                7
- Player 	            @ 	    0x40                6
- Player on goal square 	+ 	    0x2b                5
- Box 	                $ 	    0x24                4
- Box on goal square 	* 	    0x2a                3
- Goal square 	        . 	    0x2e                2
- Floor 	             (Space) 	0x20                1
+    function Rules(validMoves, tileUtility) {
 
- My own: There is also the special case of 0 -> void.
- */
-angular.module('meanieBanApp')
-    .service('Rules',
-    ['validMoves', 'tileUtility',
-        function (validMoves, tileUtility) {
+        this.isOpenDock = isOpenDock;
+        this.tryMove = tryMove;
 
-            this.isOpenDock = isOpenDock;
+        // implementation //
+        function isOpenDock(tile) {
+            return tile === tileUtility.stringToChar('dock') ||
+                tile === tileUtility.stringToChar('worker-docked');
+        }
 
-            this.tryMove = tryMove;
-
-            // implementation //
-
-            function isOpenDock(tile) {
-                return tile === tileUtility.stringToChar('dock') ||
-                    tile === tileUtility.stringToChar('worker-docked');
+        function tryMove(state) {
+            if (!Array.isArray(state)) {
+                throw new Error('Input state is not an Array.');
             }
 
-            function tryMove(state) {
-                if (!Array.isArray(state)) {
-                    throw new Error('Input state is not an Array.');
-                }
+            var string = tileUtility.compoundChars(state),
+                move = validMoves[string];
 
-                var string = tileUtility.compoundChars(state);
-                var move = validMoves[string];
-                if (move) {
-                    return tileUtility.expandChars(move);
-                }
-
-                return false;
+            if (move) {
+                return tileUtility.expandChars(move);
             }
 
-        }]);
+            return false;
+        }
+    }
+})();

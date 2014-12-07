@@ -1,7 +1,8 @@
 ;(function() {
     'use strict';
 
-    angular.module('meanieBanApp')
+    angular
+        .module('meanieBanApp')
         .filter('charToString', charToString);
 
     /** @ngInject */

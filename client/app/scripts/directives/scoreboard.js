@@ -1,7 +1,8 @@
 ;(function() {
     'use strict';
 
-    angular.module('meanieBanApp')
+    angular
+        .module('meanieBanApp')
         .directive('swScoreBoard', scoreBoard);
 
     function scoreBoard() {

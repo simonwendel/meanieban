@@ -38,6 +38,7 @@
         '+.$': '.+$'
     };
 
-    angular.module('meanieBanApp')
+    angular
+        .module('meanieBanApp')
         .value('validMoves', validMoves);
 })();

@@ -3,6 +3,7 @@
 
     var availableSkins = ['yoshi-32', 'simple-32'];
 
-    angular.module('meanieBanApp')
+    angular
+        .module('meanieBanApp')
         .value('availableSkins', availableSkins);
 })();

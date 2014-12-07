@@ -1,8 +1,8 @@
-;
-(function() {
+;(function() {
     'use strict';
 
-    angular.module('meanieBanApp')
+    angular
+        .module('meanieBanApp')
         .factory('levelCollection', levelCollection);
 
     /** @ngInject */

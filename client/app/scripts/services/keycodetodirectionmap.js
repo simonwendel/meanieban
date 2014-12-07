@@ -12,6 +12,7 @@
         40: 'down'
     };
 
-    angular.module('meanieBanApp')
+    angular
+        .module('meanieBanApp')
         .value('keyCodeToDirectionMap', keyCodeToDirectionMap);
 })();

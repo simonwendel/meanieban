@@ -1,7 +1,8 @@
 (function() {
     'use strict';
 
-    angular.module('meanieBanApp')
+    angular
+        .module('meanieBanApp')
         .service('Rules', Rules);
 
     function Rules(validMoves, tileUtility) {

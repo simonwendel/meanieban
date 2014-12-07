@@ -1,15 +1,17 @@
-;(function() {
+;
+(function() {
     'use strict';
 
     angular.module('meanieBanApp')
-        .service('levelCollection', levelCollection);
+        .factory('levelCollection', levelCollection);
 
     /** @ngInject */
     function levelCollection(levelData, arrayUtility, tileUtility) {
-
-        this.collections = collections;
-        this.collectionIds = collectionIds;
-        this.get = get;
+        return {
+            collections: collections,
+            collectionIds: collectionIds,
+            get: get
+        };
 
         // implementation //
         function collections() {

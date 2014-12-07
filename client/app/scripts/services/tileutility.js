@@ -104,5 +104,4 @@
     function isValidChar(input) {
         return charMappings.indexOf(input) !== -1;
     }
-
 })();

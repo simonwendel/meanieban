@@ -1,95 +1,92 @@
-'use strict';
+;(function() {
+    'use strict';
 
-angular.module('meanieBanApp')
-    .factory('Game',
-    ['Level', 'Rules', 'deltaUtility',
-        function (Level, Rules, deltaUtility) {
+    angular.module('meanieBanApp')
+        .factory('Game', Game);
 
-            return function (level) {
-                if (level === undefined) {
-                    throw new Error('Parameter level to constructor function cannot be undefined.');
-                }
+    /** @ngInject */
+    function Game(Level, Rules, deltaUtility) {
+        return function(level) {
+            if (level === undefined) {
+                throw new Error('Parameter level to constructor function cannot be undefined.');
+            }
 
-                if (!(level instanceof Level)) {
-                    throw new Error('Parameter level to constructor function must be an instance of Level.');
-                }
+            if (!(level instanceof Level)) {
+                throw new Error('Parameter level to constructor function must be an instance of Level.');
+            }
 
-                this.move = move;
+            this.move = move;
+            this.moves = moves;
+            this.grid = grid;
+            this.isFinished = isFinished;
 
-                this.moves = moves;
+            // implementation //
+            var numberOfMoves = 0;
 
-                this.grid = grid;
-
-                this.isFinished = isFinished;
-
-                // implementation //
-
-                var numberOfMoves = 0;
-
-                function move(direction) {
-                    var tiles = getTiles(direction);
-                    var charArray = tiles.map(function (element) {
+            function move(direction) {
+                var tiles = getTiles(direction),
+                    charArray = tiles.map(function(element) {
                         return element.tile;
-                    });
+                    }),
+                    newMove = Rules.tryMove(charArray);
 
-                    var newMove = Rules.tryMove(charArray);
-                    if (newMove) {
-                        numberOfMoves++;
-                        updateTiles(tiles, newMove);
-                        updatePlayer(direction);
-                    }
+                if (newMove) {
+                    numberOfMoves++;
+                    updateTiles(tiles, newMove);
+                    updatePlayer(direction);
                 }
+            }
 
-                function moves() {
-                    return numberOfMoves;
-                }
+            function moves() {
+                return numberOfMoves;
+            }
 
-                function grid() {
-                    return level.grid();
-                }
+            function grid() {
+                return level.grid();
+            }
 
-                function isFinished() {
-                    return !level.inspect(Rules.isOpenDock);
-                }
+            function isFinished() {
+                return !level.inspect(Rules.isOpenDock);
+            }
 
-                function getTiles(direction) {
-                    var delta = deltaUtility.compute(direction);
+            function getTiles(direction) {
+                var delta = deltaUtility.compute(direction),
+                    tiles = [],
+                    x = level.worker().location.x,
+                    y = level.worker().location.y;
 
-                    var tiles = [];
+                addTile(x, y, tiles);
+                addTile(x + delta.x, y + delta.y, tiles);
+                addTile(x + 2 * delta.x, y + 2 * delta.y, tiles);
 
-                    var x = level.worker().location.x;
-                    var y = level.worker().location.y;
+                return tiles;
+            }
 
-                    addTile(x, y, tiles);
-                    addTile(x + delta.x, y + delta.y, tiles);
-                    addTile(x + 2 * delta.x, y + 2 * delta.y, tiles);
-
-                    return tiles;
-                }
-
-                function addTile(x, y, tiles) {
-                    if (grid()[y] && grid()[y][x]) {
-                        tiles.push({
-                            x: x,
-                            y: y,
-                            tile: grid()[y][x]
-                        });
-                    }
-                }
-
-                function updateTiles(tiles, newMove) {
-                    tiles.forEach(function (tile, index) {
-                        var x = tile.x;
-                        var y = tile.y;
-                        level.update(x, y, newMove[index]);
+            function addTile(x, y, tiles) {
+                if (grid()[y] && grid()[y][x]) {
+                    tiles.push({
+                        x: x,
+                        y: y,
+                        tile: grid()[y][x]
                     });
                 }
+            }
 
-                function updatePlayer(direction) {
-                    var delta = deltaUtility.compute(direction);
-                    var worker = level.worker();
-                    worker.update(delta);
-                }
-            };
+            function updateTiles(tiles, newMove) {
+                tiles.forEach(function(tile, index) {
+                    var x = tile.x,
+                        y = tile.y;
 
-        }]);
+                    level.update(x, y, newMove[index]);
+                });
+            }
+
+            function updatePlayer(direction) {
+                var delta = deltaUtility.compute(direction),
+                    worker = level.worker();
+
+                worker.update(delta);
+            }
+        };
+    }
+})();

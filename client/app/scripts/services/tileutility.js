@@ -6,8 +6,8 @@
         .factory('tileUtility', tileUtility);
 
     /** @ngInject */
-    function tileUtility(arrayUtility) {
-        arrUtil = arrayUtility;
+    function tileUtility(_arrayUtility_) {
+        arrayUtility = _arrayUtility_;
 
         return {
             tileToChar: tileToChar,
@@ -41,7 +41,7 @@
             '@',
             '#'
         ],
-        arrUtil;
+        arrayUtility;
 
     function tileToChar(input) {
         var char = charMappings[input];
@@ -53,7 +53,7 @@
     }
 
     function tileGridToChars(grid) {
-        return arrUtil.convert(grid, tileToChar);
+        return arrayUtility.convert(grid, tileToChar);
     }
 
     function charToString(input) {
@@ -83,7 +83,7 @@
     }
 
     function stringGridToChars(input) {
-        return arrUtil.convert(input, stringToChar);
+        return arrayUtility.convert(input, stringToChar);
     }
 
     function compoundChars(input) {

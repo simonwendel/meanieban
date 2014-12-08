@@ -12,13 +12,13 @@
             scope: {
                 move: '='
             },
-            link: link,
+            link: postLink,
             controller: GamePadCtrl,
             controllerAs: 'vm'
         };
     }
 
-    function link(scope, element) {
+    function postLink(scope, element) {
         var classes = element.attr('class');
         element.removeAttr('class');
         element.children('table').attr('class', classes);

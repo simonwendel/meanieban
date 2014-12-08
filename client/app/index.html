@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row">
             <div class="header">
-                <h3 id="logo"><a href="#/">MeanieBan!</a></h3>
+                <h3 id="logo" sw-animate="rubberBand"><a href="#/">MeanieBan!</a></h3>
             </div>
         </div>
 
@@ -124,20 +124,8 @@
 <script src="scripts/directives/skinselector.js"></script>
 <script src="scripts/directives/collectionselector.js"></script>
 <script src="scripts/controllers/start.js"></script>
+<script src="scripts/directives/animate.js"></script>
 <!-- endbuild -->
-
-<!-- TODO: Extract this messy shit from index.html and put it somewhere nice -->
-<script>
-    function animateLogo(x) {
-        $('#logo').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-            $(this).removeClass();
-        });
-    }
-
-    $(document).ready(function(){
-        animateLogo('rubberBand');
-    });
-</script>
 
 </body>
 </html>

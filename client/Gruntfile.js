@@ -341,7 +341,13 @@ module.exports = function(grunt) {
                 // Switches the quote type for strings in the annotations
                 // array to single ones; e.g. '$scope' instead of "$scope"
                 // (false by default).
-                singleQuotes: true
+                singleQuotes: true,
+
+                ngAnnotateOptions: {
+                    // Removal of underscores, requires feature from
+                    // https://github.com/simonwendel/ng-annotate/tree/feature-underscores
+                    underscores: true
+                }
             },
             dist: {
                 files: [

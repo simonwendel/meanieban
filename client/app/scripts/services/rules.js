@@ -3,33 +3,39 @@
 
     angular
         .module('meanieBanApp')
-        .service('Rules', Rules);
+        .factory('Rules', Rules);
 
     /** @ngInject */
-    function Rules(validMoves, tileUtility) {
+    function Rules(_validMoves_, _tileUtility_) {
+        validMoves = _validMoves_;
+        tileUtility = _tileUtility_;
 
-        this.isOpenDock = isOpenDock;
-        this.tryMove = tryMove;
+        return {
+            isOpenDock: isOpenDock,
+            tryMove: tryMove
+        };
+    }
 
-        // implementation //
-        function isOpenDock(tile) {
-            return tile === tileUtility.stringToChar('dock') ||
-                tile === tileUtility.stringToChar('worker-docked');
+    var validMoves,
+        tileUtility;
+
+    function isOpenDock(tile) {
+        return tile === tileUtility.stringToChar('dock') ||
+            tile === tileUtility.stringToChar('worker-docked');
+    }
+
+    function tryMove(state) {
+        if (!Array.isArray(state)) {
+            throw new Error('Input state is not an Array.');
         }
 
-        function tryMove(state) {
-            if (!Array.isArray(state)) {
-                throw new Error('Input state is not an Array.');
-            }
+        var string = tileUtility.compoundChars(state),
+            move = validMoves[string];
 
-            var string = tileUtility.compoundChars(state),
-                move = validMoves[string];
-
-            if (move) {
-                return tileUtility.expandChars(move);
-            }
-
-            return false;
+        if (move) {
+            return tileUtility.expandChars(move);
         }
+
+        return false;
     }
 })();

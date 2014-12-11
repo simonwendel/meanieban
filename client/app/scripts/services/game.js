@@ -6,7 +6,7 @@
         .factory('Game', Game);
 
     /** @ngInject */
-    function Game(Level, Rules, deltaUtility) {
+    function Game(Level, rules, deltaUtility) {
         return function(level) {
             if (level === undefined) {
                 throw new Error('Parameter level to constructor function cannot be undefined.');
@@ -29,7 +29,7 @@
                     charArray = tiles.map(function(element) {
                         return element.tile;
                     }),
-                    newMove = Rules.tryMove(charArray);
+                    newMove = rules.tryMove(charArray);
 
                 if (newMove) {
                     numberOfMoves++;
@@ -47,7 +47,7 @@
             }
 
             function isFinished() {
-                return !level.inspect(Rules.isOpenDock);
+                return !level.inspect(rules.isOpenDock);
             }
 
             function getTiles(direction) {

@@ -3,10 +3,10 @@
 
     angular
         .module('meanieBanApp')
-        .factory('Rules', Rules);
+        .factory('rules', rules);
 
     /** @ngInject */
-    function Rules(_validMoves_, _tileUtility_) {
+    function rules(_validMoves_, _tileUtility_) {
         validMoves = _validMoves_;
         tileUtility = _tileUtility_;
 

@@ -2,9 +2,9 @@
     'use strict';
 
     var mockMoves,
-        Rules;
+        rules;
 
-    describe('Service: Rules', function() {
+    describe('Service: rules', function() {
 
         beforeEach(module('meanieBanApp', provideSetup));
 
@@ -12,17 +12,17 @@
 
         describe('isOpenDock', function() {
             it('should tell if a tile is an open dock.', function() {
-                expect(Rules.isOpenDock('.')).toBeTruthy();
-                expect(Rules.isOpenDock('+')).toBeTruthy();
+                expect(rules.isOpenDock('.')).toBeTruthy();
+                expect(rules.isOpenDock('+')).toBeTruthy();
             });
 
             it('should tell if a tile is not an open dock.', function() {
-                expect(Rules.isOpenDock('0')).toBeFalsy();
-                expect(Rules.isOpenDock('#')).toBeFalsy();
-                expect(Rules.isOpenDock('@')).toBeFalsy();
-                expect(Rules.isOpenDock('$')).toBeFalsy();
-                expect(Rules.isOpenDock('*')).toBeFalsy();
-                expect(Rules.isOpenDock(' ')).toBeFalsy();
+                expect(rules.isOpenDock('0')).toBeFalsy();
+                expect(rules.isOpenDock('#')).toBeFalsy();
+                expect(rules.isOpenDock('@')).toBeFalsy();
+                expect(rules.isOpenDock('$')).toBeFalsy();
+                expect(rules.isOpenDock('*')).toBeFalsy();
+                expect(rules.isOpenDock(' ')).toBeFalsy();
             });
         });
 
@@ -30,7 +30,7 @@
             it('should throw exception when not given an array.', function() {
                 expect(function() {
 
-                    Rules.tryMove({});
+                    rules.tryMove({});
 
                 }).toThrow('Input state is not an Array.');
             });
@@ -38,12 +38,12 @@
             it('should return false if the move is not valid.', function() {
                 var move = ['6', '7', '8'];
 
-                expect(Rules.tryMove(move)).toEqual(false);
+                expect(rules.tryMove(move)).toEqual(false);
             });
 
             it('should return the next state of the three tiles if the move is valid.', function() {
                 var move = ['1', '2', '3'],
-                    next = Rules.tryMove(move);
+                    next = rules.tryMove(move);
 
                 expect(next).toEqual(['2', '3', '4']);
             });
@@ -56,7 +56,7 @@
         $provide.value('validMoves', mockMoves);
     }
 
-    function fixtureSetup(_Rules_) {
-        Rules = _Rules_;
+    function fixtureSetup(_rules_) {
+        rules = _rules_;
     }
 })();

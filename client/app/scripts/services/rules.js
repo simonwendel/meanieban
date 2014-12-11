@@ -5,6 +5,7 @@
         .module('meanieBanApp')
         .service('Rules', Rules);
 
+    /** @ngInject */
     function Rules(validMoves, tileUtility) {
 
         this.isOpenDock = isOpenDock;

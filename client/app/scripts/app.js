@@ -4,7 +4,8 @@
     angular
         .module('meanieBanApp', [
             'ngRoute',
-            'ngAnimate'
+            'ngAnimate',
+            'ui.bootstrap'
         ])
         .config(routeSetup);
 

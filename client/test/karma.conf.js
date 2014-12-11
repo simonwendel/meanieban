@@ -3,7 +3,7 @@
 // Generated on 2014-08-11 using
 // generator-karma 0.8.3
 
-module.exports = function (config) {
+module.exports = function(config) {
     'use strict';
 
     config.set({
@@ -27,6 +27,7 @@ module.exports = function (config) {
             'bower_components/angular-route/angular-route.js',
             'bower_components/angular-sanitize/angular-sanitize.js',
             'bower_components/angular-touch/angular-touch.js',
+            'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
             'app/scripts/**/*.js',
             'test/mock/**/*.js',
             'test/utilities/**/*.js',

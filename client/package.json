@@ -34,6 +34,7 @@
     "karma-ng-html2js-preprocessor": "~0.1.0",
     "underscore": "~1.7.0",
     "jscs": "~1.7.3",
+    "ng-annotate": "assets/tools/ng-annotate-with-underscores-patch.tgz",
     "grunt-ng-annotate": "~0.8.0"
   },
   "engines": {

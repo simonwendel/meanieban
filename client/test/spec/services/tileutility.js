@@ -236,6 +236,29 @@
             });
         });
 
+        describe('charGridToStrings', function() {
+
+            it('should have all correct tile mappings.', function() {
+                input = [
+                    ['0', ' '],
+                    ['.', '*'],
+                    ['$', '+'],
+                    ['@', '#']
+                ];
+
+                expected = [
+                    ['void', 'floor'],
+                    ['dock', 'box-docked'],
+                    ['box', 'worker-docked'],
+                    ['worker', 'wall']
+                ];
+
+                actual = tileUtility.charGridToStrings(input);
+
+                expect(actual).toEqual(expected);
+            });
+        });
+
         describe('isValidChar', function() {
 
             it('should return true if input is a valid char representation of a tile.', function() {

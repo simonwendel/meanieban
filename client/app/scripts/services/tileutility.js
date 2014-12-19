@@ -15,6 +15,7 @@
             charToString: charToString,
             stringToChar: stringToChar,
             stringGridToChars: stringGridToChars,
+            charGridToStrings: charGridToStrings,
             compoundChars: compoundChars,
             expandChars: expandChars,
             isValidChar: isValidChar
@@ -67,6 +68,10 @@
         }
 
         throw new Error('That mapping does not exist.');
+    }
+
+    function charGridToStrings(input) {
+        return arrayUtility.convert(input, charToString);
     }
 
     function stringToChar(input) {

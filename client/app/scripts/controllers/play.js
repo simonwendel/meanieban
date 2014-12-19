@@ -6,34 +6,25 @@
         .controller('PlayCtrl', PlayCtrl);
 
     /** @ngInject */
-    function PlayCtrl($scope, $routeParams, levelCollection, Game, Level, keyCodeToDirectionMap, availableSkins) {
-        var vm = this,
-            first = parseInt($routeParams.first),
-            levelData = levelCollection.get(first),
-            level = new Level(levelData.rows),
-            game = new Game(level);
+    function PlayCtrl($scope, gameKeeper, keyCodeToDirectionMap, availableSkins) {
+        var vm = this;
 
-        vm.game = game;
-        vm.grid = game.grid();
+        vm.grid = gameKeeper.grid();
         vm.moves = 0;
         vm.skin = availableSkins[0];
-        vm.gameIsFinished = gameIsFinished;
+        vm.gameIsFinished = gameKeeper.isFinished;
         vm.move = move;
         vm.keydown = keydown;
         vm.setSkin = setSkin;
 
-        function gameIsFinished() {
-            return game.isFinished();
-        }
-
         function move(direction) {
-            if (!game.isFinished()) {
-                vm.game.move(direction);
-                vm.moves = game.moves();
+            if (!gameKeeper.isFinished()) {
+                gameKeeper.move(direction);
+                vm.moves = gameKeeper.moves();
             }
         }
 
-        // TODO: hacked this for now until I find out how to $scope.$apply() without $scope ;-)
+        // FIXME: hacked this for now until I find out how to $scope.$apply() without $scope ;-)
         function keydown(event) {
             var direction = keyCodeToDirectionMap[event.keyCode];
             if (direction) {

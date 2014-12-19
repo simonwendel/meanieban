@@ -23,7 +23,7 @@
                 controller: 'StartCtrl',
                 controllerAs: 'vm'
             })
-            .when('/play/:first-:last', {
+            .when('/play', {
                 templateUrl: 'views/play.html',
                 controller: 'PlayCtrl',
                 controllerAs: 'vm'

@@ -3,7 +3,8 @@
 
     var StartCtrl,
         locationSpy,
-        levelCollectionMock,
+        gameKeeperSpy,
+        levelCollectionSpy,
         collection;
 
     describe('Controller: StartCtrl', function() {
@@ -18,39 +19,38 @@
         });
 
         describe('play', function() {
-            it('should be a function attached to the controller.', function() {
-                expect(StartCtrl.play instanceof Function).toBeTruthy();
-            });
-
             it('should get the levels in a collection.', function() {
                 StartCtrl.play();
-                expect(levelCollectionMock.collectionIds.callCount).toBe(1);
+                expect(levelCollectionSpy.collectionIds).toHaveBeenCalled();
+            });
+
+            it('should use the gameKeeper service to initialize a game.', function() {
+                StartCtrl.play();
+                expect(gameKeeperSpy.initializeGame).toHaveBeenCalledWith(1, 3);
             });
 
             it('should use the $location.path function to redirect to StartCtrl.', function() {
                 StartCtrl.play();
-                expect(locationSpy.path.callCount).toBe(1);
-                expect(locationSpy.path).toHaveBeenCalledWith('/play/1-3');
+                expect(locationSpy.path).toHaveBeenCalledWith('/play');
             });
         });
 
     });
 
-    function fixtureSetup($controller, $location) {
+    function fixtureSetup($controller, $location, gameKeeper, levelCollection) {
         locationSpy = $location;
         spyOn(locationSpy, 'path');
 
+        gameKeeperSpy = gameKeeper;
+        spyOn(gameKeeperSpy, 'initializeGame');
+
         collection = [{id: 1}, {id: 2}, {id: 3}];
-        levelCollectionMock = {
-            collectionIds: function() {
-                return collection;
-            }
-        };
-        spyOn(levelCollectionMock, 'collectionIds').andCallThrough();
+        levelCollectionSpy = levelCollection;
+        spyOn(levelCollectionSpy, 'collectionIds').andReturn(collection);
 
         StartCtrl = $controller('StartCtrl', {
             $location: locationSpy,
-            levelCollection: levelCollectionMock
+            levelCollection: levelCollectionSpy
         });
     }
 })();

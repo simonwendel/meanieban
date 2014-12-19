@@ -3,9 +3,7 @@
 
     var PlayCtrl,
         scope,
-        routeParams,
-        levelCollection,
-        levelGrid,
+        gameKeeperSpy,
         availableSkins;
 
     describe('Controller: PlayCtrl', function() {
@@ -17,16 +15,6 @@
         it('should have the first available skin name attached to scope.', function() {
             expect(PlayCtrl.skin).toBe(availableSkins[0]);
         });
-
-        it('should get level data from the levelCollection.', function() {
-            expect(levelCollection.get.callCount).toBe(1);
-            expect(levelCollection.get).toHaveBeenCalledWith(routeParams.first);
-        });
-
-        it('should have a new Game attached to scope.', inject(function(Game) {
-            expect(PlayCtrl.game instanceof Game).toBeTruthy();
-            expect(PlayCtrl.grid).toBe(levelGrid);
-        }));
 
         it('should have number of moves attached to scope.', function() {
             expect(PlayCtrl.moves).toBe(0);
@@ -40,21 +28,22 @@
             expect(PlayCtrl.move instanceof Function).toBeTruthy();
         });
 
-        it('should call the Game move function when move is called.', function() {
-            spyOn(PlayCtrl.game, 'move');
+        it('should call the gameKeeperSpy move function when move is called.', function() {
+            spyOn(gameKeeperSpy, 'move');
 
             PlayCtrl.move('left');
 
-            expect(PlayCtrl.game.move.callCount).toBe(1);
+            expect(gameKeeperSpy.move.callCount).toBe(1);
+            expect(gameKeeperSpy.move).toHaveBeenCalledWith('left');
         });
 
-        it('should update moves from Game after move is done.', function() {
-            spyOn(PlayCtrl.game, 'moves').andReturn(1);
+        it('should update moves from gameKeeperSpy after move is done.', function() {
+            spyOn(gameKeeperSpy, 'moves').andReturn(1);
 
             PlayCtrl.move('right');
 
             expect(PlayCtrl.moves).toBe(1);
-            expect(PlayCtrl.game.moves.callCount).toBe(1);
+            expect(gameKeeperSpy.moves.callCount).toBe(1);
         });
 
         it('should call the move function when key-down handler is called with arrow key.', function() {
@@ -84,10 +73,8 @@
             expect(scope.$apply.callCount).toBe(1);
         });
 
-        it('should have a finished function returning isFinished from Game.', function() {
-            spyOn(PlayCtrl.game, 'isFinished').andReturn(true);
-            expect(PlayCtrl.gameIsFinished()).toBe(true);
-            expect(PlayCtrl.game.isFinished.callCount).toBe(1);
+        it('should have a finished function returning isFinished from gameKeeper.', function() {
+            expect(PlayCtrl.gameIsFinished === gameKeeperSpy.isFinished).toBeTruthy();
         });
 
         it('should have a function to set the skin.', function() {
@@ -97,44 +84,42 @@
         });
 
         it('should check if game is finished and move if not.', function() {
-            spyOn(PlayCtrl.game, 'move');
-            spyOn(PlayCtrl.game, 'isFinished').andReturn(false);
+            spyOn(gameKeeperSpy, 'move');
+            spyOn(gameKeeperSpy, 'isFinished').andReturn(false);
             PlayCtrl.move('up');
 
-            expect(PlayCtrl.game.move.callCount).toBe(1);
-            expect(PlayCtrl.game.move).toHaveBeenCalledWith('up');
+            expect(gameKeeperSpy.move.callCount).toBe(1);
+            expect(gameKeeperSpy.move).toHaveBeenCalledWith('up');
         });
 
         it('should check if game is finished and not move if it is.', function() {
-            spyOn(PlayCtrl.game, 'move');
-            spyOn(PlayCtrl.game, 'isFinished').andReturn(true);
+            spyOn(gameKeeperSpy, 'move');
+            spyOn(gameKeeperSpy, 'isFinished').andReturn(true);
             PlayCtrl.move('up');
 
-            expect(PlayCtrl.game.move.callCount).toBe(0);
+            expect(gameKeeperSpy.move.callCount).toBe(0);
         });
 
     });
 
-    function fixtureSetup($controller, $rootScope, smallestSolvable, Game, Level, keyCodeToDirectionMap, _availableSkins_) {
+    function fixtureSetup($controller, $rootScope, keyCodeToDirectionMap, _availableSkins_) {
         scope = $rootScope.$new();
-        routeParams = {first: 6, last: 8};
+        availableSkins = _availableSkins_;
 
-        levelGrid = smallestSolvable;
-        levelCollection = {
-            get: function() {
+        gameKeeperSpy = {
+            move: function() {
+            },
+            isFinished: function() {
+            },
+            grid: function() {
+            },
+            moves: function() {
             }
         };
 
-        spyOn(levelCollection, 'get').andReturn({rows: levelGrid});
-
-        availableSkins = _availableSkins_;
-
         PlayCtrl = $controller('PlayCtrl', {
             $scope: scope,
-            $routeParams: routeParams,
-            levelCollection: levelCollection,
-            Game: Game,
-            Level: Level,
+            gameKeeper: gameKeeperSpy,
             keyCodeToDirectionMap: keyCodeToDirectionMap,
             availableSkins: availableSkins
         });

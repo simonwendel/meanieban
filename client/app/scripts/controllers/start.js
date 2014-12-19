@@ -6,7 +6,7 @@
         .controller('StartCtrl', StartCtrl);
 
     /** @ngInject */
-    function StartCtrl($location, levelCollection) {
+    function StartCtrl($location, levelCollection, gameKeeper) {
         var vm = this;
 
         vm.setCollectionName = setCollectionName;
@@ -25,7 +25,8 @@
                 first = levels[0].id;
                 last = levels[levels.length - 1].id;
 
-                $location.path('/play/' + first + '-' + last);
+                gameKeeper.initializeGame(first, last);
+                $location.path('/play');
             }
         }
     }

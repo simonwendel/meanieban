@@ -16,7 +16,7 @@
                 skin: '='
             },
             link: postLink,
-            controller: SokobanGridCtrl,
+            controller: SokobanGridController,
             controllerAs: 'vm'
         };
 
@@ -28,7 +28,7 @@
     }
 
     /** @ngInject */
-    function SokobanGridCtrl($scope, $element) {
+    function SokobanGridController($scope, $element) {
         var vm = this;
 
         vm.keydown = $scope.keydown;

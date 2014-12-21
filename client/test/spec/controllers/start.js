@@ -1,36 +1,36 @@
 ;(function() {
     'use strict';
 
-    var StartCtrl,
+    var StartController,
         locationSpy,
         gameKeeperSpy,
         levelCollectionSpy,
         collection;
 
-    describe('Controller: StartCtrl', function() {
+    describe('Controller: StartController', function() {
 
         beforeEach(module('meanieBanApp'));
 
         beforeEach(inject(fixtureSetup));
 
         it('should have a function to set collection name attached to the controller.', function() {
-            StartCtrl.setCollectionName('blah');
-            expect(StartCtrl.collection).toBe('blah');
+            StartController.setCollectionName('blah');
+            expect(StartController.collection).toBe('blah');
         });
 
         describe('play', function() {
             it('should get the levels in a collection.', function() {
-                StartCtrl.play();
+                StartController.play();
                 expect(levelCollectionSpy.collectionIds).toHaveBeenCalled();
             });
 
             it('should use the gameKeeper service to initialize a game.', function() {
-                StartCtrl.play();
+                StartController.play();
                 expect(gameKeeperSpy.initializeGame).toHaveBeenCalledWith(1, 3);
             });
 
-            it('should use the $location.path function to redirect to StartCtrl.', function() {
-                StartCtrl.play();
+            it('should use the $location.path function to redirect to PlayController.', function() {
+                StartController.play();
                 expect(locationSpy.path).toHaveBeenCalledWith('/play');
             });
         });
@@ -48,7 +48,7 @@
         levelCollectionSpy = levelCollection;
         spyOn(levelCollectionSpy, 'collectionIds').andReturn(collection);
 
-        StartCtrl = $controller('StartCtrl', {
+        StartController = $controller('StartController', {
             $location: locationSpy,
             levelCollection: levelCollectionSpy
         });

@@ -3,10 +3,10 @@
 
     angular
         .module('meanieBanApp')
-        .controller('StartCtrl', StartCtrl);
+        .controller('StartController', StartController);
 
     /** @ngInject */
-    function StartCtrl($location, levelCollection, gameKeeper) {
+    function StartController($location, levelCollection, gameKeeper) {
         var vm = this;
 
         vm.setCollectionName = setCollectionName;

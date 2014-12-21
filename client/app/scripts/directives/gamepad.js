@@ -13,7 +13,7 @@
                 move: '='
             },
             link: postLink,
-            controller: GamePadCtrl,
+            controller: GamePadController,
             controllerAs: 'vm'
         };
     }
@@ -25,7 +25,7 @@
     }
 
     /** @ngInject */
-    function GamePadCtrl($scope) {
+    function GamePadController($scope) {
         var vm = this;
         if (!($scope.move instanceof Function)) {
             throw new Error('Passed-in move is not a Function.');

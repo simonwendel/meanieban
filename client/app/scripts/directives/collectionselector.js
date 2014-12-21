@@ -12,13 +12,13 @@
             scope: {
                 selectedCallback: '='
             },
-            controller: CollectionSelectorCtrl,
+            controller: CollectionSelectorController,
             controllerAs: 'vm'
         };
     }
 
     /** @ngInject */
-    function CollectionSelectorCtrl($scope, levelCollection) {
+    function CollectionSelectorController($scope, levelCollection) {
         var vm = this;
 
         vm.renderLabel = renderLabel;

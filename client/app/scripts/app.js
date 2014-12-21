@@ -20,12 +20,12 @@
             })
             .when('/start', {
                 templateUrl: 'views/start.html',
-                controller: 'StartCtrl',
+                controller: 'StartController',
                 controllerAs: 'vm'
             })
             .when('/play', {
                 templateUrl: 'views/play.html',
-                controller: 'PlayCtrl',
+                controller: 'PlayController',
                 controllerAs: 'vm'
             })
             .otherwise({

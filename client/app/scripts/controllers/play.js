@@ -3,10 +3,10 @@
 
     angular
         .module('meanieBanApp')
-        .controller('PlayCtrl', PlayCtrl);
+        .controller('PlayController', PlayController);
 
     /** @ngInject */
-    function PlayCtrl($scope, gameKeeper, keyCodeToDirectionMap, availableSkins) {
+    function PlayController($scope, gameKeeper, keyCodeToDirectionMap, availableSkins) {
         var vm = this;
 
         vm.grid = gameKeeper.grid();

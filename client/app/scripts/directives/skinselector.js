@@ -12,13 +12,13 @@
             scope: {
                 callback: '='
             },
-            controller: SkinSelectorCtrl,
+            controller: SkinSelectorController,
             controllerAs: 'vm'
         };
     }
 
     /** @ngInject */
-    function SkinSelectorCtrl($scope, availableSkins) {
+    function SkinSelectorController($scope, availableSkins) {
         var vm = this;
 
         vm.callback = $scope.callback;

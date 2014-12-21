@@ -1,0 +1,29 @@
+<div class="modal fade" id="parchment-modal" tabindex="-1" data-keyboard="false" data-backdrop="static"
+     aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div id="parchment">
+                <div id="parchment-content">
+                    <p>
+                        <span>Congratulations! You finished the level in {{ vm.getMoves() }} move{{ vm.getMoves() !== 1 ? "s" : ""}}.</span>
+                    </p>
+
+                    <p>
+                <span>You can continue to the next level, or restart this level to see if you can beat
+                    your score!</span></p>
+                    <br/>
+
+                    <p>
+                        <a id="restart-level-button" class="btn btn-success pull-left" ng-click="vm.restartLevel()">
+                            Restart&nbsp;&nbsp;<i class="fa fa-refresh fa-1x"></i>
+                        </a>
+
+                        <a id="next-level-button" class="btn btn-success pull-right" ng-click="vm.nextLevel()">
+                            Level Up&nbsp;&nbsp;<i class="fa fa-angle-double-right fa-1x"></i>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

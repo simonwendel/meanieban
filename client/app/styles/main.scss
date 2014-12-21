@@ -12,6 +12,7 @@
 @import "partials/sw-game-pad";
 @import "partials/sw-skin-selector";
 @import "partials/sw-collection-selector";
+@import "partials/sw-level-complete";
 
 /* Space out content a bit and set the bg */
 body {
@@ -45,6 +46,11 @@ body {
 
 .pointer {
     cursor: pointer;
+}
+
+a.btn {
+    font-family: $font-family-sans-serif;
+    font-size: 14px;
 }
 
 // FOOTER

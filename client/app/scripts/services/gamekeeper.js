@@ -16,24 +16,29 @@
             grid: getGrid,
             isFinished: isFinished,
             move: move,
-            moves: moves
+            moves: moves,
+            hasNext: hasNext
         };
     }
 
     var Game,
         Level,
         levelCollection,
-        firstLevelId,
-        lastLevelId,
+        currentLevel,
+        lastLevel,
         game;
 
     function initializeGame(first, last) {
         var levelData = levelCollection.get(first),
             level = new Level(levelData.rows);
 
-        firstLevelId = first;
-        lastLevelId = last;
+        currentLevel = first;
+        lastLevel = last;
         game = new Game(level);
+    }
+
+    function hasNext() {
+        return currentLevel < lastLevel;
     }
 
     function getGame() {

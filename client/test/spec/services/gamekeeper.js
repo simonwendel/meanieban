@@ -29,6 +29,18 @@
                 expect(GameStub.calledWithNew()).toBeTruthy();
             });
         });
+
+        describe('hasNext', function() {
+            it('should be false when current level id is equal to last level id.', function() {
+                gameKeeper.initializeGame(4, 4);
+                expect(gameKeeper.hasNext()).toBeFalsy();
+            });
+
+            it('should be true when current level id is less than the last level id.', function() {
+                gameKeeper.initializeGame(4, 5);
+                expect(gameKeeper.hasNext()).toBeTruthy();
+            });
+        });
     });
 
     function provideSetup($provide) {

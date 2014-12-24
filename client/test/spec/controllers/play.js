@@ -16,10 +16,6 @@
             expect(PlayController.skin).toBe(availableSkins[0]);
         });
 
-        it('should have number of moves attached to scope.', function() {
-            expect(PlayController.moves).toBe(0);
-        });
-
         it('should have a key-down handler attached to scope.', function() {
             expect(PlayController.keydown instanceof Function).toBeTruthy();
         });
@@ -28,7 +24,7 @@
             expect(PlayController.move instanceof Function).toBeTruthy();
         });
 
-        it('should call the gameKeeperSpy move function when move is called.', function() {
+        it('should call the gameKeeper move function when move is called.', function() {
             spyOn(gameKeeperSpy, 'move');
 
             PlayController.move('left');
@@ -37,12 +33,19 @@
             expect(gameKeeperSpy.move).toHaveBeenCalledWith('left');
         });
 
-        it('should update moves from gameKeeperSpy after move is done.', function() {
-            spyOn(gameKeeperSpy, 'moves').andReturn(1);
+        it('should update moves from gameKeeper after move is done.', function() {
+            spyOn(gameKeeperSpy, 'moves').andReturn(6);
 
             PlayController.move('right');
 
-            expect(PlayController.moves).toBe(1);
+            expect(gameKeeperSpy.moves).toHaveBeenCalled();
+        });
+
+        it('should have a function for getting moves from gameKeeper.', function() {
+            spyOn(gameKeeperSpy, 'moves').andReturn(6);
+
+            PlayController.getMoves();
+
             expect(gameKeeperSpy.moves.callCount).toBe(1);
         });
 
@@ -85,7 +88,7 @@
 
         it('should check if game is finished and move if not.', function() {
             spyOn(gameKeeperSpy, 'move');
-            spyOn(gameKeeperSpy, 'isFinished').andReturn(false);
+            spyOn(PlayController, 'gameIsFinished').andReturn(false);
             PlayController.move('up');
 
             expect(gameKeeperSpy.move.callCount).toBe(1);
@@ -94,7 +97,7 @@
 
         it('should check if game is finished and not move if it is.', function() {
             spyOn(gameKeeperSpy, 'move');
-            spyOn(gameKeeperSpy, 'isFinished').andReturn(true);
+            spyOn(PlayController, 'gameIsFinished').andReturn(true);
             PlayController.move('up');
 
             expect(gameKeeperSpy.move.callCount).toBe(0);

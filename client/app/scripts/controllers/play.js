@@ -7,20 +7,22 @@
 
     /** @ngInject */
     function PlayController($scope, gameKeeper, keyCodeToDirectionMap, availableSkins) {
-        var vm = this;
+        var vm = this,
+            moves;
 
         vm.grid = gameKeeper.grid();
-        vm.moves = 0;
         vm.skin = availableSkins[0];
         vm.gameIsFinished = gameKeeper.isFinished;
+
         vm.move = move;
         vm.keydown = keydown;
         vm.setSkin = setSkin;
+        vm.getMoves = getMoves;
 
         function move(direction) {
-            if (!gameKeeper.isFinished()) {
+            if (!vm.gameIsFinished()) {
                 gameKeeper.move(direction);
-                vm.moves = gameKeeper.moves();
+                moves = getMoves();
             }
         }
 
@@ -35,6 +37,10 @@
 
         function setSkin(skin) {
             vm.skin = skin;
+        }
+
+        function getMoves() {
+            return gameKeeper.moves();
         }
     }
 })();

@@ -18,7 +18,8 @@
             move: move,
             moves: moves,
             hasNext: hasNext,
-            restartLevel: restartLevel
+            restartLevel: restartLevel,
+            nextLevel: nextLevel
         };
     }
 
@@ -44,6 +45,14 @@
 
     function restartLevel() {
         initializeGame(currentLevel, lastLevel);
+    }
+
+    function nextLevel() {
+        if (hasNext()) {
+            initializeGame(currentLevel + 1, lastLevel);
+        } else {
+            throw new Error('There is no next level.');
+        }
     }
 
     function getGame() {

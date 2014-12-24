@@ -51,6 +51,26 @@
                 expect(levelCollectionStub.get.alwaysCalledWith(7)).toBeTruthy();
             });
         });
+
+        describe('nextLevel', function() {
+            it('should initialize the game with the next id.', function() {
+                gameKeeper.initializeGame(7, 8);
+                gameKeeper.nextLevel();
+
+                expect(levelCollectionStub.get.calledTwice).toBeTruthy();
+                expect(levelCollectionStub.get.getCall(0).calledWith(7)).toBeTruthy();
+                expect(levelCollectionStub.get.getCall(1).calledWith(8)).toBeTruthy();
+            });
+
+            it('should throw exception if current level and last level have same id (no next level).', function() {
+                gameKeeper.initializeGame(8, 8);
+                expect(function() {
+
+                    gameKeeper.nextLevel();
+
+                }).toThrow('There is no next level.');
+            });
+        });
     });
 
     function provideSetup($provide) {

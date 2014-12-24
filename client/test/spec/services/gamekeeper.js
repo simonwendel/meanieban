@@ -41,6 +41,16 @@
                 expect(gameKeeper.hasNext()).toBeTruthy();
             });
         });
+
+        describe('restartLevel', function() {
+            it('should re-initialize the game with the same id again.', function() {
+                gameKeeper.initializeGame(7, 8);
+                gameKeeper.restartLevel();
+
+                expect(levelCollectionStub.get.calledTwice).toBeTruthy();
+                expect(levelCollectionStub.get.alwaysCalledWith(7)).toBeTruthy();
+            });
+        });
     });
 
     function provideSetup($provide) {

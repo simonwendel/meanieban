@@ -17,7 +17,8 @@
             isFinished: isFinished,
             move: move,
             moves: moves,
-            hasNext: hasNext
+            hasNext: hasNext,
+            restartLevel: restartLevel
         };
     }
 
@@ -39,6 +40,10 @@
 
     function hasNext() {
         return currentLevel < lastLevel;
+    }
+
+    function restartLevel() {
+        initializeGame(currentLevel, lastLevel);
     }
 
     function getGame() {

@@ -13,6 +13,7 @@
         vm.grid = gameKeeper.grid();
         vm.skin = availableSkins[0];
         vm.gameIsFinished = gameKeeper.isFinished;
+        vm.showLevelComplete = false;
 
         vm.move = move;
         vm.keydown = keydown;
@@ -42,5 +43,15 @@
         function getMoves() {
             return gameKeeper.moves();
         }
+
+        vm.next = function() {
+            vm.showLevelComplete = false;
+            gameKeeper.nextLevel();
+        };
+
+        vm.restart = function() {
+            vm.showLevelComplete = false;
+            gameKeeper.restartLevel();
+        };
     }
 })();

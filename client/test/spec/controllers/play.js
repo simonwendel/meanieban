@@ -103,6 +103,19 @@
             expect(gameKeeperSpy.move.callCount).toBe(0);
         });
 
+        it('should call gameKeeper to get next level on vm.next callback.', function() {
+            spyOn(gameKeeperSpy, 'nextLevel');
+            PlayController.next();
+
+            expect(gameKeeperSpy.nextLevel).toHaveBeenCalled();
+        });
+
+        it('should call gameKeeper to restart level on vm.restart callback.', function() {
+            spyOn(gameKeeperSpy, 'restartLevel');
+            PlayController.restart();
+
+            expect(gameKeeperSpy.restartLevel).toHaveBeenCalled();
+        });
     });
 
     function fixtureSetup($controller, $rootScope, keyCodeToDirectionMap, _availableSkins_) {
@@ -117,6 +130,10 @@
             grid: function() {
             },
             moves: function() {
+            },
+            nextLevel: function() {
+            },
+            restartLevel: function() {
             }
         };
 

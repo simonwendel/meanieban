@@ -44,6 +44,7 @@
         if (!vm.gameIsFinished()) {
             gameKeeper.move(direction);
             moves = getMoves();
+            levelComplete = gameKeeper.isFinished();
             scope.$apply();
         }
     }

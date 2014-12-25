@@ -6,6 +6,7 @@
 
     /** @ngInject */
     function gameKeeper(_Game_, _Level_, _levelCollection_) {
+        initialized = false;
         Game = _Game_;
         Level = _Level_;
         levelCollection = _levelCollection_;
@@ -19,11 +20,13 @@
             moves: moves,
             hasNext: hasNext,
             restartLevel: restartLevel,
-            nextLevel: nextLevel
+            nextLevel: nextLevel,
+            isInitialized: isInitialized
         };
     }
 
-    var Game,
+    var initialized,
+        Game,
         Level,
         levelCollection,
         currentLevel,
@@ -37,6 +40,7 @@
         currentLevel = first;
         lastLevel = last;
         game = new Game(level);
+        initialized = true;
     }
 
     function hasNext() {
@@ -73,5 +77,9 @@
 
     function moves() {
         return game.moves();
+    }
+
+    function isInitialized() {
+        return initialized;
     }
 })();

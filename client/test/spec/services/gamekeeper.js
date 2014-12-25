@@ -71,6 +71,17 @@
                 }).toThrow('There is no next level.');
             });
         });
+
+        describe('isInitialized', function() {
+            it('should should return true if properly initialized.', function() {
+                gameKeeper.initializeGame(2, 3);
+                expect(gameKeeper.isInitialized()).toBeTruthy();
+            });
+
+            it('should return false if not properly initialized.', function() {
+                expect(gameKeeper.isInitialized()).toBeFalsy();
+            });
+        });
     });
 
     function provideSetup($provide) {

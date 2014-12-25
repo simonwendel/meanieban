@@ -29,7 +29,8 @@
 
     /** @ngInject */
     function SokobanGridController($scope, $element) {
-        var vm = this;
+        var vm = this,
+            body;
 
         vm.keydown = $scope.keydown;
         vm.skin = $scope.skin;
@@ -39,7 +40,8 @@
             throw new Error('Scope variable keydown must be a function.');
         }
 
-        $($element).closest('body').on('keydown', function(event) {
+        body = $($element).closest('body').off('keydown');
+        body.on('keydown', function(event) {
             vm.keydown(event);
         });
     }

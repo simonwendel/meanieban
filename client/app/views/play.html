@@ -1,5 +1,5 @@
 <sw-narrow-page>
-    <sw-score-board counter="vm.moves"></sw-score-board>
+    <sw-score-board counter="vm.getMoves()"></sw-score-board>
 </sw-narrow-page>
 
 <sw-narrow-page>
@@ -13,3 +13,5 @@
 <sw-narrow-page>
     <sw-game-pad move="vm.move" class="col-centered"></sw-game-pad>
 </sw-narrow-page>
+
+<sw-level-complete show-sign="vm.showLevelComplete()" get-moves="vm.getMoves" next-level="vm.next" restart-level="vm.restart"></sw-level-complete>

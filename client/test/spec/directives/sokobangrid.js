@@ -15,7 +15,7 @@
         beforeEach(inject(fixtureSetup));
 
         it('should get settings from the grid attribute and build html.', function() {
-            expect(scope.vm.grid).toBe(pageScope.level.rows);
+            expect(scope.vm.grid()).toBe(pageScope.level.rows);
             expect(element.html()).toBeDefined();
             expect(element.html()).not.toBe('');
         });
@@ -61,12 +61,16 @@
             rows: smallestSolvable
         };
 
+        pageScope.grid = function() {
+            return pageScope.level.rows;
+        };
+
         pageScope.keydown = keydownHandler;
         pageScope.skin = 'some skin';
 
         element = angular.element(
             '<body>' +
-            '<sw-sokoban-grid keydown="keydown" grid="level.rows" skin="skin" class="some classes"></sw-sokoban-grid>' +
+            '<sw-sokoban-grid keydown="keydown" grid="grid" skin="skin" class="some classes"></sw-sokoban-grid>' +
             '</body>');
 
         element = $compile(element)(pageScope);

@@ -1,7 +1,8 @@
 ;(function() {
     'use strict';
 
-    var PlayController,
+    var location,
+        PlayController,
         scope,
         gameKeeperSpy,
         availableSkins;
@@ -116,11 +117,29 @@
 
             expect(gameKeeperSpy.restartLevel).toHaveBeenCalled();
         });
+
+        it('should return client to StartController if gameKeeper is not initialized.', inject(function($controller, keyCodeToDirectionMap) {
+            gameKeeperSpy.isInitialized.isSpy = false;
+            spyOn(gameKeeperSpy, 'isInitialized').andReturn(false);
+
+            spyOn(location, 'path');
+            PlayController = $controller('PlayController', {
+                $location: location,
+                $scope: scope,
+                gameKeeper: gameKeeperSpy,
+                keyCodeToDirectionMap: keyCodeToDirectionMap,
+                availableSkins: availableSkins
+            });
+
+            expect(location.path).toHaveBeenCalledWith('/start');
+        }));
     });
 
-    function fixtureSetup($controller, $rootScope, keyCodeToDirectionMap, _availableSkins_) {
+    function fixtureSetup($location, $controller, $rootScope, keyCodeToDirectionMap, _availableSkins_) {
         scope = $rootScope.$new();
         availableSkins = _availableSkins_;
+
+        location = $location;
 
         gameKeeperSpy = {
             move: function() {
@@ -134,10 +153,15 @@
             nextLevel: function() {
             },
             restartLevel: function() {
+            },
+            isInitialized: function() {
             }
         };
 
+        spyOn(gameKeeperSpy, 'isInitialized').andReturn(true);
+
         PlayController = $controller('PlayController', {
+            $location: location,
             $scope: scope,
             gameKeeper: gameKeeperSpy,
             keyCodeToDirectionMap: keyCodeToDirectionMap,

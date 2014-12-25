@@ -6,11 +6,15 @@
         .controller('PlayController', PlayController);
 
     /** @ngInject */
-    function PlayController($scope, _gameKeeper_, _keyCodeToDirectionMap_, _availableSkins_) {
+    function PlayController($location, $scope, _gameKeeper_, _keyCodeToDirectionMap_, _availableSkins_) {
         vm = this;
 
-        scope = $scope;
         gameKeeper = _gameKeeper_;
+        if (!gameKeeper.isInitialized()) {
+            $location.path('/start');
+        }
+
+        scope = $scope;
         keyCodeToDirectionMap = _keyCodeToDirectionMap_;
         availableSkins = _availableSkins_;
 

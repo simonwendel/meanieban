@@ -8,7 +8,7 @@
     function sokobanGrid() {
         return {
             templateUrl: 'views/directives/sw-sokoban-grid.html',
-            restrict: 'AE',
+            restrict: 'E',
             replace: false,
             scope: {
                 grid: '=',

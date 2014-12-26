@@ -33,6 +33,8 @@
     function init() {
         levelComplete = false;
 
+        vm.initialized = gameKeeper.isInitialized;
+
         vm.grid = gameKeeper.grid;
         vm.skin = availableSkins[0];
         vm.gameIsFinished = gameKeeper.isFinished;

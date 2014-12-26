@@ -15,21 +15,21 @@
     /** @ngInject */
     function safeApply($provide) {
         return $provide.decorator('$rootScope', setupDelegate);
+    }
 
-        /** @ngInject */
-        function setupDelegate($delegate) {
-            $delegate.safeApply = function(fn) {
-                var phase = $delegate.$$phase;
-                if (phase === '$apply' || phase === '$digest') {
-                    if (fn && typeof fn === 'function') {
-                        fn();
-                    }
-                } else {
-                    $delegate.$apply(fn);
+    /** @ngInject */
+    function setupDelegate($delegate) {
+        $delegate.safeApply = function(fn) {
+            var phase = $delegate.$$phase;
+            if (phase === '$apply' || phase === '$digest') {
+                if (fn && typeof fn === 'function') {
+                    fn();
                 }
-            };
+            } else {
+                $delegate.$apply(fn);
+            }
+        };
 
-            return $delegate;
-        }
+        return $delegate;
     }
 })();

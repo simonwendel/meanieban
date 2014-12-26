@@ -12,7 +12,7 @@
 
 <sw-level-complete show-sign="vm.showLevelComplete()" get-moves="vm.getMoves" next-level="vm.next" restart-level="vm.restart"></sw-level-complete>
 
-<sw-settings show-sign="vm.showSettings()" restart-level="vm.restart" set-skin="vm.setSkin"></sw-settings>
+<sw-settings show-sign-event-name="show-settings-modal" restart-level="vm.restart" set-skin="vm.setSkin"></sw-settings>
 
-<a ng-click="vm.toggleSettings()"><i class="pointer fa fa-cog fa-4x fa-rotate-slightly"></i></a>
+<a ng-click="vm.showSettings()"><i class="pointer fa fa-cog fa-4x fa-rotate-slightly"></i></a>
 

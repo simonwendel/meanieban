@@ -27,12 +27,10 @@
         keyCodeToDirectionMap,
         availableSkins,
         levelComplete,
-        settingsVisible,
         moves,
         scope;
 
     function init() {
-        settingsVisible = false;
         levelComplete = false;
 
         vm.grid = gameKeeper.grid;
@@ -41,7 +39,6 @@
 
         vm.showLevelComplete = showLevelComplete;
         vm.showSettings = showSettings;
-        vm.toggleSettings = toggleSettings;
         vm.move = move;
         vm.keydown = keydown;
         vm.setSkin = setSkin;
@@ -89,11 +86,6 @@
     }
 
     function showSettings() {
-        return settingsVisible;
-    }
-
-    function toggleSettings() {
-        settingsVisible = !settingsVisible;
-        console.log(settingsVisible);
+        scope.$broadcast('show-settings-modal', null);
     }
 })();

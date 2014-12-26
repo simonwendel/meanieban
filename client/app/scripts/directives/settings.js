@@ -1,4 +1,5 @@
-;(function() {
+;
+(function() {
     'use strict';
 
     angular
@@ -10,7 +11,7 @@
             templateUrl: 'views/directives/sw-settings.html',
             restrict: 'E',
             scope: {
-                showSign: '=',
+                showSignEventName: '@',
                 restartLevel: '=',
                 setSkin: '='
             },
@@ -32,14 +33,12 @@
         restart = $scope.restartLevel;
         skin = $scope.setSkin;
 
-        setupShowWatch($scope);
+        setupListener($scope);
     }
 
-    function setupShowWatch($scope) {
-        $scope.$watch('showSign', function() {
-            if ($scope.showSign) {
-                showModal();
-            }
+    function setupListener($scope) {
+        $scope.$on($scope.showSignEventName, function() {
+            showModal();
         });
     }
 

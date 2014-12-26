@@ -4,11 +4,23 @@
             <div id="parchment">
                 <div id="parchment-content">
                     <p>
+                        Want an alternate flavor? Re-skin the game using the following options:
+                    </p>
+
+                    <p class="text-center">
                         <sw-skin-selector callback="vm.setSkin"></sw-skin-selector>
                     </p>
+
                     <p>
-                        <a id="restart-level-button" class="btn btn-success center-block" ng-click="vm.restartLevel()">
+                        If you're stuck, you can always restart the level...
+                    </p>
+
+                    <p>
+                        <a id="restart-level-button" class="btn btn-success pull-left" ng-click="vm.restartLevel()">
                             Restart&nbsp;&nbsp;<i class="fa fa-refresh fa-1x"></i>
+                        </a>
+                        <a id="close-settings-button" class="btn btn-success pull-right" ng-click="vm.killModal()">
+                            Cancel&nbsp;&nbsp;&nbsp;<i class="fa fa-times fa-1x"></i>
                         </a>
                     </p>
                 </div>

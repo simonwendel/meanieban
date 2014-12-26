@@ -27,8 +27,10 @@
     /** @ngInject */
     function SettingsController($scope) {
         var vm = this;
+
         vm.restartLevel = restartLevel;
         vm.setSkin = setSkin;
+        vm.killModal = killModal;
 
         restart = $scope.restartLevel;
         skin = $scope.setSkin;

@@ -12,6 +12,7 @@
         gameKeeper = _gameKeeper_;
         if (!gameKeeper.isInitialized()) {
             $location.path('/start');
+            return;
         }
 
         scope = $scope;
@@ -26,16 +27,21 @@
         keyCodeToDirectionMap,
         availableSkins,
         levelComplete,
+        settingsVisible,
         moves,
         scope;
 
     function init() {
+        settingsVisible = false;
         levelComplete = false;
+
         vm.grid = gameKeeper.grid;
         vm.skin = availableSkins[0];
         vm.gameIsFinished = gameKeeper.isFinished;
 
         vm.showLevelComplete = showLevelComplete;
+        vm.showSettings = showSettings;
+        vm.toggleSettings = toggleSettings;
         vm.move = move;
         vm.keydown = keydown;
         vm.setSkin = setSkin;
@@ -80,5 +86,14 @@
 
     function showLevelComplete() {
         return levelComplete;
+    }
+
+    function showSettings() {
+        return settingsVisible;
+    }
+
+    function toggleSettings() {
+        settingsVisible = !settingsVisible;
+        console.log(settingsVisible);
     }
 })();

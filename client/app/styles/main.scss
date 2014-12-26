@@ -110,3 +110,11 @@ a.btn {
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+.fa-rotate-slightly {
+    -webkit-transform: rotate(12deg);
+    -moz-transform: rotate(12deg);
+    -ms-transform: rotate(12deg);
+    -o-transform: rotate(12deg);
+    transform: rotate(12deg);
+}

@@ -2,10 +2,6 @@
     <sw-score-board counter="vm.getMoves()"></sw-score-board>
 </sw-narrow-page>
 
-<sw-narrow-page>
-    <sw-skin-selector callback="vm.setSkin"></sw-skin-selector>
-</sw-narrow-page>
-
 <sw-wide-page>
     <sw-sokoban-grid keydown="vm.keydown" grid="vm.grid" skin="vm.skin" class="col-centered"></sw-sokoban-grid>
 </sw-wide-page>
@@ -15,3 +11,8 @@
 </sw-narrow-page>
 
 <sw-level-complete show-sign="vm.showLevelComplete()" get-moves="vm.getMoves" next-level="vm.next" restart-level="vm.restart"></sw-level-complete>
+
+<sw-settings show-sign="vm.showSettings()" restart-level="vm.restart" set-skin="vm.setSkin"></sw-settings>
+
+<a ng-click="vm.toggleSettings()"><i class="pointer fa fa-cog fa-4x fa-rotate-slightly"></i></a>
+

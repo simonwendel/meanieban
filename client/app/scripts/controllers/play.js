@@ -49,7 +49,7 @@
             gameKeeper.move(direction);
             moves = getMoves();
             levelComplete = gameKeeper.isFinished();
-            scope.$apply();
+            scope.safeApply();
         }
     }
 

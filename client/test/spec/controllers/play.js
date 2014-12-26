@@ -70,11 +70,11 @@
         });
 
         it('should re-render grid after keydown is done.', function() {
-            spyOn(scope, '$apply').andCallThrough();
+            spyOn(scope, 'safeApply').andCallThrough();
 
             // 39 -> right
             PlayController.keydown({keyCode: 39});
-            expect(scope.$apply.callCount).toBe(1);
+            expect(scope.safeApply).toHaveBeenCalled();
         });
 
         it('should have a finished function returning isFinished from gameKeeper.', function() {

@@ -67,6 +67,10 @@ a.btn {
   position: relative;
   background: $footer-background-color;
 
+    span {
+        margin: 0 20px;
+    }
+
   /* adding the left and right fills out to the page edges */
   .text-left::before, .text-right::after {
     content: "";

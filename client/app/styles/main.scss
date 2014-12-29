@@ -1,4 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
+@import url(http://fonts.googleapis.com/css?family=Press+Start+2P);
+
 @import "vendor/variables";
 @import "custom-variables";
 
@@ -14,6 +16,7 @@
 @import "partials/sw-collection-selector";
 @import "partials/sw-level-complete";
 @import "partials/sw-settings";
+@import "partials/sw-score-board";
 
 /* Space out content a bit and set the bg */
 body {

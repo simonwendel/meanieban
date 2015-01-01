@@ -1,22 +1,27 @@
 <!-- this guards the view from triggering exceptions in child directives when gameKeeper is not ready -->
 <div ng-if="vm.initialized()">
-    <sw-narrow-page>
-        <sw-score-board counter="vm.getMoves()"></sw-score-board>
-    </sw-narrow-page>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <sw-sokoban-grid class="col-centered" keydown="vm.keydown" grid="vm.grid" skin="vm.skin"></sw-sokoban-grid>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="pull-left">
+                <sw-score-board counter="vm.getMoves()"></sw-score-board>
+            </div>
+            <div class="pull-right"><a ng-click="vm.showSettings()"><i
+                class="pointer fa fa-cog fa-4x fa-rotate-slightly"></i></a>
+            </div>
+        </div>
+    </div>
 
-    <sw-wide-page>
-        <sw-sokoban-grid keydown="vm.keydown" grid="vm.grid" skin="vm.skin" class="col-centered"></sw-sokoban-grid>
-    </sw-wide-page>
-
-    <sw-narrow-page>
-        <sw-game-pad move="vm.move" class="col-centered"></sw-game-pad>
-    </sw-narrow-page>
+    <!-- <div style="bottom: 0; position: absolute">
+     <sw-game-pad move="vm.move"></sw-game-pad>
+ </div>-->
 
     <sw-level-complete show-sign="vm.showLevelComplete()" get-moves="vm.getMoves" next-level="vm.next"
                        restart-level="vm.restart"></sw-level-complete>
-
     <sw-settings show-sign-event-name="show-settings-modal" restart-level="vm.restart"
                  set-skin="vm.setSkin"></sw-settings>
-
-    <a ng-click="vm.showSettings()"><i class="pointer fa fa-cog fa-4x fa-rotate-slightly"></i></a>
 </div>

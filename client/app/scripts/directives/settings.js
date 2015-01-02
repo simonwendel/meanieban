@@ -50,7 +50,6 @@
     }
 
     function setSkin(selected) {
-        killModal();
         skin(selected);
     }
 

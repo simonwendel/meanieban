@@ -1,9 +1,10 @@
-#score-board {
-    padding: 10px;
-
-    .number-of-moves {
-        font-family: 'Press Start 2P', cursive;
-        font-size: 32px;
-        color: $brand-primary;
+#number-of-moves {
+    span {
+        padding: 0;
+        margin: 0;
     }
+
+    font-family: 'Press Start 2P', cursive;
+    font-size: 25px;
+    color: $brand-primary;
 }

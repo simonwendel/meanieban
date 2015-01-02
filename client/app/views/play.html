@@ -6,12 +6,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="pull-left">
+        <div class="col-md-2 col-md-offset-5">
+            <div id="moves" class="pull-left">
                 <sw-score-board counter="vm.getMoves()"></sw-score-board>
             </div>
-            <div class="pull-right"><a ng-click="vm.showSettings()"><i
-                class="pointer fa fa-cog fa-4x fa-rotate-slightly"></i></a>
+            <div id="settings" class="pull-right">
+                <a ng-click="vm.showSettings()"><i
+                class="pointer fa fa-cog fa-2x"></i></a>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <table>
-    <tr ng-repeat="row in vm.grid()">
+    <tr ng-repeat="row in vm.grid">
         <td ng-repeat="cell in row track by $index">
             <!-- TODO: figure out non-hackish way of using vm.skin without manual $watch():es -->
             <img ng-src="images/skins/{{skin}}/{{skin}}-{{cell | charToString}}.png" />

@@ -8,13 +8,16 @@
     function animate() {
         return {
             restrict: 'A',
+            scope: {
+                firstAnimation: '@'
+            },
             link: postLink
         };
 
         function postLink(scope, element, attrs) {
             // should wait for a clean digest
             scope.$evalAsync(function() {
-                animateElement(element, attrs.swAnimate);
+                animateElement(element, scope.firstAnimation);
             });
         }
     }

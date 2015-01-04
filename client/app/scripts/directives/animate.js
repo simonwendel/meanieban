@@ -9,17 +9,61 @@
         return {
             restrict: 'A',
             scope: {
-                firstAnimation: '@'
+                firstAnimation: '@',
+                randomIntervals: '@?'
             },
-            link: postLink
+            link: postLink,
+            controller: AnimateController
         };
 
-        function postLink(scope, element, attrs) {
-            // should wait for a clean digest
-            scope.$evalAsync(function() {
-                animateElement(element, scope.firstAnimation);
-            });
+        function postLink(scope, element) {
+            animatedElement = element;
         }
+    }
+
+    var animatedElement,
+        animations,
+        timeout,
+        numbersUtility;
+
+    /** @ngInject */
+    function AnimateController($scope, $timeout, _animations_, _numbersUtility_) {
+        animations = _animations_;
+        timeout = $timeout;
+        numbersUtility = _numbersUtility_;
+
+        // use evalAsync to wait for clean digest
+        $scope.$evalAsync(function() {
+            if ($scope.firstAnimation) {
+                setAnimation(animatedElement, $scope.firstAnimation);
+            }
+
+            if ($scope.randomIntervals) {
+                setRandom();
+            }
+        });
+    }
+
+    function setRandom() {
+        var interval = randomizeInterval(),
+            animation = randomizeAnimation();
+
+        timeout(function() {
+            setAnimation(animatedElement, animation);
+            setRandom();
+        }, interval);
+    }
+
+    function randomizeInterval() {
+        var min = 30000,
+            max = 60000;
+
+        return numbersUtility.random(min, max);
+    }
+
+    function randomizeAnimation() {
+        var index = numbersUtility.random(0, animations.length);
+        return animations[index];
     }
 
     /**
@@ -27,7 +71,7 @@
      * @param element The element to animate.
      * @param animation The specific animation type from animate.css.
      */
-    function animateElement(element, animation) {
+    function setAnimation(element, animation) {
         element
             .removeClass()
             .addClass(animation + ' animated')

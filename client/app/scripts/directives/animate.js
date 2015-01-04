@@ -68,7 +68,7 @@
     }
 
     function randomizeAnimation() {
-        var index = numbersUtility.random(0, animations.length);
+        var index = numbersUtility.random(0, animations.length - 1);
         return animations[index];
     }
 

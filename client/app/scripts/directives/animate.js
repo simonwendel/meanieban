@@ -10,7 +10,8 @@
             restrict: 'A',
             scope: {
                 firstAnimation: '@',
-                randomIntervals: '@?'
+                randomIntervals: '@?',
+                animations: '@?'
             },
             link: postLink,
             controller: AnimateController
@@ -28,7 +29,12 @@
 
     /** @ngInject */
     function AnimateController($scope, $timeout, _animations_, _numbersUtility_) {
-        animations = _animations_;
+        if ($scope.animations) {
+            animations = angular.fromJson($scope.animations);
+        } else {
+            animations = _animations_;
+        }
+
         timeout = $timeout;
         numbersUtility = _numbersUtility_;
 

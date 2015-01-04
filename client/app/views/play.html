@@ -2,7 +2,8 @@
 <div ng-if="vm.initialized()">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <sw-sokoban-grid class="col-centered" keydown="vm.keydown" grid="vm.grid()" skin="vm.skin"></sw-sokoban-grid>
+            <sw-sokoban-grid class="col-centered" keydown="vm.keydown" grid="vm.grid()"
+                             skin="vm.skin"></sw-sokoban-grid>
         </div>
     </div>
     <div class="row">
@@ -11,8 +12,10 @@
                 <sw-score-board counter="vm.getMoves()"></sw-score-board>
             </div>
             <div id="settings" class="pull-right">
-                <a ng-click="vm.showSettings()"><i
-                class="pointer fa fa-cog fa-2x"></i></a>
+                <a ng-click="vm.showSettings()"
+                   sw-animate random-intervals="true" first-animation="swing" animations="{{ ['swing'] }}">
+                    <i class="pointer fa fa-cog fa-2x"></i>
+                </a>
             </div>
         </div>
     </div>

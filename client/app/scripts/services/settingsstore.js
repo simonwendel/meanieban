@@ -7,16 +7,23 @@
 
     /** @ngInject */
     function settingsStore($cookies) {
-        cookies = $cookies;
+        cookie = $cookies;
 
         return {
-            save: save
+            save: save,
+            load: load
         };
     }
 
-    var cookies;
+    var cookie;
 
     function save(settings) {
-        cookies.selectedSkin = settings.skin;
+        cookie.selectedSkin = settings.skin;
+    }
+
+    function load() {
+        return {
+            skin: cookie.selectedSkin
+        };
     }
 })();

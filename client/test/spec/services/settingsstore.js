@@ -1,7 +1,8 @@
 ;(function() {
     'use strict';
 
-    var settingsStore;
+    var settingsStore,
+        cookiesSpy;
 
     describe('Service: settingsStore', function() {
 
@@ -14,7 +15,8 @@
         });
     });
 
-    function fixtureSetup(_settingsStore_) {
+    function fixtureSetup(_settingsStore_, $cookies) {
+        cookiesSpy = $cookies;
         settingsStore = _settingsStore_;
     }
 })();

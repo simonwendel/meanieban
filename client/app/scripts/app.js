@@ -5,6 +5,7 @@
         .module('meanieBanApp', [
             'ngRoute',
             'ngAnimate',
+            'ngCookies',
             'ui.bootstrap'
         ]);
 })();

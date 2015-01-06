@@ -5,7 +5,8 @@
         PlayController,
         scope,
         gameKeeperSpy,
-        availableSkins;
+        availableSkins,
+        settings;
 
     describe('Controller: PlayController', function() {
 
@@ -13,9 +14,28 @@
 
         beforeEach(inject(fixtureSetup));
 
-        it('should have the first available skin name attached to scope.', function() {
+        it('should ask the settingsStore for last known settings.', function() {
+            expect(settings.load).toHaveBeenCalled();
+        });
+
+        it('should have the first available skin name attached to scope if cookie is not set.', function() {
             expect(PlayController.skin).toBe(availableSkins[0]);
         });
+
+        it('should have the pre-saved skin name attached to scope if cookie is set.', inject(function($controller) {
+            settings.load.isSpy = false;
+            spyOn(settings, 'load').andReturn({skin: 'pre-set since last session'});
+
+            PlayController = $controller('PlayController', {
+                $location: location,
+                $scope: scope,
+                gameKeeper: gameKeeperSpy,
+                availableSkins: availableSkins,
+                settingsStore: settings
+            });
+
+            expect(PlayController.skin).toBe('pre-set since last session');
+        }));
 
         it('should have a key-down handler attached to scope.', function() {
             expect(PlayController.keydown instanceof Function).toBeTruthy();
@@ -135,11 +155,14 @@
         }));
     });
 
-    function fixtureSetup($location, $controller, $rootScope, keyCodeToDirectionMap, _availableSkins_) {
+    function fixtureSetup($location, $controller, $rootScope, keyCodeToDirectionMap, _availableSkins_, settingsStore) {
         scope = $rootScope.$new();
-        availableSkins = _availableSkins_;
 
+        availableSkins = _availableSkins_;
         location = $location;
+
+        settings = settingsStore;
+        spyOn(settings, 'load');
 
         gameKeeperSpy = {
             move: function() {

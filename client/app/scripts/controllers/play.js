@@ -6,7 +6,13 @@
         .controller('PlayController', PlayController);
 
     /** @ngInject */
-    function PlayController($location, $scope, _gameKeeper_, _keyCodeToDirectionMap_, _availableSkins_) {
+    function PlayController($location,
+                            $scope,
+                            _gameKeeper_,
+                            _keyCodeToDirectionMap_,
+                            _availableSkins_,
+                            _settingsStore_) {
+
         vm = this;
 
         gameKeeper = _gameKeeper_;
@@ -18,6 +24,7 @@
         scope = $scope;
         keyCodeToDirectionMap = _keyCodeToDirectionMap_;
         availableSkins = _availableSkins_;
+        settingsStore = _settingsStore_;
 
         init();
     }
@@ -28,16 +35,22 @@
         availableSkins,
         levelComplete,
         moves,
-        scope;
+        scope,
+        settingsStore;
 
     function init() {
         levelComplete = false;
+        var settings = settingsStore.load();
 
         vm.initialized = gameKeeper.isInitialized;
-
         vm.grid = gameKeeper.grid;
-        vm.skin = availableSkins[0];
         vm.gameIsFinished = gameKeeper.isFinished;
+
+        if (settings && settings.skin) {
+            vm.skin = settings.skin;
+        } else {
+            vm.skin = availableSkins[0];
+        }
 
         vm.showLevelComplete = showLevelComplete;
         vm.showSettings = showSettings;

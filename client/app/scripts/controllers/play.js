@@ -79,6 +79,7 @@
     }
 
     function setSkin(skin) {
+        settingsStore.save({skin: skin});
         vm.skin = skin;
     }
 

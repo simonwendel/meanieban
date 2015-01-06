@@ -37,6 +37,11 @@
             expect(PlayController.skin).toBe('pre-set since last session');
         }));
 
+        it('should call the settings store on skin change.', function() {
+            PlayController.setSkin('whateva!');
+            expect(settings.save).toHaveBeenCalledWith({skin: 'whateva!'});
+        });
+
         it('should have a key-down handler attached to scope.', function() {
             expect(PlayController.keydown instanceof Function).toBeTruthy();
         });
@@ -163,6 +168,7 @@
 
         settings = settingsStore;
         spyOn(settings, 'load');
+        spyOn(settings, 'save').andCallThrough();
 
         gameKeeperSpy = {
             move: function() {

@@ -2,7 +2,7 @@
     'use strict';
 
     var settingsStore,
-        cookiesSpy;
+        cookies;
 
     describe('Service: settingsStore', function() {
 
@@ -10,13 +10,14 @@
 
         beforeEach(inject(fixtureSetup));
 
-        it('should exist.', function() {
-            expect(settingsStore).toBeDefined();
+        it('should have a save function to save skin settings.', function() {
+            settingsStore.save({skin: 'some skin'});
+            expect(cookies.selectedSkin).toBe('some skin');
         });
     });
 
     function fixtureSetup(_settingsStore_, $cookies) {
-        cookiesSpy = $cookies;
+        cookies = $cookies;
         settingsStore = _settingsStore_;
     }
 })();

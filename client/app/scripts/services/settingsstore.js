@@ -6,8 +6,17 @@
         .factory('settingsStore', settingsStore);
 
     /** @ngInject */
-    function settingsStore() {
+    function settingsStore($cookies) {
+        cookies = $cookies;
+
         return {
+            save: save
         };
+    }
+
+    var cookies;
+
+    function save(settings) {
+        cookies.selectedSkin = settings.skin;
     }
 })();

@@ -1,4 +1,5 @@
-;(function() {
+;
+(function() {
     'use strict';
 
     var Level,
@@ -61,7 +62,7 @@
         describe('update', function() {
             it('should throw exception if the co-ordinates are out of bounds on the grid.', function() {
                 var level = new Level(gridArray);
-                spyOn(tileUtility, 'isValidChar').andReturn(true);
+                sinon.stub(tileUtility, 'isValidChar').returns(true);
 
                 expect(function() {
                     level.update(-1, -1, 'tile');
@@ -74,40 +75,41 @@
 
             it('should throw exception if the new state is not valid.', function() {
                 var level = new Level(gridArray);
-                spyOn(tileUtility, 'isValidChar').andReturn(false);
+                sinon.stub(tileUtility, 'isValidChar').returns(false);
 
                 expect(function() {
                     level.update(-1, -1, 'tile');
                 }).toThrow('Cannot set invalid state in grid.');
-                expect(tileUtility.isValidChar.callCount).toBe(1);
+                expect(tileUtility.isValidChar.called).toBeTruthy();
             });
 
             it('should be able to set a new valid state in the Level grid.', function() {
                 var level = new Level(gridArray);
-                spyOn(tileUtility, 'isValidChar').andReturn(true);
+                sinon.stub(tileUtility, 'isValidChar').returns(true);
 
                 level.update(1, 1, 'tile');
 
                 expect(level.grid()[1][1]).toEqual('tile');
-                expect(tileUtility.isValidChar.callCount).toBe(1);
+                expect(tileUtility.isValidChar.called).toBeTruthy();
             });
         });
 
         describe('inspect', function() {
             it('should run a strategy on all tiles until the strategy returns true and then return true.', function() {
                 var level = new Level(gridArray),
-                    strategy = jasmine.createSpy('strategy').andCallFake(
-                        function(cell) {
-                            return cell === tileUtility.stringToChar('worker');
-                        });
+                    strategy = { run: function(cell) {
+                        return cell === tileUtility.stringToChar('worker');
+                    }};
 
-                expect(level.inspect(strategy)).toBeTruthy();
-                expect(strategy.callCount).toBe(9);
+                sinon.spy(strategy, 'run');
+
+                expect(level.inspect(strategy.run)).toBeTruthy();
+                expect(strategy.run.callCount).toBe(9);
             });
 
             it('should run the strategy on all tiles and return false if the strategy returns false for all.', function() {
                 var level = new Level(gridArray),
-                    strategy = jasmine.createSpy('strategy').andReturn(false);
+                    strategy = sinon.stub().returns(false);
 
                 expect(level.inspect(strategy)).toBeFalsy();
                 expect(strategy.callCount).toBe(15);

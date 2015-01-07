@@ -30,7 +30,6 @@
     "inject": false,
     "it": false,
     "jasmine": false,
-    "spyOn": false,
     "sinon": false
   }
 }

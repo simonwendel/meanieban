@@ -43,10 +43,10 @@
                     }
                 };
 
-                spyOn(converter, 'callback').andCallThrough();
+                sinon.spy(converter, 'callback');
 
                 expect(arrayUtility.convert(input, converter.callback)).toEqual(expected);
-                expect(converter.callback.callCount).toBe(6);
+                expect(converter.callback.called).toBeTruthy();
             });
         });
 

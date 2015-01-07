@@ -6,8 +6,8 @@
         .factory('settingsStore', settingsStore);
 
     /** @ngInject */
-    function settingsStore($cookies) {
-        cookie = $cookies;
+    function settingsStore(_localStorageService_) {
+        localStorageService = _localStorageService_;
 
         return {
             save: save,
@@ -15,15 +15,15 @@
         };
     }
 
-    var cookie;
+    var localStorageService;
 
     function save(settings) {
-        cookie.selectedSkin = settings.skin;
+        localStorageService.set('selectedSkin', settings.skin);
     }
 
     function load() {
         return {
-            skin: cookie.selectedSkin
+            skin: localStorageService.get('selectedSkin')
         };
     }
 })();

@@ -2,7 +2,7 @@
     'use strict';
 
     var settingsStore,
-        cookies;
+        localStorageService;
 
     describe('Service: settingsStore', function() {
 
@@ -12,7 +12,7 @@
 
         it('should have a save function to save skin settings.', function() {
             settingsStore.save({skin: 'some skin'});
-            expect(cookies.selectedSkin).toBe('some skin');
+            expect(localStorageService.set.calledWith('selectedSkin', 'some skin')).toBeTruthy();
         });
 
         it('should have a load function to get skin settings.', function() {
@@ -21,12 +21,16 @@
 
             settings = settingsStore.load();
 
+            expect(localStorageService.get.calledWith('selectedSkin')).toBeTruthy();
             expect(settings.skin).toBe('some skin to be loaded');
         });
     });
 
-    function fixtureSetup(_settingsStore_, $cookies) {
-        cookies = $cookies;
+    function fixtureSetup(_settingsStore_, _localStorageService_) {
+        localStorageService = _localStorageService_;
+        sinon.spy(localStorageService, 'get');
+        sinon.spy(localStorageService, 'set');
+
         settingsStore = _settingsStore_;
     }
 })();

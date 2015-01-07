@@ -2,9 +2,9 @@
     'use strict';
 
     var StartController,
-        locationSpy,
-        gameKeeperSpy,
-        levelCollectionSpy,
+        location,
+        gameKeeper,
+        levelCollection,
         collection;
 
     describe('Controller: StartController', function() {
@@ -21,36 +21,36 @@
         describe('play', function() {
             it('should get the levels in a collection.', function() {
                 StartController.play();
-                expect(levelCollectionSpy.collectionIds).toHaveBeenCalled();
+                expect(levelCollection.collectionIds.called).toBeTruthy();
             });
 
             it('should use the gameKeeper service to initialize a game.', function() {
+                sinon.spy(gameKeeper, 'initializeGame');
                 StartController.play();
-                expect(gameKeeperSpy.initializeGame).toHaveBeenCalledWith(1, 3);
+                expect(gameKeeper.initializeGame.calledWith(1, 3)).toBeTruthy();
             });
 
             it('should use the $location.path function to redirect to PlayController.', function() {
+                sinon.spy(location, 'path');
                 StartController.play();
-                expect(locationSpy.path).toHaveBeenCalledWith('/play');
+                expect(location.path.calledWith('/play')).toBeTruthy();
             });
         });
 
     });
 
-    function fixtureSetup($controller, $location, gameKeeper, levelCollection) {
-        locationSpy = $location;
-        spyOn(locationSpy, 'path');
-
-        gameKeeperSpy = gameKeeper;
-        spyOn(gameKeeperSpy, 'initializeGame');
+    function fixtureSetup($controller, $location, _gameKeeper_, _levelCollection_) {
+        location = $location;
+        gameKeeper = _gameKeeper_;
 
         collection = [{id: 1}, {id: 2}, {id: 3}];
-        levelCollectionSpy = levelCollection;
-        spyOn(levelCollectionSpy, 'collectionIds').andReturn(collection);
+
+        levelCollection = _levelCollection_;
+        sinon.stub(levelCollection, 'collectionIds').returns(collection);
 
         StartController = $controller('StartController', {
-            $location: locationSpy,
-            levelCollection: levelCollectionSpy
+            $location: location,
+            levelCollection: levelCollection
         });
     }
 })();

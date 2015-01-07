@@ -25,7 +25,7 @@
 
         it('should call the selected-callback with the scope.selected on init.', function() {
             expect(pageScope.selected.callCount).toBe(1);
-            expect(pageScope.selected).toHaveBeenCalledWith(scope.vm.selected);
+            expect(pageScope.selected.calledWith(scope.vm.selected)).toBeTruthy();
         });
 
         it('should have a renderLabel function that renders the option label with single level.', function() {
@@ -56,12 +56,13 @@
         var element = angular.element(
             '<sw-collection-selector selected-callback="selected"></sw-collection-selector>');
 
-        spyOn(mocklevelCollection, 'collections').andCallThrough();
+        sinon.spy(mocklevelCollection, 'collections');
 
         pageScope = $rootScope.$new();
         pageScope.selected = function() {
         };
-        spyOn(pageScope, 'selected');
+
+        sinon.spy(pageScope, 'selected');
 
         element = $compile(element)(pageScope);
 

@@ -15,7 +15,7 @@
 
         it('should use the tileUtility to get some value.', function() {
             expect(charToString('whatever')).toBe(returnValue);
-            expect(utilityMock.charToString.callCount).toBe(1);
+            expect(utilityMock.charToString.called).toBeTruthy();
         });
     });
 
@@ -27,7 +27,7 @@
             }
         };
 
-        spyOn(utilityMock, 'charToString').andCallThrough();
+        sinon.spy(utilityMock, 'charToString');
         $provide.value('tileUtility', utilityMock);
     }
 

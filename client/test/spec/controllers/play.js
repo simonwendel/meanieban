@@ -49,24 +49,24 @@
         });
 
         it('should update moves from gameKeeper after move is done.', function() {
-            sinon.stub(gameKeeper, 'moves').returns(6);
             PlayController.move('right');
             expect(gameKeeper.moves.called).toBeTruthy();
         });
 
         it('should have a function for getting moves from gameKeeper.', function() {
-            sinon.stub(gameKeeper, 'moves').returns(6);
             PlayController.getMoves();
             expect(gameKeeper.moves.called).toBeTruthy();
         });
 
         it('should call the move function when key-down handler is called with arrow key.', function() {
+            sinon.spy(PlayController, 'move');
             // 39 -> right
             PlayController.keydown({keyCode: 39});
             expect(PlayController.move.calledWith('right')).toBeTruthy();
         });
 
         it('should not call the move function when key-down handler is called with non-arrow-key.', function() {
+            sinon.spy(PlayController, 'move');
             // 188 -> comma
             PlayController.keydown({keyCode: 188});
             expect(PlayController.move.called).toBeFalsy();
@@ -80,10 +80,6 @@
             expect(scope.safeApply.called).toBeTruthy();
         });
 
-        it('should have a finished function returning isFinished from gameKeeper.', function() {
-            expect(PlayController.gameIsFinished === gameKeeper.isFinished).toBeTruthy();
-        });
-
         it('should have a function to set the skin.', function() {
             var skin = 'blah';
             PlayController.setSkin(skin);
@@ -91,25 +87,29 @@
         });
 
         it('should check if game is finished and move if not.', function() {
-            sinon.stub(PlayController, 'gameIsFinished').returns(false);
+            gameKeeper.isFinished.restore();
+            sinon.stub(gameKeeper, 'isFinished').returns(false);
+
             PlayController.move('up');
             expect(gameKeeper.move.calledWith('up')).toBeTruthy();
         });
 
         it('should check if game is finished and not move if it is.', function() {
-            sinon.stub(PlayController, 'gameIsFinished').returns(true);
+            gameKeeper.isFinished.restore();
+            sinon.stub(gameKeeper, 'isFinished').returns(true);
+
             PlayController.move('up');
             expect(gameKeeper.move.called).toBeFalsy();
         });
 
         it('should call gameKeeper to get next level on vm.next callback.', function() {
-            sinon.spy(gameKeeper, 'nextLevel');
+            sinon.stub(gameKeeper, 'nextLevel').returns(5);
             PlayController.next();
             expect(gameKeeper.nextLevel.called).toBeTruthy();
         });
 
         it('should call gameKeeper to restart level on vm.restart callback.', function() {
-            sinon.spy(gameKeeper, 'restartLevel');
+            sinon.stub(gameKeeper, 'restartLevel');
             PlayController.restart();
             expect(gameKeeper.restartLevel.called).toBeTruthy();
         });
@@ -131,7 +131,7 @@
         }));
     });
 
-    function fixtureSetup($location, $controller, $rootScope, keyCodeToDirectionMap, _availableSkins_, settingsStore) {
+    function fixtureSetup($location, $controller, $rootScope, keyCodeToDirectionMap, _availableSkins_, settingsStore, _gameKeeper_) {
         scope = $rootScope.$new();
 
         availableSkins = _availableSkins_;
@@ -140,25 +140,12 @@
         settings = settingsStore;
         sinon.stub(settings, 'load').returns(null);
 
-        gameKeeper = {
-            move: function() {
-            },
-            isFinished: function() {
-            },
-            grid: function() {
-            },
-            moves: function() {
-            },
-            nextLevel: function() {
-            },
-            restartLevel: function() {
-            },
-            isInitialized: function() {
-            }
-        };
-
+        gameKeeper = _gameKeeper_;
+        sinon.stub(gameKeeper, 'move');
+        sinon.stub(gameKeeper, 'isFinished').returns(false);
+        sinon.stub(gameKeeper, 'grid');
+        sinon.stub(gameKeeper, 'moves').returns(6);
         sinon.stub(gameKeeper, 'isInitialized').returns(true);
-        sinon.spy(gameKeeper, 'move');
 
         PlayController = $controller('PlayController', {
             $location: location,
@@ -167,7 +154,5 @@
             keyCodeToDirectionMap: keyCodeToDirectionMap,
             availableSkins: availableSkins
         });
-
-        sinon.spy(PlayController, 'move');
     }
 })();

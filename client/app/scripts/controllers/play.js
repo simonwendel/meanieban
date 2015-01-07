@@ -63,7 +63,7 @@
     }
 
     function move(direction) {
-        if (!vm.gameIsFinished()) {
+        if (!gameKeeper.isFinished()) {
             gameKeeper.move(direction);
             moves = getMoves();
             levelComplete = gameKeeper.isFinished();

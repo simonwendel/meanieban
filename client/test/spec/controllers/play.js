@@ -61,14 +61,14 @@
         it('should call the move function when key-down handler is called with arrow key.', function() {
             sinon.spy(PlayController, 'move');
             // 39 -> right
-            PlayController.keydown({keyCode: 39});
+            PlayController.keydown({keyCode: 39, preventDefault: sinon.spy()});
             expect(PlayController.move.calledWith('right')).toBeTruthy();
         });
 
         it('should not call the move function when key-down handler is called with non-arrow-key.', function() {
             sinon.spy(PlayController, 'move');
             // 188 -> comma
-            PlayController.keydown({keyCode: 188});
+            PlayController.keydown({keyCode: 188, preventDefault: sinon.spy()});
             expect(PlayController.move.called).toBeFalsy();
         });
 
@@ -76,7 +76,7 @@
             sinon.spy(scope, 'safeApply');
 
             // 39 -> right
-            PlayController.keydown({keyCode: 39});
+            PlayController.keydown({keyCode: 39, preventDefault: sinon.spy()});
             expect(scope.safeApply.called).toBeTruthy();
         });
 

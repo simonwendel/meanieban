@@ -74,6 +74,7 @@
     function keydown(event) {
         var direction = keyCodeToDirectionMap[event.keyCode];
         if (direction) {
+            event.preventDefault();
             vm.move(direction);
         }
     }

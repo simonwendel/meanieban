@@ -1,8 +1,3 @@
-// Karma configuration
-// http://karma-runner.github.io/0.12/config/configuration-file.html
-// Generated on 2014-08-11 using
-// generator-karma 0.8.3
-
 module.exports = function(config) {
     'use strict';
 
@@ -30,7 +25,6 @@ module.exports = function(config) {
             'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
             'bower_components/angular-local-storage/dist/angular-local-storage.js',
             'app/scripts/**/*.js',
-            'test/mock/**/*.js',
             'test/utilities/**/*.js',
             'test/**/spec/**/*.js', // we use /**/ before spec so test utilities also get their tests run
             'app/views/**/*.html' // for templates in directives
@@ -68,7 +62,6 @@ module.exports = function(config) {
             // do not include tests or libraries
             // (these files will be instrumented by Istanbul)
             'app/scripts/**/*.js': ['coverage'],
-            'test/matchers/*.js': ['coverage'],
             'app/views/**/*.html': ['ng-html2js']
         },
 

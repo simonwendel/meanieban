@@ -7,33 +7,25 @@
 
     function settings() {
         return {
-            templateUrl: 'views/directives/sw-settings.html',
             restrict: 'E',
             scope: {
                 showSignEventName: '@',
                 restartLevel: '=',
                 setSkin: '='
             },
-            controller: SettingsController,
-            controllerAs: 'vm'
+            controller: SettingsController
         };
     }
 
-    var visible = false,
-        restart,
-        skin;
+    var modalService,
+        restartLevel,
+        setSkin;
 
     /** @ngInject */
-    function SettingsController($scope) {
-        var vm = this;
-
-        vm.restartLevel = restartLevel;
-        vm.setSkin = setSkin;
-        vm.killModal = killModal;
-
-        restart = $scope.restartLevel;
-        skin = $scope.setSkin;
-
+    function SettingsController($scope, $modal) {
+        modalService = $modal;
+        restartLevel = $scope.restartLevel;
+        setSkin = $scope.setSkin;
         setupListener($scope);
     }
 
@@ -43,26 +35,24 @@
         });
     }
 
-    function restartLevel() {
-        killModal();
-        restart();
-    }
-
-    function setSkin(selected) {
-        skin(selected);
-    }
-
     function showModal() {
-        if (!visible) {
-            $('#settings-modal').modal('show');
-            visible = true;
-        }
+        modalService.open({
+            windowTemplateUrl: 'views/partials/parchment-modal.html',
+            templateUrl: 'views/directives/sw-settings.html',
+            controller: ModalController,
+            controllerAs: 'vm'
+        });
     }
 
-    function killModal() {
-        if (visible) {
-            $('#settings-modal').modal('hide');
-            visible = false;
-        }
+    /** @ngInject */
+    function ModalController($scope) {
+        var vm = this;
+
+        vm.restartLevel = function() {
+            $scope.$close();
+            restartLevel();
+        };
+        vm.setSkin = setSkin;
+        vm.killModal = $scope.$close;
     }
 })();

@@ -1,30 +1,20 @@
-<div class="modal fade" id="settings-modal" tabindex="-1" data-keyboard="false" aria-hidden="true">
-    <div class="vertical-alignment-helper">
-        <div class="modal-dialog vertical-align-center">
-            <div id="parchment">
-                <div id="parchment-content">
-                    <p>
-                        Want an alternate flavor? Re-skin the game using the following options:
-                    </p>
+<p>
+    Want an alternate flavor? Re-skin the game using the following options:
+</p>
 
-                    <p class="text-center">
-                        <sw-skin-selector callback="vm.setSkin"></sw-skin-selector>
-                    </p>
+<p class="text-center">
+    <sw-skin-selector callback="vm.setSkin"></sw-skin-selector>
+</p>
 
-                    <p>
-                        If you're stuck, you can always restart the level...
-                    </p>
+<p>
+    If you're stuck, you can always restart the level...
+</p>
 
-                    <p>
-                        <a id="restart-level-button" class="btn btn-success pull-left" ng-click="vm.restartLevel()">
-                            Restart&nbsp;&nbsp;<i class="fa fa-refresh fa-1x"></i>
-                        </a>
-                        <a id="close-settings-button" class="btn btn-success pull-right" ng-click="vm.killModal()">
-                            Close&nbsp;&nbsp;&nbsp;<i class="fa fa-times fa-1x"></i>
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<p>
+    <a id="restart-level-button" class="btn btn-success pull-left" ng-click="vm.restartLevel()">
+        Restart&nbsp;&nbsp;<i class="fa fa-refresh fa-1x"></i>
+    </a>
+    <a id="close-settings-button" class="btn btn-success pull-right" ng-click="vm.killModal()">
+        Close&nbsp;&nbsp;&nbsp;<i class="fa fa-times fa-1x"></i>
+    </a>
+</p>

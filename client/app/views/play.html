@@ -23,8 +23,9 @@
      <sw-game-pad move="vm.move"></sw-game-pad>
  </div>-->
 
-    <sw-level-complete show-sign="vm.showLevelComplete()" get-moves="vm.getMoves" next-level="vm.next"
+    <sw-level-complete show-sign-event-name="show-level-complete-modal" get-moves="vm.getMoves" next-level="vm.next"
                        restart-level="vm.restart"></sw-level-complete>
-    <sw-settings show-sign-event-name="show-settings-modal" restart-level="vm.restart"
-                 set-skin="vm.setSkin"></sw-settings>
+    <sw-settings show-sign-event-name="show-settings-modal" restart-level="vm.restart" set-skin="vm.setSkin"></sw-settings>
+    <sw-collection-complete show-sign-event-name="show-collection-complete-modal" restart-game="vm.restartGame"></sw-collection-complete>
+
 </div>

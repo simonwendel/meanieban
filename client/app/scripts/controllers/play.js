@@ -16,8 +16,10 @@
         vm = this;
 
         gameKeeper = _gameKeeper_;
+        location = $location;
+
         if (!gameKeeper.isInitialized()) {
-            $location.path('/start');
+            restartGame();
             return;
         }
 
@@ -33,13 +35,12 @@
         gameKeeper,
         keyCodeToDirectionMap,
         availableSkins,
-        levelComplete,
         moves,
         scope,
-        settingsStore;
+        settingsStore,
+        location;
 
     function init() {
-        levelComplete = false;
         var settings = settingsStore.load();
 
         vm.initialized = gameKeeper.isInitialized;
@@ -52,7 +53,6 @@
             vm.skin = availableSkins[0];
         }
 
-        vm.showLevelComplete = showLevelComplete;
         vm.showSettings = showSettings;
         vm.move = move;
         vm.keydown = keydown;
@@ -60,14 +60,16 @@
         vm.getMoves = getMoves;
         vm.next = next;
         vm.restart = restart;
+        vm.restartGame = restartGame;
     }
 
     function move(direction) {
         if (!gameKeeper.isFinished()) {
             gameKeeper.move(direction);
             moves = getMoves();
-            levelComplete = gameKeeper.isFinished();
             scope.safeApply();
+
+            checkIfCompleteAndBroadcast();
         }
     }
 
@@ -98,11 +100,21 @@
         init();
     }
 
-    function showLevelComplete() {
-        return levelComplete;
+    function restartGame() {
+        location.path('/start');
     }
 
     function showSettings() {
         scope.$broadcast('show-settings-modal', null);
+    }
+
+    function checkIfCompleteAndBroadcast() {
+        if (gameKeeper.isFinished() && gameKeeper.hasNext()) {
+            scope.$broadcast('show-level-complete-modal', null);
+        }
+
+        if (gameKeeper.isFinished() && !gameKeeper.hasNext()) {
+            scope.$broadcast('show-collection-complete-modal', null);
+        }
     }
 })();

@@ -7,33 +7,23 @@
 
     function collectionComplete() {
         return {
-            templateUrl: 'views/directives/sw-collection-complete.html',
             restrict: 'E',
             scope: {
                 showSignEventName: '@',
                 restartGame: '='
             },
-            controller: CollectionCompleteController,
-            controllerAs: 'vm'
+            controller: CollectionCompleteController
         };
     }
 
-    var visible = false,
-        restart;
+    var restartGame,
+        modalService;
 
     /** @ngInject */
-    function CollectionCompleteController($scope) {
-        var vm = this;
-
-        restart = $scope.restartGame;
-        vm.restartGame = restartGame;
-
+    function CollectionCompleteController($scope, $modal) {
+        restartGame = $scope.restartGame;
+        modalService = $modal;
         setupListener($scope);
-    }
-
-    function restartGame() {
-        killModal();
-        restart();
     }
 
     function setupListener($scope) {
@@ -43,16 +33,21 @@
     }
 
     function showModal() {
-        if (!visible) {
-            $('#collection-modal').modal('show');
-            visible = true;
-        }
+        modalService.open({
+            windowTemplateUrl: 'views/partials/parchment-modal.html',
+            templateUrl: 'views/directives/sw-collection-complete.html',
+            controller: ModalController,
+            controllerAs: 'vm'
+        });
     }
 
-    function killModal() {
-        if (visible) {
-            $('#collection-modal').modal('hide');
-            visible = false;
-        }
+    /** @ngInject */
+    function ModalController($scope) {
+        var vm = this;
+
+        vm.restartGame = function() {
+            $scope.$close();
+            restartGame();
+        };
     }
 })();

@@ -1,19 +1,4 @@
-#parchment {
-    width:430px;
-    height:300px;
-    background-image: url(../images/parchment.png);
-    margin: 0 auto;
-    z-index: 1000;
-}
 
-#parchment-content {
-    width: 300px;
-    margin-left: 65px;
-    margin-right: 65px;
-    padding-top: 55px;
-    font-family: 'Kaushan Script', cursive;
-    font-size: 18px;
-}
 
 /* thank you SO (http://stackoverflow.com/a/24829651) for what follows: */
 .vertical-alignment-helper {

@@ -7,65 +7,60 @@
 
     function levelComplete() {
         return {
-            templateUrl: 'views/directives/sw-level-complete.html',
             restrict: 'E',
             scope: {
-                showSign: '=',
+                showSignEventName: '@',
                 getMoves: '=',
                 restartLevel: '=',
                 nextLevel: '='
             },
-            controller: LevelCompleteController,
-            controllerAs: 'vm'
+            controller: LevelCompleteController
         };
     }
 
-    var visible = false,
-        restart,
-        next;
+    var modalService,
+        restartLevel,
+        nextLevel,
+        getMoves;
 
     /** @ngInject */
-    function LevelCompleteController($scope) {
-        var vm = this;
-
-        vm.getMoves = $scope.getMoves;
-        vm.restartLevel = restartLevel;
-        vm.nextLevel = nextLevel;
-
-        restart = $scope.restartLevel;
-        next = $scope.nextLevel;
-        setupShowWatch($scope);
+    function LevelCompleteController($scope, $modal) {
+        modalService = $modal;
+        getMoves = $scope.getMoves;
+        restartLevel = $scope.restartLevel;
+        nextLevel = $scope.nextLevel;
+        setupListener($scope);
     }
 
-    function setupShowWatch($scope) {
-        $scope.$watch('showSign', function() {
-            if ($scope.showSign) {
-                showModal();
-            }
+    function setupListener($scope) {
+        $scope.$on($scope.showSignEventName, function() {
+            showModal();
         });
     }
 
-    function nextLevel() {
-        killModal();
-        next();
-    }
-
-    function restartLevel() {
-        killModal();
-        restart();
-    }
-
     function showModal() {
-        if (!visible) {
-            $('#parchment-modal').modal('show');
-            visible = true;
-        }
+        modalService.open({
+            windowTemplateUrl: 'views/partials/parchment-modal.html',
+            templateUrl: 'views/directives/sw-level-complete.html',
+            controller: ModalController,
+            controllerAs: 'vm'
+        });
     }
 
-    function killModal() {
-        if (visible) {
-            $('#parchment-modal').modal('hide');
-            visible = false;
-        }
+    /** @ngInject */
+    function ModalController($scope) {
+        var vm = this;
+
+        vm.getMoves = getMoves;
+
+        vm.restartLevel = function() {
+            $scope.$close();
+            restartLevel();
+        };
+
+        vm.nextLevel = function() {
+            $scope.$close();
+            nextLevel();
+        };
     }
 })();

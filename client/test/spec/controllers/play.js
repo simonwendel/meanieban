@@ -114,10 +114,14 @@
             expect(gameKeeper.restartLevel.called).toBeTruthy();
         });
 
+        it('should call location.path to restart game on vm.restartGame callback.', function() {
+            PlayController.restartGame();
+            expect(location.path.calledWith('/start')).toBeTruthy();
+        });
+
         it('should return client to StartController if gameKeeper is not initialized.', inject(function($controller, keyCodeToDirectionMap) {
             gameKeeper.isInitialized.restore();
             sinon.stub(gameKeeper, 'isInitialized').returns(false);
-            sinon.spy(location, 'path');
 
             PlayController = $controller('PlayController', {
                 $location: location,
@@ -136,6 +140,7 @@
 
         availableSkins = _availableSkins_;
         location = $location;
+        sinon.spy(location, 'path');
 
         settings = settingsStore;
         sinon.stub(settings, 'load').returns(null);

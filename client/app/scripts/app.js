@@ -6,6 +6,7 @@
             'ngRoute',
             'ngAnimate',
             'ngCookies',
+
             'ui.bootstrap',
             'LocalStorageModule'
         ]);

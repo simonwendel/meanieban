@@ -1,10 +1,15 @@
 <sw-narrow-page>
-        <p>Please select a level collection:</p>
         <p>
+            The game is divided into level collections, each composing many different levels of varying difficulty.
+            If you find one collection too easy, try another one. You will be surprised how the levels differ in style
+            between collections.
+        </p>
+        <p class="text-center">
+            Please select a level collection:<br />
             <sw-collection-selector selected-callback="vm.setCollectionName"></sw-collection-selector>
             <br/>
-            <a id="start-button" ng-click="vm.play()" class="btn btn-success">
-                Start!&nbsp;&nbsp;<i class="fa fa-gamepad fa-1x fa-rotate-45"></i>
+            <a id="start-button" ng-click="vm.play()" class="btn btn-success pull-right">
+                Play Game&nbsp;&nbsp;<i class="fa fa-gamepad fa-1x fa-rotate-45"></i>
             </a>
         </p>
 </sw-narrow-page>

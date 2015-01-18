@@ -14,3 +14,7 @@
     font-family: 'Kaushan Script', cursive;
     font-size: 18px;
 }
+/* hack to fix angular ui bootstrap bug with disappearing modals */
+.modal {
+    display: block;
+}

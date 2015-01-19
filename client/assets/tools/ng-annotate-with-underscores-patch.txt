@@ -1,0 +1,5 @@
+ngAnnotate does not support using the pattern _SomeServiceName_ although support for this outside of tests is
+in the AngularJS injection service. For fun, this patch adds the underscores option to ngAnnotate.
+
+The patch is available as source code from:
+https://github.com/simonwendel/ng-annotate/tree/feature-underscores

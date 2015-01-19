@@ -62,6 +62,31 @@ a.btn {
     font-size: 14px;
 }
 
+.btn-right-hand {
+    @extend .pull-right;
+    @extend .offset-top;
+    @extend .offset-right;
+}
+
+.btn-left-hand {
+    @extend .pull-left;
+    @extend .offset-top;
+    @extend .offset-left;
+}
+
+// used mainly for the btns
+.offset-right {
+    margin-right: 2 * $standard-spacing;
+}
+
+.offset-left {
+    margin-left: 2 * $standard-spacing;
+}
+
+.offset-top {
+    margin-top: 1.5 * $standard-spacing;
+}
+
 // FOOTER
 .footer, .footer a {
   color: $footer-text-color;

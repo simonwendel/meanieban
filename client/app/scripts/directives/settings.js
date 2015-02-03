@@ -52,7 +52,11 @@
             $scope.$close();
             restartLevel();
         };
-        vm.setSkin = setSkin;
+
         vm.killModal = $scope.$close;
+        vm.setSkin = function(skin) {
+            setSkin(skin);
+            vm.killModal();
+        };
     }
 })();

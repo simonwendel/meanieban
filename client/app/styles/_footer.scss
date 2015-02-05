@@ -1,0 +1,43 @@
+.footer, .footer a {
+    color: $footer-text-color;
+}
+
+.footer {
+    margin-top: $big-spacing;
+    position: relative;
+    background: $footer-background-color;
+
+    span {
+        margin: 0 20px;
+    }
+
+    /* adding the left and right fills out to the page edges */
+    .text-left::before, .text-right::after {
+        content: "";
+        background: $footer-background-color;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 9999em;
+    }
+
+    /* left side fill to edge */
+    .text-left::before {
+        margin-left: -9999em;
+    }
+
+    /* right side fill to edge */
+    .text-right::after {
+        margin-left: 0;
+    }
+}
+
+/* below the footer we want three colored stripes */
+.footer::after {
+    border-top: 10px $footer-bottom-dark solid;
+    background: $footer-bottom-gray;
+    border-bottom: 20px $footer-bottom-light solid;
+    width: 9999em;
+    margin-left: -50%;
+    height: 50px;
+}

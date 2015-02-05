@@ -10,7 +10,8 @@
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-// Remember this for all partials!
+@import "index";
+
 @import "views/_start";
 @import "views/_play";
 
@@ -21,42 +22,6 @@
 @import "directives/sw-collection-selector";
 @import "directives/sw-settings";
 @import "directives/sw-score-board";
-
-@import "footer";
-
-/* Space out content a bit and set the bg */
-body {
-  padding-top: $standard-spacing;
-  padding-bottom: $standard-spacing;
-  background: $body-bg;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
-.header {
-  border-bottom: 1px solid $content-border-color;
-
-  #logo {
-    color: $brand-primary;
-    font-family: 'Kaushan Script', cursive;
-    font-size: 5em;
-    text-align: center;
-    text-shadow: 2px 2px 1px $logo-shadow;
-    filter: dropshadow(color=$logo-shadow, offx=2, offy=2);
-    text-decoration: underline;
-  }
-}
-
-#view {
-    padding-top: $standard-spacing;
-}
-
-.out-of-date-warning {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
 
 .btn {
     font-family: $font-family-sans-serif;

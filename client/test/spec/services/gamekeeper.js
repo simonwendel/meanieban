@@ -88,6 +88,19 @@
                 expect(gameKeeper.isInitialized()).toBeFalsy();
             });
         });
+
+        describe('restoreGame', function() {
+            it('should call the gameStore to get latest saved game.', function() {
+                gameKeeper.restoreGame();
+                expect(gameStore.load.called).toBeTruthy();
+            });
+
+            it('should call initializeGame with the restored game values.', function() {
+                sinon.spy(gameKeeper, 'initializeGame');
+                gameKeeper.restoreGame();
+                expect(gameKeeper.initializeGame.withArgs(66, 70).called).toBeTruthy();
+            });
+        });
     });
 
     function provideSetup($provide) {
@@ -112,6 +125,7 @@
 
     function fixtureSetup(_gameKeeper_, _smallestSolvable_) {
         sinon.stub(levelCollectionStub, 'get').returns(_smallestSolvable_);
+        gameStore.load.returns({currentLevel: 66, lastLevel: 70});
 
         gameKeeper = _gameKeeper_;
         smallestSolvable = _smallestSolvable_;

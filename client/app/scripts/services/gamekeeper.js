@@ -14,6 +14,7 @@
 
         return {
             initializeGame: initializeGame,
+            restoreGame: restoreGame,
             game: getGame,
             grid: getGrid,
             isFinished: isFinished,
@@ -45,6 +46,14 @@
         initialized = true;
 
         gameStore.save({currentLevel: currentLevel, lastLevel: lastLevel});
+    }
+
+    function restoreGame() {
+        var lastGame = gameStore.load();
+
+        /* The validthis rule doesn't like this use and thinks it is a strict violation
+         * TODO: can this be fixed so jshint is happy and sinon spies can be used for testing */
+        this.initializeGame(lastGame.currentLevel, lastGame.lastLevel); // jshint ignore:line
     }
 
     function hasNext() {

@@ -68,12 +68,12 @@ a.btn {
 
 .btn-right-hand {
     @extend .pull-right;
-    @extend .offset-top;
-    @extend .offset-right;
+    @extend .u-offset-top;
+    @extend .u-offset-right;
 }
 
 .btn-left-hand {
     @extend .pull-left;
-    @extend .offset-top;
-    @extend .offset-left;
+    @extend .u-offset-top;
+    @extend .u-offset-left;
 }

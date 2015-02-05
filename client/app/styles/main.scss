@@ -11,14 +11,15 @@
 // endbower
 
 // Remember this for all partials!
-@import "partials/parchment-modal";
-@import "partials/start";
-@import "partials/play";
-@import "partials/sw-game-pad";
-@import "partials/sw-skin-selector";
-@import "partials/sw-collection-selector";
-@import "partials/sw-settings";
-@import "partials/sw-score-board";
+@import "views/_start";
+@import "views/_play";
+
+@import "directives/parchment-modal";
+@import "directives/sw-game-pad";
+@import "directives/sw-skin-selector";
+@import "directives/sw-collection-selector";
+@import "directives/sw-settings";
+@import "directives/sw-score-board";
 
 @import "footer";
 

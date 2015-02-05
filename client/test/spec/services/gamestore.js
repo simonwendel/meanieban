@@ -12,8 +12,8 @@
 
         it('should have a save function to save game.', function() {
             gameStore.save({currentLevel: 1, lastLevel: 3});
-            expect(localStorageService.set.calledWith('currentLevel', 1)).toBeTruthy();
-            expect(localStorageService.set.calledWith('lastLevel', 3)).toBeTruthy();
+            expect(localStorageService.set.calledWith('gameStore.currentLevel', 1)).toBeTruthy();
+            expect(localStorageService.set.calledWith('gameStore.lastLevel', 3)).toBeTruthy();
         });
 
         it('should have a load function to get saved game.', function() {
@@ -22,8 +22,8 @@
 
             game = gameStore.load();
 
-            expect(localStorageService.get.calledWith('currentLevel')).toBeTruthy();
-            expect(localStorageService.get.calledWith('lastLevel')).toBeTruthy();
+            expect(localStorageService.get.calledWith('gameStore.currentLevel')).toBeTruthy();
+            expect(localStorageService.get.calledWith('gameStore.lastLevel')).toBeTruthy();
             expect(game.currentLevel).toBe(1);
             expect(game.lastLevel).toBe(3);
         });

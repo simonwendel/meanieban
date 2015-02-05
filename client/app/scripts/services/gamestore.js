@@ -18,14 +18,14 @@
     var localStorageService;
 
     function save(game) {
-        localStorageService.set('currentLevel', game.currentLevel);
-        localStorageService.set('lastLevel', game.lastLevel);
+        localStorageService.set('gameStore.currentLevel', game.currentLevel);
+        localStorageService.set('gameStore.lastLevel', game.lastLevel);
     }
 
     function load() {
         return {
-            currentLevel: localStorageService.get('currentLevel'),
-            lastLevel: localStorageService.get('lastLevel')
+            currentLevel: localStorageService.get('gameStore.currentLevel'),
+            lastLevel: localStorageService.get('gameStore.lastLevel')
         };
     }
 })();

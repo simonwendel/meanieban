@@ -3,6 +3,7 @@
 
 @import "vendor/variables";
 @import "custom-variables";
+@import "utilities";
 
 // $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
@@ -133,26 +134,3 @@ a.btn {
 }
 
 // END FOOTER
-
-// utilities
-.col-centered {
-  float: none;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.fa-rotate-45 {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.fa-rotate-slightly {
-    -webkit-transform: rotate(12deg);
-    -moz-transform: rotate(12deg);
-    -ms-transform: rotate(12deg);
-    -o-transform: rotate(12deg);
-    transform: rotate(12deg);
-}

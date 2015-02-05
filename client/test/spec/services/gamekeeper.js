@@ -5,7 +5,8 @@
         levelCollectionStub,
         LevelStub,
         GameStub,
-        smallestSolvable;
+        smallestSolvable,
+        gameStore;
 
     describe('Service: gameKeeper', function() {
 
@@ -27,6 +28,11 @@
             it('should create a game from the level returned from levelCollection.', function() {
                 gameKeeper.initializeGame(2, 3);
                 expect(GameStub.calledWithNew()).toBeTruthy();
+            });
+
+            it('should save the game to the gameStore.', function() {
+                gameKeeper.initializeGame(2, 3);
+                expect(gameStore.save.calledWith({currentLevel: 2, lastLevel: 3})).toBeTruthy();
             });
         });
 
@@ -93,9 +99,15 @@
         LevelStub = sinon.spy();
         GameStub = sinon.spy();
 
+        gameStore = {
+            save: sinon.stub(),
+            load: sinon.stub()
+        };
+
         $provide.value('levelCollection', levelCollectionStub);
         $provide.value('Level', LevelStub);
         $provide.value('Game', GameStub);
+        $provide.value('gameStore', gameStore);
     }
 
     function fixtureSetup(_gameKeeper_, _smallestSolvable_) {

@@ -5,11 +5,12 @@
         .factory('gameKeeper', gameKeeper);
 
     /** @ngInject */
-    function gameKeeper(_Game_, _Level_, _levelCollection_) {
+    function gameKeeper(_Game_, _Level_, _levelCollection_, _gameStore_) {
         initialized = false;
         Game = _Game_;
         Level = _Level_;
         levelCollection = _levelCollection_;
+        gameStore = _gameStore_;
 
         return {
             initializeGame: initializeGame,
@@ -31,7 +32,8 @@
         levelCollection,
         currentLevel,
         lastLevel,
-        game;
+        game,
+        gameStore;
 
     function initializeGame(first, last) {
         var levelData = levelCollection.get(first),
@@ -41,6 +43,8 @@
         lastLevel = last;
         game = new Game(level);
         initialized = true;
+
+        gameStore.save({currentLevel: currentLevel, lastLevel: lastLevel});
     }
 
     function hasNext() {

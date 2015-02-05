@@ -12,7 +12,7 @@
 
         it('should have a save function to save skin settings.', function() {
             settingsStore.save({skin: 'some skin'});
-            expect(localStorageService.set.calledWith('selectedSkin', 'some skin')).toBeTruthy();
+            expect(localStorageService.set.calledWith('settingsStore.selectedSkin', 'some skin')).toBeTruthy();
         });
 
         it('should have a load function to get skin settings.', function() {
@@ -21,7 +21,7 @@
 
             settings = settingsStore.load();
 
-            expect(localStorageService.get.calledWith('selectedSkin')).toBeTruthy();
+            expect(localStorageService.get.calledWith('settingsStore.selectedSkin')).toBeTruthy();
             expect(settings.skin).toBe('some skin to be loaded');
         });
     });

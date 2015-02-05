@@ -18,12 +18,12 @@
     var localStorageService;
 
     function save(settings) {
-        localStorageService.set('selectedSkin', settings.skin);
+        localStorageService.set('settingsStore.selectedSkin', settings.skin);
     }
 
     function load() {
         return {
-            skin: localStorageService.get('selectedSkin')
+            skin: localStorageService.get('settingsStore.selectedSkin')
         };
     }
 })();

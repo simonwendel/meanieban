@@ -14,7 +14,8 @@
 @import "views/_start";
 @import "views/_play";
 
-@import "directives/parchment-modal";
+@import "partials/_parchment-modal";
+
 @import "directives/sw-game-pad";
 @import "directives/sw-skin-selector";
 @import "directives/sw-collection-selector";

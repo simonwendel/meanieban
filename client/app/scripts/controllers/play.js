@@ -16,11 +16,10 @@
         vm = this;
 
         gameKeeper = _gameKeeper_;
-        location = $location;
+        broweserLocation = $location;
 
         if (!gameKeeper.isInitialized()) {
-            restartGame();
-            return;
+            gameKeeper.restoreGame();
         }
 
         scope = $scope;
@@ -38,7 +37,7 @@
         moves,
         scope,
         settingsStore,
-        location;
+        broweserLocation;
 
     function init() {
         var settings = settingsStore.load();
@@ -101,7 +100,7 @@
     }
 
     function restartGame() {
-        location.path('/start');
+        broweserLocation.path('/start');
     }
 
     function showSettings() {

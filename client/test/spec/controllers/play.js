@@ -119,9 +119,10 @@
             expect(location.path.calledWith('/start')).toBeTruthy();
         });
 
-        it('should return client to StartController if gameKeeper is not initialized.', inject(function($controller, keyCodeToDirectionMap) {
+        it('should try to restore game if gameKeeper is not initialized.', inject(function($controller, keyCodeToDirectionMap) {
             gameKeeper.isInitialized.restore();
             sinon.stub(gameKeeper, 'isInitialized').returns(false);
+            sinon.spy(gameKeeper, 'restoreGame');
 
             PlayController = $controller('PlayController', {
                 $location: location,
@@ -131,7 +132,7 @@
                 availableSkins: availableSkins
             });
 
-            expect(location.path.calledWith('/start')).toBeTruthy();
+            expect(gameKeeper.restoreGame.calledOnce).toBeTruthy();
         }));
     });
 

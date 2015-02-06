@@ -52,7 +52,7 @@
         var lastGame = gameStore.load();
 
         /* The validthis rule doesn't like this use and thinks it is a strict violation
-         * TODO: can this be fixed so jshint is happy and sinon spies can be used for testing */
+         * TODO: can this be fixed so jshint is happy AND sinon spies can be used for testing */
         this.initializeGame(lastGame.currentLevel, lastGame.lastLevel); // jshint ignore:line
     }
 

@@ -5,7 +5,9 @@ before_script:
   - 'cd client'
   - 'npm install -g bower grunt-cli'
   - 'bower install'
+before_install:
+  - 'npm update -q'
 install:
   - 'cd client'
   - 'npm link assets/tools/ng-annotate-with-underscores-patch.tgz'
-  - 'npm install --dev'
+  - 'npm install'
